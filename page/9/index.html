@@ -247,121 +247,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2009/05/22/javascript-in-ie-mobile-6-0/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Bingo Yang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Blackbing Playground">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/2009/05/22/javascript-in-ie-mobile-6-0/" itemprop="url">
-                  Javascript in IE Mobile 6.0
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2009-05-22T03:15:00+08:00">
-                2009-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol><br>    <li><strong> Is Ajax support on Internet Explorer Mobile? <br><br> </strong>Actually, IE Mobile’s Ajax support dates back to Windows Mobile 2003. </li><br>    <li><strong> javascript &amp; AJAX 實做心得</strong> <ol><br>    <li> 可用AJAX，但desktop IE的javascript Framework有很多function不適用，因此建議還是依需求開發。  <ol><br>    <li>針對AJAX部份我有根據官方範例寫了一個Ajax call function for Mobile IE<br><br> <a id="rh31" title="http://192.168.10.234/bingotest/urmapMobile.js" href="http://192.168.10.234/bingotest/urmapMobile.js" target="_blank" rel="external">http://blackbing.net/lab/mobile/mobileAjax.js</a></li><br></ol> </li><br>    <li> 基本的javascript幾乎都支援，getElementById, setTimeout, etc.. </li><br>    <li> 只有button 有onclick事件，其他如DIV、SPAN上沒有這種event。 </li><br>    <li> 請注意IE Mobile 沒有「onMouseOver」事件。 </li><br>    <li> CSS支援度差，不支援定位(position, top, left)，且javascript存取css的方式也有限，必須反覆測試style的表現。 </li><br>    <li> On Smartphone/PocketPC 2003 innerText and innerHTML Properties are only supported on div and span elements.<br><br> On Windows Mobile 5 innerText and innerHTML Properties are supported on all elements.</li><br></ol> </li><br>    <li><strong> 開發AJAX應用程式的注意事項：</strong> <ol><br>    <li> 使用者介面越簡單越好 </li><br>    <li> 資料傳輸量越精簡越好(JSON) </li><br>    <li> DOM tree 越淺(shallow)越好 </li><br>    <li> 若有大量資料要隱藏，請避免使用display:none，直接採用DOM操作方式remove掉。(保持頁面資料越精簡越好) </li><br>    <li> 盡可能不要讓使用者輸入data，改由select方式 </li><br>    <li> Adding On-Demand Script </li><br></ol> </li><br>    <li><strong> 其他：</strong> <ol><br>    <li>how to configure Internet Explorer Mobile to display script errors?<br><br> To configure IE Mobile to display script error messages requires you to create a new registry entry. <ol><br>    <li> Open the device/emulator registry using the <a href="http://msdn2.microsoft.com/en-us/library/aa936059.aspx" target="_blank" rel="external">Remote Registry Editor</a> or other Windows Mobile registry tool </li><br>    <li> Navigate to the registry key <strong>HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main</strong></li><br>    <li> Create a new DWORD entry for the key; name the new entry <strong>ShowScriptErrors</strong> and set the value to <strong>1</strong></li><br>    <li> Soft-reset the device/emulator<br><br><p>Once you complete these steps, IE Mobile will display error messages for any script errors that occur.</p></li><br></ol> </li><br>    <li> Enabling Cross-Domain Calls in Your Development Environment<br><br> When working in your development environment, you can disable the security check that prevents the XMLHTTP object from making a cross-domain call. You do this by modifying the value of the appropriate registry entry using the following steps. <ol><br>    <li> Open the device/emulator registry using the <a href="http://msdn2.microsoft.com/en-us/library/aa936059.aspx" target="_blank" rel="external">Remote Registry Editor</a> or other Windows Mobile registry tool </li><br>    <li> Navigate to the registry key <strong>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\Current Version\Internet Settings\Zones\3</strong></li><br>    <li> Change the value of the entry named <strong>1406</strong> to <strong>0</strong>. </li><br>    <li> Soft-reset the device/emulator<br><br> Once you complete these steps, the XMLHTTP object can call into any domain without restriction. </li><br></ol> </li><br></ol> </li><br></ol> <ol><br>    <li><strong> 參考資料：</strong> <ol><br>    <li> Mobile Web Development<br><br> <span style="color: #3366ff;"><a id="kx1e" title="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnanchor/html/anch_mobilewebdev.asp" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnanchor/html/anch_mobilewebdev.asp" target="_blank" rel="external">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnanchor/html/anch_mobilewebdev.asp</a> </span></li><br>    <li> Mobile DOM Reference Guide<br><br> <span style="color: #3366ff;"><a id="e-:e" title="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/mobilesdk5/html/mogrfdomreferenceguide.asp" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/mobilesdk5/html/mogrfdomreferenceguide.asp" target="_blank" rel="external">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/mobilesdk5/html/mogrfdomreferenceguide.asp</a> </span></li><br>    <li> Mobile CSS Support<br><br> <span style="color: #3366ff;"><a id="w9pj" title="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/mobilesdk5/html/mogrfdomreferenceguide.asp?frame=true" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/mobilesdk5/html/mogrfdomreferenceguide.asp?frame=true" target="_blank" rel="external">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/mobilesdk5/html/mogrfdomreferenceguide.asp?frame=true</a></span></li><br>    <li> Windows Mobile Developers Wiki<br><br> <span style="color: #3366ff;"><a id="ib9r" title="http://channel9.msdn.com/wiki/default.aspx/MobileDeveloper.HomePage" href="http://channel9.msdn.com/wiki/default.aspx/MobileDeveloper.HomePage" target="_blank" rel="external">http://channel9.msdn.com/wiki/default.aspx/MobileDeveloper.HomePage</a></span></li><br></ol> </li><br></ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2009/05/05/flash-move-effect/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1423,6 +1308,125 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2009/01/09/ie8-preview/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2009/01/09/ie8-preview/" itemprop="url">
+                  IE8 features preview
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2009-01-09T16:12:00+08:00">
+                2009-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>IE8很快的又要release 正式版了，雖然也是宣告可怕的夢魘再度降臨，不過能看到IE還在繼續打這場瀏覽器大戰也是一件好事，當然能夠早點把IE6給淘汰掉才是真正大快人心。不過在看了IE8的特色之後，覺得這次他們真的有痛下決心要跟其他瀏覽器抗衡了。以下是我覺得不錯的特色：</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/post/2009/01/09/ie8-preview/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1468,7 +1472,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-count">108</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
