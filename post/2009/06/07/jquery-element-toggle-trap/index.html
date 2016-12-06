@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="jQuery有個很方便的function：toggle，可以讓元素做指定的切換動作，若不指定任何參數，則可以讓元素做很簡單的隱藏、顯示的切換，很是方便。If they are shown, toggle makes them hidden (using the hide method). If they are hidden, toggle makes them shown (using the">
@@ -135,6 +138,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -297,6 +318,9 @@
 
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

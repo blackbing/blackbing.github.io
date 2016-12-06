@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="天大的 bug前幾天才寫了一篇 browserify and karma test 的環境設定，結果今天就踩到天大的 bug：Requiring files that require other files will cause failure.，問題是發生在你的 require dependency 太深的話就會發生 error。我自己遇到是在四層以上就會遇到一模一樣的 error messag">
@@ -135,6 +138,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -335,6 +356,9 @@
             
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="在電子地圖上直接繪製一些地標的資訊，對使用者會帶來一些便利，但顯示太多，又會造成圖示太繁雜。將地標直接標在圖面上有個特性，該地標不需要知道詳細的資訊，例如便利商店，我只要知道哪裡有便利商店，但大部份人不需要明確知道這是哪一個分店，只要標上某個icon即可，另外像加油站、郵局等都是類似的意義。不過觀察google map發現一些奇怪的地方：例如在不同的zoom level竟然會出現不同的商店，但是判">
@@ -139,6 +142,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -301,6 +322,9 @@
 
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

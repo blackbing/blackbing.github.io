@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="幾年前，當時AJAX尚未問世的時候，網路上充斥著許多Javascript的特效，比方說狀態列會有跑 馬燈效果、文字閃爍，當時雖然不懂Javascript，但總會有熱心的人教你如何把特效放到網頁上，例如：第一步：先把第一段script放到head 標籤裡頭。第二步：再把第二段script放到&amp;lt;body&amp;gt;標籤之中。第三步：將第三段script放到你想要放的地方。
@@ -138,6 +141,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -300,6 +321,9 @@
 
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

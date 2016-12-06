@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="最近花了點時間更新了「你的地圖小畫家」，之前的雛型是半年前完成的，但是其中有相當多的bug，當初也沒將資料的傳送考慮進去，尤其是線段的資料是以經緯度紀錄的，因此繪圖物件一多，資料量就變的相當龐大，原本一直不曉得該怎麼解決這個問題，後來終於讓我找到polyline encoding 的演算法，演算法本身不難，而且也都有各種語言的實做，真是另我振奮，難怪google map的路徑規劃可以在拖動地圖的同">
@@ -135,6 +138,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -297,6 +318,9 @@
 
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

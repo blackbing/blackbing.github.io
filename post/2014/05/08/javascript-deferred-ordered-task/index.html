@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="Javascript 的世界裡頭充滿了 callback，從其他語言進入 Javascript 的世界常會頭昏，甚至會有點排斥這樣的特性。本篇文章介紹 Deferred 物件的基礎用法，避免程式在做順序任務的處理時難以維護，在模組化的程式設計中，是很重要也很常用到的技巧。
@@ -138,6 +141,24 @@ Callback function假設我們有一個 query 的 function，也許是 ajax，也
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -338,6 +359,9 @@ Callback function假設我們有一個 query 的 function，也許是 ajax，也
             
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

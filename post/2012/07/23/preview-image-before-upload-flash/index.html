@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="##這是老掉牙的問題吧？其實這個題目很常見，但我覺得一路走來的心路歷程也算是有些經驗，而瀏覽器進步的快速，也讓網路上充斥着各種不同的解法，初學者很容易就掉進這個深淵。回頭看看這幾年走過的路，也可以由這個問題看出開發者不斷地在跟瀏覽器的能耐做角力，然後隨著技術的進步，終於讓我有比較理想的解法。決定記錄下來。
@@ -138,6 +141,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -309,6 +330,9 @@
             
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

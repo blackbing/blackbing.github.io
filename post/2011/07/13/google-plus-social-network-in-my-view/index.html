@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="科技 始終「跟隨著」人性觀察自己與其他人在使用網路其實很有趣，從早期的「個人網頁(Home page)」到「部落格」到最近的twitter, plurk, facebook，我很有幸身處在這個世代並且見證這些social network tool的成長歷史。這些工具都是將現實生活中的人際網路帶到虛擬世界中，當然，帶著多少成份的現實生活進去虛擬世界，因人而異，就像有些人寫blog文章只是想抒發心情罷">
@@ -135,6 +138,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -297,6 +318,9 @@
 
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

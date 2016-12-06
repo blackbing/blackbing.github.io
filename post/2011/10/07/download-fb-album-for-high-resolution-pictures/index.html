@@ -84,6 +84,9 @@
 
 
 
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
 
 
 <meta name="description" content="之前做了這個下載照片的小工具Download FB album，說真的，我沒想到會有這麼多人下載，雖然是chrome Extension，但隨著Chrome瀏覽器成長的快速，使用者與開發者也成長的非常快速，代表只要你的產品有碰到使用者，是真的能夠有這個市場，而且在chrome Web Store也已經有付費機制，也就是說你能夠透過web strore來跟使用者收取費用，讓開發人員更有興趣來Rock">
@@ -137,6 +140,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 <script>
@@ -299,6 +320,9 @@
 
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
           
 
           

@@ -1,0 +1,759 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+  <meta property="fb:admins" content="" />
+  <meta property="fb:app_id" content="" />
+
+
+
+<meta name="description" content="本文章同步刊載於IT邦幫忙
+那些年，我們一起讓瀏覽器當掉的日子昨天提到了 Worker 就像是主從式架構一樣，有要求才有產出，而前後端的任務切割，就是在將商業邏輯與頁面呈現區隔開來。但隨著專案越來越複雜，前端越來越包山包海，我們好像一直不斷的在挑戰瀏覽器一樣，在前端做更多更複雜的事情。
+
+有了 Worker 之後，或許我們會開始回憶起「那些年，我們一起讓瀏覽器當掉的日子」。
+回到主題，那麼到底有哪">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Worker 經驗分享(二)">
+<meta property="og:url" content="http://blog.blackbing.net/post/2013/04/15/web-worker-intro2/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="本文章同步刊載於IT邦幫忙
+那些年，我們一起讓瀏覽器當掉的日子昨天提到了 Worker 就像是主從式架構一樣，有要求才有產出，而前後端的任務切割，就是在將商業邏輯與頁面呈現區隔開來。但隨著專案越來越複雜，前端越來越包山包海，我們好像一直不斷的在挑戰瀏覽器一樣，在前端做更多更複雜的事情。
+
+有了 Worker 之後，或許我們會開始回憶起「那些年，我們一起讓瀏覽器當掉的日子」。
+回到主題，那麼到底有哪">
+<meta property="og:image" content="http://i.imgur.com/kfNBLUH.jpg">
+<meta property="og:image" content="http://i.imgur.com/o07J9GV.png">
+<meta property="og:updated_time" content="2016-12-06T16:20:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web Worker 經驗分享(二)">
+<meta name="twitter:description" content="本文章同步刊載於IT邦幫忙
+那些年，我們一起讓瀏覽器當掉的日子昨天提到了 Worker 就像是主從式架構一樣，有要求才有產出，而前後端的任務切割，就是在將商業邏輯與頁面呈現區隔開來。但隨著專案越來越複雜，前端越來越包山包海，我們好像一直不斷的在挑戰瀏覽器一樣，在前端做更多更複雜的事情。
+
+有了 Worker 之後，或許我們會開始回憶起「那些年，我們一起讓瀏覽器當掉的日子」。
+回到主題，那麼到底有哪">
+<meta name="twitter:image" content="http://i.imgur.com/kfNBLUH.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2013/04/15/web-worker-intro2/"/>
+
+
+
+
+
+  <title> Web Worker 經驗分享(二) | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2013/04/15/web-worker-intro2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Web Worker 經驗分享(二)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-04-15T13:38:00+08:00">
+                2013-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2013/04/15/web-worker-intro2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2013/04/15/web-worker-intro2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <div class="fb-like" data-layout="button_count" data-share="true"></div>
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文章同步刊載於<a href="http://ithelp.ithome.com.tw/question/10118891" target="_blank" rel="external">IT邦幫忙</a></p>
+<h1 id="那些年，我們一起讓瀏覽器當掉的日子"><a href="#那些年，我們一起讓瀏覽器當掉的日子" class="headerlink" title="那些年，我們一起讓瀏覽器當掉的日子"></a>那些年，我們一起讓瀏覽器當掉的日子</h1><p>昨天提到了 Worker 就像是主從式架構一樣，有要求才有產出，而前後端的任務切割，就是在將商業邏輯與頁面呈現區隔開來。但隨著專案越來越複雜，前端越來越包山包海，我們好像一直不斷的在挑戰瀏覽器一樣，在前端做更多更複雜的事情。</p>
+<p><img src="http://i.imgur.com/kfNBLUH.jpg" alt="chrome ooops"></p>
+<p>有了 Worker 之後，或許我們會開始回憶起「那些年，我們一起讓瀏覽器當掉的日子」。</p>
+<p>回到主題，那麼到底有哪些情況會用到 Worker 呢？我們先來看看許多專家的說法：</p>
+<h1 id="Web-Worker的使用案例"><a href="#Web-Worker的使用案例" class="headerlink" title="Web Worker的使用案例"></a>Web Worker的使用案例</h1><ul>
+<li>影像辨識</li>
+<li>影音資料處理</li>
+<li>大量資料運算</li>
+<li>頻繁或大量的AJAX request</li>
+<li>較複雜的字串比對或分析</li>
+<li>Local 端資料庫的存取</li>
+<li>File IO (File Reader/Writer API)</li>
+</ul>
+<p>以往這些較複雜的運算可能都要透過 server 端來處理，既然前端都可以處理這些事情了，那我們就可以直接在前端處理這些複雜運算，可以再度的節省 server 端的使用。而 Server 端最重要的 Database ，加上 HTML5 LocalStorage 與 IndexDB 可以在前端建立資料庫，拿來做一些簡單的單機系統也會更加容易。</p>
+<p>但是這些很複雜的案例，並不是每個專案都有機會碰到，因此我想討論一些更common的案例。</p>
+<h2 id="前端可以處理的，就不在後端做"><a href="#前端可以處理的，就不在後端做" class="headerlink" title="前端可以處理的，就不在後端做"></a>前端可以處理的，就不在後端做</h2><p>例如上傳圖片，以前都是直接整個檔案直接丟到server端做 resize, crop等等，現在流行前端直接做好再丟到後端。<br>例如上傳/下載某種檔案支援格式(.txt, .xls, .blabla)，server端只要統一好格式，由前端組好在上傳到server端即可。</p>
+<h2 id="使用者操作時的「偷偷」動作"><a href="#使用者操作時的「偷偷」動作" class="headerlink" title="使用者操作時的「偷偷」動作"></a>使用者操作時的「偷偷」動作</h2><p>使用者在頻繁的操作系統時，如果此時要做一些<del>偷偷</del>背景動作，例如<del>偷偷</del>背景存資料，<del>偷偷</del>背景上傳檔案，讓使用者感覺「Wow，好快速。」例如：「文章自動儲存機制」，「程式碼高亮化(syntax highlight)」等。因為使用者正在操作系統，任何一個動作中斷都會讓使用者覺得系統當掉。</p>
+<p>反正重點就是：優化/節省 Server Side 的使用，搾乾 Client Side 的效能(偷笑)。當然，這只是討論，如果有更好的使用案例都歡迎分享。</p>
+<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>有了這些基礎概念之後，我們就可以開始實作了。然而在實作上，我很快就遇到第一個問題。通常會需要用到 Worker 來幫忙的，可能會是比較複雜的專案，但中大型專案可能會用到 <a href="http://coffeescript.org/" target="_blank" rel="external">CoffeeScript</a> 來加速開發的速度，用 <a href="http://requirejs.org/" target="_blank" rel="external">RequireJS</a> 來管理模組間的相依性，如果將 Worker 的 script 拆出去，馬上就遇到 Dependency 的問題。舉例來說：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">worker = <span class="keyword">new</span> Worker(<span class="string">'/worker_path/my_worker.js'</span>);</div></pre></td></tr></table></figure>
+<p>這樣的路徑就失去了用 requirejs 的優勢，破壞了整個專案的 dependency ，如果為了用 Web Worker 而搞砸專案架構，那可是得不償失的，不過幸好，山不轉路轉。</p>
+<h2 id="Inline-Worker"><a href="#Inline-Worker" class="headerlink" title="Inline Worker"></a>Inline Worker</h2><p>在 new Worker 時，丟進 Worker 的參數是一個路徑，那麼我們就可以動態產生一個 blob url 路徑，傳給Worker ，動態產生 Woker。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">content = <span class="string">"""</span></div><div class="line">  //It is javascript content</div><div class="line">  var dosomething = function()&#123;</div><div class="line">    return 'ok dosomething';</div><div class="line">  &#125;;</div><div class="line">"""</div><div class="line">blobWorker = <span class="keyword">new</span> Blob([content], &#123;type:<span class="string">'application/javascript'</span>&#125;)</div><div class="line">blobWorker_url = URL.createObjectURL(blobWorker)</div><div class="line">inlineWorker = <span class="keyword">new</span> Worker(blobWorker_url)</div><div class="line">URL.revokeObjectURL(blobWorker_url)</div></pre></td></tr></table></figure>
+<p>如上，我們就可以動態用 content 來建立 inlineWorker 。只要確保 content 的產生是沒有問題的，用 string 的方式將它讀入就可以建立 Worker。</p>
+<p>另外 requireJS 也支援在 worker 裡頭使用，當你的 Worker 要做的事情很多時，可以用 RequireJS 來進行管理，參考<a href="http://requirejs.org/docs/api.html#webworker" target="_blank" rel="external">requireJS webworker</a></p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>Worker 裡頭沒有好用的 console 可以用，不過有 error 的 event 可以註冊。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">worker.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.error(error)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>另外也可以在 developer tool 裡頭的「Source」開啟「Workers: Pause on start」</p>
+<p><img src="http://i.imgur.com/o07J9GV.png" alt="debug worker"></p>
+<h2 id="引用外部程式"><a href="#引用外部程式" class="headerlink" title="引用外部程式"></a>引用外部程式</h2><p>Worker 是否可以引用外部程式? 答案是可以的，但需要注意的是它的限制是無法存取瀏覽器資源，所以跟 browser 相關的 API 例如 DOM 都不能用，所以不能使用 jQuery ,  Backbone 這種與 Browser 相依性很高的 Library (<del>廢話</del>)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">importScripts(<span class="string">"http://underscorejs.org/underscore.js"</span>)</div></pre></td></tr></table></figure>
+<p>值得一提的是，<figure class="highlight plain"><figcaption><span>access 就會造成整個 Worker 直接死掉。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 釋放Worker</div><div class="line"></div><div class="line">如果確定Worker做完事了，需要結束 Woker 以釋放瀏覽器資源，可以呼叫``terminate``來終結 worker</div><div class="line"></div><div class="line">``` javascript</div><div class="line">worker.terminate()</div></pre></td></tr></table></figure></p>
+<p>或是直接在 Worker 裡頭自己主動結束</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.close()</div></pre></td></tr></table></figure>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>Worker 其實還定義了 <a href="http://www.w3.org/TR/workers/#shared-workers-introduction" target="_blank" rel="external">Shared Worker</a> ，可以在不同頁面共享 Worker 的資源，在此不介紹是因為我想不到有比較有意義的應用，有興趣深入瞭解的朋友可以參考 <a href="http://www.html5rocks.com/en/tutorials/workers/basics/" target="_blank" rel="external">The Basics of Web Workers</a>，裡面有基本的用法介紹。</p>
+<h1 id="Just-do-it"><a href="#Just-do-it" class="headerlink" title="Just do it"></a>Just do it</h1><p>Web Worker 的 API 其實很簡單，難的是在實作上如何將這些動作拆開。建議可以慢慢的將一些動作移到 Worker 來處理，例如 AJAX request ，將資料處理與頁面 render 的程式分開。慢慢的就會更容易的掌握它。</p>
+<p>不過不要以為 Web Worker 就這樣結束了，這篇文章其實只是個起點，實際應用在專案上，還會遇到很多問題（嘿嘿～），有任何問題都歡迎提出討論喔 ，我們 <a href="http://jsdc.tw/" target="_blank" rel="external">2013 JSDC</a> 見。</p>
+<h1 id="廣告時間"><a href="#廣告時間" class="headerlink" title="廣告時間"></a>廣告時間</h1><p>「影分身好威喔！我也想要！」</p>
+<p>HTC One 的 Camera 也可以快速建立多重影分身</p>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/cNCmfk3x90g" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ol>
+<li><a href="http://dev.w3.org/html5/workers/" target="_blank" rel="external">http://dev.w3.org/html5/workers/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers?redirectlocale=en-US&amp;redirectslug=Using_web_workers" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers?redirectlocale=en-US&amp;redirectslug=Using_web_workers</a></li>
+<li><a href="http://blog.teamtreehouse.com/using-web-workers-to-speed-up-your-javascript-applications" target="_blank" rel="external">http://blog.teamtreehouse.com/using-web-workers-to-speed-up-your-javascript-applications</a></li>
+<li><a href="http://ejohn.org/blog/web-workers/" target="_blank" rel="external">http://ejohn.org/blog/web-workers/</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/workers/basics/" target="_blank" rel="external">http://www.html5rocks.com/en/tutorials/workers/basics/</a></li>
+<li><a href="http://debuggable.com/posts/run-intense-js-without-freezing-the-browser:480f4dd6-f864-4f72-ae16-41cccbdd56cb" target="_blank" rel="external">http://debuggable.com/posts/run-intense-js-without-freezing-the-browser:480f4dd6-f864-4f72-ae16-41cccbdd56cb</a></li>
+<li><a href="http://stackoverflow.com/questions/2773682/what-are-the-use-cases-for-web-workers" target="_blank" rel="external">http://stackoverflow.com/questions/2773682/what-are-the-use-cases-for-web-workers</a></li>
+<li><a href="http://html5hacks.com/blog/2012/09/22/web-workers-basics-of-the-web-browsers-ui-thread/" target="_blank" rel="external">http://html5hacks.com/blog/2012/09/22/web-workers-basics-of-the-web-browsers-ui-thread/</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/workers/basics/#toc-enviornment-subworkers" target="_blank" rel="external">http://www.html5rocks.com/en/tutorials/workers/basics/#toc-enviornment-subworkers</a></li>
+<li><a href="http://blogs.msdn.com/b/ie/archive/2011/07/01/web-workers-in-ie10-background-javascript-makes-web-apps-faster.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/ie/archive/2011/07/01/web-workers-in-ie10-background-javascript-makes-web-apps-faster.aspx</a></li>
+<li><a href="http://blogs.msdn.com/b/davrous/archive/2011/07/15/introduction-to-the-html5-web-workers-the-javascript-multithreading-approach.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/davrous/archive/2011/07/15/introduction-to-the-html5-web-workers-the-javascript-multithreading-approach.aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/hh549259.aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-us/hh549259.aspx</a></li>
+<li><a href="http://stackoverflow.com/questions/11871452/can-web-workers-utilize-100-of-a-multi-core-cpu?rq=1" target="_blank" rel="external">http://stackoverflow.com/questions/11871452/can-web-workers-utilize-100-of-a-multi-core-cpu?rq=1</a></li>
+<li><a href="http://www.smartjava.org/content/html5-easily-parallelize-jobs-using-web-workers-and-threadpool" target="_blank" rel="external">http://www.smartjava.org/content/html5-easily-parallelize-jobs-using-web-workers-and-threadpool</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2013/04/14/web-worker-intro1/" rel="next" title="Web Worker 經驗分享(一)">
+                <i class="fa fa-chevron-left"></i> Web Worker 經驗分享(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2013/05/26/2-13-jsdc-web-worker/" rel="prev" title="2013 JSDC Web Worker">
+                2013 JSDC Web Worker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">分類</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#那些年，我們一起讓瀏覽器當掉的日子"><span class="nav-number">1.</span> <span class="nav-text">那些年，我們一起讓瀏覽器當掉的日子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-Worker的使用案例"><span class="nav-number">2.</span> <span class="nav-text">Web Worker的使用案例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端可以處理的，就不在後端做"><span class="nav-number">2.1.</span> <span class="nav-text">前端可以處理的，就不在後端做</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用者操作時的「偷偷」動作"><span class="nav-number">2.2.</span> <span class="nav-text">使用者操作時的「偷偷」動作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#實作"><span class="nav-number">3.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inline-Worker"><span class="nav-number">3.1.</span> <span class="nav-text">Inline Worker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug"><span class="nav-number">3.2.</span> <span class="nav-text">Debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用外部程式"><span class="nav-number">3.3.</span> <span class="nav-text">引用外部程式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Just-do-it"><span class="nav-number">5.</span> <span class="nav-text">Just do it</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#廣告時間"><span class="nav-number">6.</span> <span class="nav-text">廣告時間</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考資料"><span class="nav-number">7.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2013/04/15/web-worker-intro2/';
+
+      var disqus_title = "Web Worker 經驗分享(二)";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
