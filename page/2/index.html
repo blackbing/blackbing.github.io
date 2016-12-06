@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-tw">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -131,7 +131,7 @@
   <title> Blackbing Playground </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
 
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首頁
           </a>
         </li>
       
@@ -214,17 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
+            歸檔
           </a>
         </li>
       
@@ -247,6 +237,163 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/07/15/phantomjs-function-prototype-bind/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2014/07/15/phantomjs-function-prototype-bind/" itemprop="url">
+                  [PhantomJS] Function.prototype.bind
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-15T17:52:00+08:00">
+                2014-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/phantomjs/" itemprop="url" rel="index">
+                    <span itemprop="name">phantomjs</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/phantomjs/polyfill/" itemprop="url" rel="index">
+                    <span itemprop="name">polyfill</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/07/15/phantomjs-function-prototype-bind/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/07/15/phantomjs-function-prototype-bind/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="PhantomJS-1-9-7-Mac-OS-X-ERROR"><a href="#PhantomJS-1-9-7-Mac-OS-X-ERROR" class="headerlink" title="PhantomJS 1.9.7 (Mac OS X) ERROR"></a>PhantomJS 1.9.7 (Mac OS X) ERROR</h1><p>使用 reactjs 來寫 test case 時，用 PhantomJS 執行時就遇到這個 error，奇怪的是用其他的 browser 來執行就沒有問題。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">TypeError: &apos;undefined&apos; is not a function (evaluating &apos;RegExp.prototype.test.bind(</div><div class="line">      /^(data|aria)-[a-z_][a-z\d_.\-]*$/</div><div class="line">    )&apos;)</div></pre></td></tr></table></figure>
+<p>查了一下追到這個 issue <a href="https://github.com/ariya/phantomjs/issues/10522" target="_blank" rel="external">Function.prototype.bind is undefined</a>，看起來是 PhantomJS 的內核沒有支援 Function.prototype.bind。於是再找到 MDN 的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="external">Function.prototype.bind</a>，在載入 reactJS 之前先將這個 polyfill 加進去就可以解決了。</p>
+<h2 id="karma-conf-js"><a href="#karma-conf-js" class="headerlink" title="karma.conf.js"></a>karma.conf.js</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">files: [</div><div class="line">	<span class="string">'test/polyfill/*.js'</span>,</div><div class="line">	<span class="string">'app/bower_components/react/react-with-addons.js'</span>,</div><div class="line">	<span class="string">'.tmp/test/spec/*.js'</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<h4 id="phantom-bind-polyfill-js-2014-8-3-updated"><a href="#phantom-bind-polyfill-js-2014-8-3-updated" class="headerlink" title="phantom_bind_polyfill.js(2014/8/3 updated)"></a>phantom_bind_polyfill.js(2014/8/3 updated)</h4><p>use <a href="https://github.com/facebook/react/blob/master/src/test/phantomjs-shims.js" target="_blank" rel="external">react official polyfill</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Ap = <span class="built_in">Array</span>.prototype;</div><div class="line"><span class="keyword">var</span> slice = Ap.slice;</div><div class="line"><span class="keyword">var</span> Fp = <span class="built_in">Function</span>.prototype;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (!Fp.bind) &#123;</div><div class="line">  <span class="comment">// PhantomJS doesn't support Function.prototype.bind natively, so</span></div><div class="line">  <span class="comment">// polyfill it whenever this module is required.</span></div><div class="line">  Fp.bind = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> func = <span class="keyword">this</span>;</div><div class="line">    <span class="keyword">var</span> args = slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bound</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> invokedAsConstructor = func.prototype &amp;&amp; (<span class="keyword">this</span> <span class="keyword">instanceof</span> func);</div><div class="line">      <span class="keyword">return</span> func.apply(</div><div class="line">        <span class="comment">// Ignore the context parameter when invoking the bound function</span></div><div class="line">        <span class="comment">// as a constructor. Note that this includes not only constructor</span></div><div class="line">        <span class="comment">// invocations using the new keyword but also calls to base class</span></div><div class="line">        <span class="comment">// constructors such as BaseClass.call(this, ...) or super(...).</span></div><div class="line">        !invokedAsConstructor &amp;&amp; context || <span class="keyword">this</span>,</div><div class="line">        args.concat(slice.call(<span class="built_in">arguments</span>))</div><div class="line">      );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// The bound function must share the .prototype of the unbound</span></div><div class="line">    <span class="comment">// function so that any object created by one constructor will count</span></div><div class="line">    <span class="comment">// as an instance of both constructors.</span></div><div class="line">    bound.prototype = func.prototype;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> bound;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -296,7 +443,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-10T11:17:00+08:00">
                 2014-07-10
               </time>
@@ -313,7 +460,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/gulp/" itemprop="url" rel="index">
@@ -323,7 +470,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -456,7 +603,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-08T05:10:00+08:00">
                 2014-07-08
               </time>
@@ -473,7 +620,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/karma/" itemprop="url" rel="index">
@@ -483,7 +630,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -494,7 +641,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -627,7 +774,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-06-05T03:14:00+08:00">
                 2014-06-05
               </time>
@@ -644,7 +791,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/node-webkit/" itemprop="url" rel="index">
@@ -774,7 +921,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-05-08T17:19:00+08:00">
                 2014-05-08
               </time>
@@ -791,7 +938,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
@@ -801,7 +948,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -951,7 +1098,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-05-05T07:13:00+08:00">
                 2014-05-05
               </time>
@@ -968,7 +1115,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/ReactJS/" itemprop="url" rel="index">
@@ -1094,7 +1241,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-10T05:05:00+08:00">
                 2014-03-10
               </time>
@@ -1111,7 +1258,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/javascript/" itemprop="url" rel="index">
@@ -1239,7 +1386,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-07T04:02:00+08:00">
                 2014-03-07
               </time>
@@ -1256,7 +1403,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/jenkins/" itemprop="url" rel="index">
@@ -1266,7 +1413,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1415,7 +1562,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-02-10T07:55:00+08:00">
                 2014-02-10
               </time>
@@ -1432,7 +1579,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Vim/" itemprop="url" rel="index">
@@ -1442,7 +1589,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1453,7 +1600,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1607,7 +1754,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-03T08:26:00+08:00">
                 2014-01-03
               </time>
@@ -1624,7 +1771,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/angular/" itemprop="url" rel="index">
@@ -1634,7 +1781,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1729,194 +1876,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2013/11/11/fire-and-forget-design-pattern/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Bingo Yang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Blackbing Playground">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/2013/11/11/fire-and-forget-design-pattern/" itemprop="url">
-                  射後不理設計模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-11-11T12:13:00+08:00">
-                2013-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/design-pattern/" itemprop="url" rel="index">
-                    <span itemprop="name">design pattern</span>
-                  </a>
-                </span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/design-pattern/finite-state-machine/" itemprop="url" rel="index">
-                    <span itemprop="name">finite state machine</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/post/2013/11/11/fire-and-forget-design-pattern/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2013/11/11/fire-and-forget-design-pattern/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>誒～其實這是我亂取的名字</p>
-<h1 id="AJAX-Loading-Loading-gif"><a href="#AJAX-Loading-Loading-gif" class="headerlink" title="AJAX Loading Loading .gif)"></a>AJAX Loading Loading <img src="http://user-image.logdown.io/user/96/blog/96/post/87453/xTcWul5ARhSg3ewyFw8j_ajax-loader%20(2" alt="ajax-loader (2).gif">.gif)</h1><p>大概有好一段時間，AJAX 的互動方式都會增加一個 Loading 的狀態顯示，在 Response 尚未回傳回來時，提醒使用者資料還在傳輸當中，當 Response 結束之後再顯示結果。這個 Loading 的圖示，大概就被當成網站很潮的 AJAX application 代表，像是 <a href="http://www.ajaxload.info/" target="_blank" rel="external">ajaxload.info</a> 還有自動產生 Loading 圖示的網站。優點是讓使用者知道資料正在傳輸。但缺點是要等 server 端回傳回來資料才能修改 UI 的狀態讓使用者知道動作已經完成。但其實在某些情況時，使用者根本不需要知道這些狀態，只要系統能夠確保事情是完成的就好 (而且其實看久覺得蠻煩的，尤其是看到他不斷的在 Loading，或者是看到他閃了一下就不見，都會讓人覺得系統有問題)。</p>
-<h1 id="perform-actions-optimistically"><a href="#perform-actions-optimistically" class="headerlink" title="perform actions optimistically"></a>perform actions optimistically</h1><p><a href="https://speakerdeck.com/mikeyk/secrets-to-lightning-fast-mobile-design" target="_blank" rel="external">Secrets to Lightning Fast Mobile Design</a> 這篇投影片分享了 Instagram 如何讓 Mobile App 更快速的祕訣，其中有一項我覺得很簡單而且可以大幅改善效能的技巧：「perform actions optimistically」。</p>
-<p>舉例來說，當使用者按下「Like」時，就會出現「Liked」的狀態，但其實資料還在傳輸。<br><img src="http://user-image.logdown.io/user/96/blog/96/post/87453/INZSMHOHTYeH4ir6MH7D_Screen%20Shot%202013-11-11%20at%20%E4%B8%8B%E5%8D%884.47.08.png" alt="Screen Shot 2013-11-11 at 下午4.47.08.png"></p>
-<p>當使用者留言時，就會先呈現留言完成的狀態，但其實資料還在傳輸。<br><img src="http://user-image.logdown.io/user/96/blog/96/post/87453/dnxUDGNSWKULuTIWRHPu_Screen%20Shot%202013-11-11%20at%20%E4%B8%8B%E5%8D%884.48.29.png" alt="Screen Shot 2013-11-11 at 下午4.48.29.png"></p>
-<p>所以這種方式其實是將 UI 的 feedback 直接給使用者，讓使用者「感覺」很快。</p>
-<p>再來看一個例子：<a href="http://localtodos.com/" target="_blank" rel="external">http://localtodos.com/</a> 這是一個 todo list 的應用程式，所有的資料都存在 client 端的 localStorage裡頭。由於不需要跟 server 端溝通，因此在做 新增/修改/刪除 時，沒有網路傳輸的延遲，當然就不需要做 loading 狀態的顯示，任何操作都可以直接反應給使用者。</p>
-<p>那麼如果資料是存在 server 端，又要達到一樣的效果，該怎麼辦呢？其實只要將儲存的動作，改成「射後不理」就可以了。也就是說，使用者的操作並不理會 server 端的回應，只要保證「 server 端的資料與使用者的動作保持一致」即可。</p>
-<h1 id="射後不理-fire-and-forget"><a href="#射後不理-fire-and-forget" class="headerlink" title="射後不理(fire and forget)"></a>射後不理(fire and forget)</h1><p>基本上這種設計模式就是以呈現 UI 為主，系統在做什麼事情使用者不管，反正 UI 呈現怎樣，就應該要幫我處理掉。可以想成 UI 跟 backend 是不同步的，彼此只依靠 UI 來同步所該做的事情。</p>
-<p>聽起來有點抽象，舉個例子來說，若今天有個資料可以讓使用者自由排序，當使用者進行拖拉的動作時，要將使用者排序的動作儲存起來，如果每次拖拉完成的動作都需要等待 server 端的回應，那就會造成 UI 上的不同步，進而影響到使用者操作時的困擾。這時就會需要射後不理這樣的設計模式來輔助使用者進行操作。</p>
-<h1 id="實作方式"><a href="#實作方式" class="headerlink" title="實作方式"></a>實作方式</h1><p>聽起來不難，不過實作過程其實遇到很多很麻煩的事情，因此分享一些實作上的心得，為了簡化問題，我用 Like/Unlike 來舉例。需求很簡單：按下Like 按鈕之後切換 Like/Unlike 的狀態。BUT，如果連按兩次？三次？十次？ UI 可以即時顯示，但要如何正確的跟 server 端溝通？如果在資料傳輸的過程中，使用者又改變了狀態？那怎麼辦？</p>
-<ol>
-<li><p><strong>狀態流程圖</strong></p>
-<p> 重點其實是狀態的改變，把狀態列出來畫成「狀態流程圖」就會比較好理解。<br><img src="http://user-image.logdown.io/user/96/blog/96/post/87453/m8fSrA7ScK1BzKRGx9eg_Like-Unlike%20(1" alt="Like-Unlike (1).png">.png)</p>
-<ul>
-<li><strong>unknown</strong>: 未知狀態</li>
-<li><strong>fetch</strong>: 從 server 取得 Liked 資料</li>
-<li><strong>mismatch</strong>: 使用者按下「Like/Unlike」而且跟fetch的值不一樣</li>
-<li><strong>flying</strong>: 資料正在傳輸中</li>
-</ul>
-<p>所以如果資料傳輸回來時，發現使用者的狀態改變的話，又會再觸發 mismatch 跟 server 端 request。</p>
-</li>
-<li><p><strong>發 request 的時機</strong></p>
-<p>如果是 like/unlike 時就發送 request ，很快就會遇到一個問題，當使用者連點兩下時，就會同時發出 Like 和 Unlike，若狀態是根據 request callback 回來判斷的話，遇到「後發先至」的情況就會讓 UI 造成問題。因此「射後不理」的設計模式其實是可以避免這種情況發生的。</p>
-<p>發 request 的時機其實就是在使用者改變狀態時，且跟 fetch 回來的值不同時，為了避免使用者頻繁更新狀態而跟 server 端重複發 request，可以設一個 timeout 來檢查是否觸發 mismatch。</p>
-</li>
-<li><p><strong>server 端的回應確認 UI 是否保持一致</strong></p>
-<p> 最後，當 request callback 回來時，檢查使用者是否又很善變的改變了狀態，如果改變了，再重新做一次 mismatch，並且發 request。如此就可以循環整個流程。</p>
-</li>
-</ol>
-<h1 id="有限狀態機"><a href="#有限狀態機" class="headerlink" title="有限狀態機"></a>有限狀態機</h1><p>由於實作部分很難拆解出來，而且不同的 scenario 都會有不同的流程或解法，就不把程式碼貼出來獻醜了。我想表達的重點是「<a href="http://blog.blackbing.net/post/2013/11/07/finite-state-machine">有限狀態機</a>」，其實將流程圖畫出來之後就會發現很適合用「有限狀態機」來表達流程與狀態，而且也可以避免在流程中任意改變狀態（如果你是自己處理事件的觸發），除了幫助自己理解流程之外，程式碼也會比較好維護。</p>
-<p>關於有限狀態機我也還在摸索階段，這是第一次嘗試應用在專案裡頭，有興趣歡迎再討論看看有哪些適合的案例。</p>
-<p>Reference:</p>
-<ul>
-<li><a href="https://speakerdeck.com/mikeyk/secrets-to-lightning-fast-mobile-design" target="_blank" rel="external">Secrets to Lightning Fast Mobile Design</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1962,8 +1921,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">108</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
@@ -1971,7 +1930,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分類</span>
               
             </div>
           
@@ -2028,11 +1987,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
 </div>
 
 <div class="theme-info">
-  Theme -
+  主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

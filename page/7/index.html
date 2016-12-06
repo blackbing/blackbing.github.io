@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-tw">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -131,7 +131,7 @@
   <title> Blackbing Playground </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
 
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首頁
           </a>
         </li>
       
@@ -214,17 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
+            歸檔
           </a>
         </li>
       
@@ -247,6 +237,132 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/01/06/ie-bug-e6-83-85-e5-a0-b1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2011/01/06/ie-bug-e6-83-85-e5-a0-b1/" itemprop="url">
+                  IE bug 情報
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-01-06T22:19:00+08:00">
+                2011-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近遇到幾個IE的bug，在此紀錄如下：</p>
+
+<p>以下節錄自<a href="http://okajax.com/a/200812/1222S252008.html" target="_blank">解决javascript中的window.open返回object的错误</a></p>
+
+<p>系统中用javascript中的window.open后，页面返回了一个[object]。因为系统的原因，必需使用href=”javascript:window.open()”这样的格式。所以只能通过以下办法解决。</p>
+
+<p>[source language=”javascript”]<br>&lt;a href=&quot;javascript:void(window.open(‘’,’’,’width=200,height=200’))&quot;&gt;window.open()&lt;/a&gt;<br>[/source]<br><br><br><br></p>
+<hr>
+
+<p>用window.location獲取不到Referer? 最後找到這篇文章提供的方式來解決。<br><br> 原來IE的Referer僅提供 Link的方式，以下節錄自<strong><a href="http://ianso.blogspot.com/2006/01/referer-header-not-set-on-http.html" target="_blank">“Referer” header not set on HTTP requests originating from assignment to “window.location” variable on IE</a></strong></p>
+
+<p>[sourcecode language=”javascript”]<br>function goTo(url) {<br> var a = document.createElement(a);<br> if(!a.click) { //only IE has this (at the moment);<br>  window.location = url;<br>  return;<br> }<br> a.setAttribute(&quot;href&quot;, url);<br> a.style.display = &quot;none&quot;;<br> $(&quot;body&quot;).appendChild(a); //prototype shortcut<br> a.click();<br>}<br>[/sourcecode]</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -296,7 +412,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-08-05T19:47:00+08:00">
                 2010-08-05
               </time>
@@ -412,7 +528,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-07-19T03:45:00+08:00">
                 2010-07-19
               </time>
@@ -527,7 +643,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-07-13T03:09:00+08:00">
                 2010-07-13
               </time>
@@ -642,7 +758,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-07-01T03:58:00+08:00">
                 2010-07-01
               </time>
@@ -763,7 +879,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-06-08T17:55:00+08:00">
                 2010-06-08
               </time>
@@ -879,7 +995,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-03-24T03:10:00+08:00">
                 2010-03-24
               </time>
@@ -994,7 +1110,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-03-01T21:03:00+08:00">
                 2010-03-01
               </time>
@@ -1111,7 +1227,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-02-28T06:00:00+08:00">
                 2010-02-28
               </time>
@@ -1234,7 +1350,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-01-21T22:10:00+08:00">
                 2010-01-21
               </time>
@@ -1274,126 +1390,6 @@
             <p>Javascript 在指定物件為變數時是傳「reference」，若不知道這個特性很容易搞不清楚你的值為啥被改掉了，jQuery的<a href="http://api.jquery.com/jQuery.extend/" target="_blank" rel="external">extend</a>函式可以做deep Clone，也就是遞迴將物件裡頭的任一成員都做clone，但針對array好像有點問題，因此我寫了一支小function來呼叫，以後要做cloneObject時可以直接服用。</p><br><p>[sourcecode language=”javascript”]<br>/<em>
  </em> cloneObject 會完整clone一個全新的Object<br> <em> 若傳入的object是array, 則會回傳array
  </em>/<br>(function($) {<br>    $.extend($, {<br>        cloneObject : function(obj){<br>            var newObj;<br>            if($.isArray(obj)){<br>                newObj = [];<br>                for(var i=0; i&lt;obj.length; i++){<br>                    newObj.push(arguments.callee(obj[i]));<br>                }<br>                return newObj;<br>            }else{<br>                newObj = {};<br>                return $.extend(true, newObj, obj);<br>            }<br>        }<br>    });<br>})(jQuery)<br>[/sourcecode]</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2010/01/04/closure-template/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Bingo Yang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Blackbing Playground">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/2010/01/04/closure-template/" itemprop="url">
-                  Closure Template
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2010-01-04T03:50:00+08:00">
-                2010-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://code.google.com/closure/templates/index.html" target="_blank">Closure Template</a> 是google release 的工具<a href="http://code.google.com/intl/zh-TW/closure/" target="_blank" rel="external">Closure Tools</a>其中之一，我會注意到這個工具是因為前端產生動態layout的需求愈來愈多，雖然已經很盡力要將邏輯與template分開，但前端跟layout的結合實在是太密切，很難說分就分，雖然要把layout獨立出來要花更多時間，但至少會更好維護，往後要換template也不用再重寫程式，本篇文章稍微紀錄一下使用心得與過程。</p>
-
-<ol><br>    <li>點此<a href="http://closure-templates.googlecode.com/files/closure-templates-for-javascript-latest.zip" target="_blank" rel="external">下載</a>，裏面包3個檔案： <ol><br>    <li>SoyToJsSrcCompiler.jar ：</li><br>    <li>soyutils.js</li><br>    <li>soyutils_usegoog.js</li><br></ol> </li><br>    <li>jar檔是主要將template輸出成js檔的程式，而soyutil則是一個完整的stringBuilder，你也可以直接用這個function來使用stringBuilder。另外soyutils_suegoog只是加上了google的namespace罷了。</li><br>    <li>template檔為XXX.soy ，附檔名一定要是soy，否則執行不會有任何結果，接下來說明template檔，以下是一個很簡單的hello world範例：<br>第1行的namespace 一定要先宣告，這相對應於到時候呼叫的namespace，namespace的命名接受連續的階層，例如上述宣告examples變會輸出：<br><ol><br>    <li><br>[sourcecode language=”javascript”]<br>if (typeof examples == ‘undefined’) { var examples = {}; }<br>[/sourcecode]<br><br>[sourcecode language=”javascript”]<br>{namespace examples}<br>/<em>*
- </em> Says hello to the world.<br> */<br>{template .helloWorld}<br>    Hello world!<br>{/template}<br>[/sourcecode]<br> </li><br>    <li>若宣告為examples.helloworld則會輸出[sourcecode language=”javascript”]<br>if (typeof examples == ‘undefined’) { var examples = {}; }<br>if (typeof examples.helloworld == ‘undefined’) { examples.helloworld = {}; }[/sourcecode]<br><br></li><br>    <li>一個template(soy檔案)可以有多個不同的template，命名範例：[sourcecode language=”javascript”]<br>{template .helloName}<br>blablabla<br>{/template}[/sourcecode]<br><br></li><br></ol> </li><br>    <li>最後執行<br>[sourcecode language=”javascript”]java -jar SoyToJsSrcCompiler.jar  –outputPathFormat simple.js   simple.soy[/sourcecode]<br><br></li><br></ol>
-
-<p><br class="spacer_"></p>
 
           
         
@@ -1468,8 +1464,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">108</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
@@ -1477,7 +1473,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分類</span>
               
             </div>
           
@@ -1534,11 +1530,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
 </div>
 
 <div class="theme-info">
-  Theme -
+  主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

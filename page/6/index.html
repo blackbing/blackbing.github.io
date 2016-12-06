@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-tw">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -131,7 +131,7 @@
   <title> Blackbing Playground </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
 
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首頁
           </a>
         </li>
       
@@ -214,17 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
+            歸檔
           </a>
         </li>
       
@@ -247,6 +237,126 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/05/20/window-open-and-print-problem-in-evil-ie/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2011/05/20/window-open-and-print-problem-in-evil-ie/" itemprop="url">
+                  window.open and print problem in Evil IE
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-05-20T20:54:00+08:00">
+                2011-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p></p><p>今天遇到一個奇怪的bug，需求如下：</p><p></p>
+<ul><br>    <li>點選print，跳出新視窗，為了不要再做一次server端的溝通，要將目前的DOM Element傳到新視窗。</li><br>    <li>新視窗打開要直接跳出print panel</li><br></ul><br><p>不直接print()是因為列印功能不需要列印目前完整的頁面，只需要列印目前頁面的某一個Element內容。</p><br><p>看起來很簡單的需求，沒想到在IE上踢到了鐵板。測試source code 如下：</p><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> win = <span class="built_in">window</span>.open(<span class="string">''</span>);</div><div class="line"><span class="keyword">var</span> html = <span class="string">'&amp;lt;div&amp;gt;hello blank &amp;lt;/div&amp;gt;'</span>;</div><div class="line">win.document.write(html);</div><div class="line">win.print();</div><div class="line">win.focus();</div></pre></td></tr></table></figure><br><br><p>有趣的是，只有IE不會執行print，而且是IE所有系列，更過份的是，連任何message都沒有出現。</p><br><p>測試連結：<a href="http://blackbing.net/test/popup-using-print.html" target="_BLANK">popup-using-print.html</a>(只有IE無法出現print panel)</p><br><p>有趣了，我決定要好好地測試一下，既然沒辦從外部呼叫print來執行，那就從內部滲透，於是我把程式改成如下：</p><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> win = <span class="built_in">window</span>.open(<span class="string">''</span>);</div><div class="line"><span class="keyword">var</span> html = <span class="string">'&amp;lt;div&amp;gt;hello blank &amp;lt;/div&amp;gt;'</span>;</div><div class="line">html += [<span class="string">'&amp;lt;scr'</span>,<span class="string">'ipt '</span>,<span class="string">'&amp;gt;'</span>,<span class="string">'(function()&#123; window.print();&#125;)()'</span>,<span class="string">'&amp;lt;\/'</span>,<span class="string">'sc'</span>,<span class="string">'ript&amp;gt;'</span>].join(<span class="string">''</span>);</div><div class="line">win.document.write(html);</div><div class="line">win.focus();</div></pre></td></tr></table></figure><br><br><p>稍微解釋一下code，我在最後加上一段直接執行的程式，直接做print()，我在本機端執行可以運作，不過會跳出警告視窗，但看起來應該是可以work。於是我放到server端執行，Damn it，it still doesn’t work. 一樣沒有Error message。奇怪的是，按下F5(重新整理)，就跳出列印視窗了，啊哈～重新整理還不簡單，天外飛來一行code：</p><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> win = <span class="built_in">window</span>.open(<span class="string">''</span>);</div><div class="line"><span class="keyword">var</span> html = <span class="string">'&amp;lt;div&amp;gt;hello blank &amp;lt;/div&amp;gt;'</span>;</div><div class="line">html += [<span class="string">'&amp;lt;scr'</span>,<span class="string">'ipt '</span>,<span class="string">'&amp;gt;'</span>,<span class="string">'(function()&#123; window.print();&#125;)()'</span>,<span class="string">'&amp;lt;\/'</span>,<span class="string">'sc'</span>,<span class="string">'ript&amp;gt;'</span>].join(<span class="string">''</span>);</div><div class="line">win.document.write(html);</div><div class="line">win.location.reload(); </div><div class="line">win.focus();</div></pre></td></tr></table></figure><br><br><p>測試連結：<a href="http://blackbing.net/test/popup.html" target="_blank">popup and print</a></p><br><p>竟然可以了，而且在其他瀏覽器也能正常運作，perfect !!，不過等等，那這樣的話跟外部執行和內部滲透搞不好沒關係，於是我將內部滲透再改回外部執行，果然可以正常運作。我想這以後應該可以派得上用場，於是將他寫成一個function。結果搞了半天只需要reload就可以解決了，唉～真是萬惡的IE。</p><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">openPrint</span>(<span class="params">elm</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> html = <span class="keyword">typeof</span> elm == <span class="string">'string'</span> ? elm: elm.innerHTML;</div><div class="line">    <span class="keyword">var</span> win = <span class="built_in">window</span>.open(<span class="string">''</span>);</div><div class="line">    win.document.write(html);</div><div class="line">    win.print();</div><div class="line">    win.location.reload(); </div><div class="line">    win.focus();</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br><p>參考連結：</p><br><ul><br>    <li><a href="http://www.quirksmode.org/js/popup.html" target="_blank" rel="external">quirks mode JavaScript - Popups</a></li><br></ul>
+
+
+
+
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -296,7 +406,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-04-29T04:25:00+08:00">
                 2011-04-29
               </time>
@@ -426,7 +536,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-04-21T22:19:00+08:00">
                 2011-04-21
               </time>
@@ -552,7 +662,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-04-15T23:24:00+08:00">
                 2011-04-15
               </time>
@@ -682,7 +792,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-03-29T23:47:00+08:00">
                 2011-03-29
               </time>
@@ -815,7 +925,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-03-04T19:46:00+08:00">
                 2011-03-04
               </time>
@@ -939,7 +1049,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-02-25T07:34:00+08:00">
                 2011-02-25
               </time>
@@ -1062,7 +1172,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-02-10T06:52:00+08:00">
                 2011-02-10
               </time>
@@ -1197,7 +1307,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-01-25T05:52:00+08:00">
                 2011-01-25
               </time>
@@ -1386,7 +1496,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-01-17T23:41:00+08:00">
                 2011-01-17
               </time>
@@ -1424,132 +1534,6 @@
         
           
             <p>placeholder 是HTML5的新屬性，在做input 的預設值還蠻方便的，但無奈IE8以下不支援，因此需要額外做fix。在實際應用中，卻愈到了很多問題：</p><br><p>例如在官網查到的plugin：<a href="http://plugins.jquery.com/project/input-placeholder" target="_blank" rel="external">http://plugins.jquery.com/project/input-placeholder</a>，就不支援type=”password”的結果。因為僅改變value，對於password的顯示方式</p><br><input style="width: 40px; border: 0px;" type="password" value="password">就會有問題。上網查了一下，很多人在討論這個問題，但偏偏我就是找不到根本的解決辦法，最後找到一個看起來是處理掉大部分問題的plugin。<p></p><br><p>以下是我找到支援度最好地plugin:</p><br><p>DEMO: <a href="http://mathiasbynens.be/demo/placeholder" target="_blank">http://mathiasbynens.be/demo/placeholder</a></p><br><p>plugin: <a href="https://github.com/mathiasbynens/Placeholder-jQuery-Plugin" target="_blank">https://github.com/mathiasbynens/Placeholder-jQuery-Plugin</a></p><br><p>然而在實做中愈到了一些bug，最後追source code追到plugin本身對於type=”password”還有些bug, 一般的情況可能不會遇到，但偏偏就是讓我遇到了，原因在於這一段程式</p><br><p>[sourcecode language=”javascript”]<br>if ($input.data(‘placeholder-password’)) {<br>    $input.hide().next().show().focus();<br>} else {<br>    $input.val(‘’).removeClass(‘placeholder’);<br>}<br>[/sourcecode]</p><br><p>當這隻程式在做dom Traversing時，用到了<span style="font-weight: bold; color: #054ef9;">$input.hide().next().show().focus(); </span>，而bug就是因為在查找<span style="font-weight: bold; color: #054ef9;">.next()</span>時查找錯誤而造成。因此我將這幾段程式做了一點小修改，簡單解釋如下：</p><br><p>[sourcecode language=”javascript”]<br>if ($input.data(‘placeholder-password’)) {<br>    //$input.hide().next().show().focus();<br>    //avoiding dom traversing by unsure dom structure<br>    $input.hide().data(‘placeholder-src’).show().focus();<br>} else {<br>    $input.val(‘’).removeClass(‘placeholder’);<br>}<br>[/sourcecode]</p><br><p>先用.data儲存要替換的input element，將原本用DOM Traversing查出的Element改用.data取回物件。That’s all.</p><br><p>另外，我也順手修正了一個小bug</p><br><p>[sourcecode language=”javascript”]<br>$replacement = $input.clone().attr({ type: ‘text’ });<br>$replacement<br>    .removeAttr(‘id’) //we don’t need id, it will be confused by selector within id<br>    .removeAttr(‘name’)<br>    .data(‘placeholder-password’, true)<br>    .data(‘placeholder-src’, $input)<br>    .bind(‘focus.placeholder’, clearPlaceholder);<br>[/sourcecode]</p><br><p>我們也不需要複製id，尤其在做一些表單驗證時，很多人會用id 來榜定做檢查，這時這個element就會取得錯誤。</p><br><p><br class="spacer_"></p><br><p>當然，我也commit上去給原作者，不過不曉得他會不會採用就是了。若需要修改後的版本請參考：<span style="font-family: Georgia, 'Times New Roman', 'Bitstream Charter', Times, serif; line-height: 19px; white-space: normal; font-size: 13px;"><a href="http://blog.blackbing.net/wp-content/uploads/2011/01/jquery.placeholder.js.txt">Download jquery.placeholder.js</a></span></p><br><p>這讓我想到在開發API時，如何建立自己的sandbox是很重要的。</p><br><ol><br><li>不管你怎麼處理事情，只要畫面不是你能控制的，永遠不要相信被渲染過後的DOM結構，因此盡可能不要用模糊的DOM Travesing來查找元素。</li><br><li>盡可能不要影響別人的行為，就如同clone Element 之後，你應該要避免複製id 以及name，否則有可能會影想到其他程式。</li><br></ol><br><p>隨著jQuery越來越強大，plugin的質跟量也開始備受考驗，不重新造輪子，但人家的輪子跑起來就是跑不遠，怎辦？有時候這也是很麻煩的一件事情，上述的例子還只是很單純的事件，若遇到更複雜的專案可就不是簡單trace source code就可以解決的事情。@@</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/01/06/ie-bug-e6-83-85-e5-a0-b1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Bingo Yang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Blackbing Playground">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/2011/01/06/ie-bug-e6-83-85-e5-a0-b1/" itemprop="url">
-                  IE bug 情報
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-01-06T22:19:00+08:00">
-                2011-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近遇到幾個IE的bug，在此紀錄如下：</p>
-
-<p>以下節錄自<a href="http://okajax.com/a/200812/1222S252008.html" target="_blank">解决javascript中的window.open返回object的错误</a></p>
-
-<p>系统中用javascript中的window.open后，页面返回了一个[object]。因为系统的原因，必需使用href=”javascript:window.open()”这样的格式。所以只能通过以下办法解决。</p>
-
-<p>[source language=”javascript”]<br>&lt;a href=&quot;javascript:void(window.open(‘’,’’,’width=200,height=200’))&quot;&gt;window.open()&lt;/a&gt;<br>[/source]<br><br><br><br></p>
-<hr>
-
-<p>用window.location獲取不到Referer? 最後找到這篇文章提供的方式來解決。<br><br> 原來IE的Referer僅提供 Link的方式，以下節錄自<strong><a href="http://ianso.blogspot.com/2006/01/referer-header-not-set-on-http.html" target="_blank">“Referer” header not set on HTTP requests originating from assignment to “window.location” variable on IE</a></strong></p>
-
-<p>[sourcecode language=”javascript”]<br>function goTo(url) {<br> var a = document.createElement(a);<br> if(!a.click) { //only IE has this (at the moment);<br>  window.location = url;<br>  return;<br> }<br> a.setAttribute(&quot;href&quot;, url);<br> a.style.display = &quot;none&quot;;<br> $(&quot;body&quot;).appendChild(a); //prototype shortcut<br> a.click();<br>}<br>[/sourcecode]</p>
 
           
         
@@ -1624,8 +1608,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">108</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
@@ -1633,7 +1617,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分類</span>
               
             </div>
           
@@ -1690,11 +1674,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
 </div>
 
 <div class="theme-info">
-  Theme -
+  主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

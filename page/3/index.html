@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-tw">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -131,7 +131,7 @@
   <title> Blackbing Playground </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
 
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首頁
           </a>
         </li>
       
@@ -214,17 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
+            歸檔
           </a>
         </li>
       
@@ -247,6 +237,194 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2013/11/11/fire-and-forget-design-pattern/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2013/11/11/fire-and-forget-design-pattern/" itemprop="url">
+                  射後不理設計模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-11-11T12:13:00+08:00">
+                2013-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/design-pattern/" itemprop="url" rel="index">
+                    <span itemprop="name">design pattern</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/design-pattern/finite-state-machine/" itemprop="url" rel="index">
+                    <span itemprop="name">finite state machine</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2013/11/11/fire-and-forget-design-pattern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2013/11/11/fire-and-forget-design-pattern/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>誒～其實這是我亂取的名字</p>
+<h1 id="AJAX-Loading-Loading-gif"><a href="#AJAX-Loading-Loading-gif" class="headerlink" title="AJAX Loading Loading .gif)"></a>AJAX Loading Loading <img src="http://user-image.logdown.io/user/96/blog/96/post/87453/xTcWul5ARhSg3ewyFw8j_ajax-loader%20(2" alt="ajax-loader (2).gif">.gif)</h1><p>大概有好一段時間，AJAX 的互動方式都會增加一個 Loading 的狀態顯示，在 Response 尚未回傳回來時，提醒使用者資料還在傳輸當中，當 Response 結束之後再顯示結果。這個 Loading 的圖示，大概就被當成網站很潮的 AJAX application 代表，像是 <a href="http://www.ajaxload.info/" target="_blank" rel="external">ajaxload.info</a> 還有自動產生 Loading 圖示的網站。優點是讓使用者知道資料正在傳輸。但缺點是要等 server 端回傳回來資料才能修改 UI 的狀態讓使用者知道動作已經完成。但其實在某些情況時，使用者根本不需要知道這些狀態，只要系統能夠確保事情是完成的就好 (而且其實看久覺得蠻煩的，尤其是看到他不斷的在 Loading，或者是看到他閃了一下就不見，都會讓人覺得系統有問題)。</p>
+<h1 id="perform-actions-optimistically"><a href="#perform-actions-optimistically" class="headerlink" title="perform actions optimistically"></a>perform actions optimistically</h1><p><a href="https://speakerdeck.com/mikeyk/secrets-to-lightning-fast-mobile-design" target="_blank" rel="external">Secrets to Lightning Fast Mobile Design</a> 這篇投影片分享了 Instagram 如何讓 Mobile App 更快速的祕訣，其中有一項我覺得很簡單而且可以大幅改善效能的技巧：「perform actions optimistically」。</p>
+<p>舉例來說，當使用者按下「Like」時，就會出現「Liked」的狀態，但其實資料還在傳輸。<br><img src="http://user-image.logdown.io/user/96/blog/96/post/87453/INZSMHOHTYeH4ir6MH7D_Screen%20Shot%202013-11-11%20at%20%E4%B8%8B%E5%8D%884.47.08.png" alt="Screen Shot 2013-11-11 at 下午4.47.08.png"></p>
+<p>當使用者留言時，就會先呈現留言完成的狀態，但其實資料還在傳輸。<br><img src="http://user-image.logdown.io/user/96/blog/96/post/87453/dnxUDGNSWKULuTIWRHPu_Screen%20Shot%202013-11-11%20at%20%E4%B8%8B%E5%8D%884.48.29.png" alt="Screen Shot 2013-11-11 at 下午4.48.29.png"></p>
+<p>所以這種方式其實是將 UI 的 feedback 直接給使用者，讓使用者「感覺」很快。</p>
+<p>再來看一個例子：<a href="http://localtodos.com/" target="_blank" rel="external">http://localtodos.com/</a> 這是一個 todo list 的應用程式，所有的資料都存在 client 端的 localStorage裡頭。由於不需要跟 server 端溝通，因此在做 新增/修改/刪除 時，沒有網路傳輸的延遲，當然就不需要做 loading 狀態的顯示，任何操作都可以直接反應給使用者。</p>
+<p>那麼如果資料是存在 server 端，又要達到一樣的效果，該怎麼辦呢？其實只要將儲存的動作，改成「射後不理」就可以了。也就是說，使用者的操作並不理會 server 端的回應，只要保證「 server 端的資料與使用者的動作保持一致」即可。</p>
+<h1 id="射後不理-fire-and-forget"><a href="#射後不理-fire-and-forget" class="headerlink" title="射後不理(fire and forget)"></a>射後不理(fire and forget)</h1><p>基本上這種設計模式就是以呈現 UI 為主，系統在做什麼事情使用者不管，反正 UI 呈現怎樣，就應該要幫我處理掉。可以想成 UI 跟 backend 是不同步的，彼此只依靠 UI 來同步所該做的事情。</p>
+<p>聽起來有點抽象，舉個例子來說，若今天有個資料可以讓使用者自由排序，當使用者進行拖拉的動作時，要將使用者排序的動作儲存起來，如果每次拖拉完成的動作都需要等待 server 端的回應，那就會造成 UI 上的不同步，進而影響到使用者操作時的困擾。這時就會需要射後不理這樣的設計模式來輔助使用者進行操作。</p>
+<h1 id="實作方式"><a href="#實作方式" class="headerlink" title="實作方式"></a>實作方式</h1><p>聽起來不難，不過實作過程其實遇到很多很麻煩的事情，因此分享一些實作上的心得，為了簡化問題，我用 Like/Unlike 來舉例。需求很簡單：按下Like 按鈕之後切換 Like/Unlike 的狀態。BUT，如果連按兩次？三次？十次？ UI 可以即時顯示，但要如何正確的跟 server 端溝通？如果在資料傳輸的過程中，使用者又改變了狀態？那怎麼辦？</p>
+<ol>
+<li><p><strong>狀態流程圖</strong></p>
+<p> 重點其實是狀態的改變，把狀態列出來畫成「狀態流程圖」就會比較好理解。<br><img src="http://user-image.logdown.io/user/96/blog/96/post/87453/m8fSrA7ScK1BzKRGx9eg_Like-Unlike%20(1" alt="Like-Unlike (1).png">.png)</p>
+<ul>
+<li><strong>unknown</strong>: 未知狀態</li>
+<li><strong>fetch</strong>: 從 server 取得 Liked 資料</li>
+<li><strong>mismatch</strong>: 使用者按下「Like/Unlike」而且跟fetch的值不一樣</li>
+<li><strong>flying</strong>: 資料正在傳輸中</li>
+</ul>
+<p>所以如果資料傳輸回來時，發現使用者的狀態改變的話，又會再觸發 mismatch 跟 server 端 request。</p>
+</li>
+<li><p><strong>發 request 的時機</strong></p>
+<p>如果是 like/unlike 時就發送 request ，很快就會遇到一個問題，當使用者連點兩下時，就會同時發出 Like 和 Unlike，若狀態是根據 request callback 回來判斷的話，遇到「後發先至」的情況就會讓 UI 造成問題。因此「射後不理」的設計模式其實是可以避免這種情況發生的。</p>
+<p>發 request 的時機其實就是在使用者改變狀態時，且跟 fetch 回來的值不同時，為了避免使用者頻繁更新狀態而跟 server 端重複發 request，可以設一個 timeout 來檢查是否觸發 mismatch。</p>
+</li>
+<li><p><strong>server 端的回應確認 UI 是否保持一致</strong></p>
+<p> 最後，當 request callback 回來時，檢查使用者是否又很善變的改變了狀態，如果改變了，再重新做一次 mismatch，並且發 request。如此就可以循環整個流程。</p>
+</li>
+</ol>
+<h1 id="有限狀態機"><a href="#有限狀態機" class="headerlink" title="有限狀態機"></a>有限狀態機</h1><p>由於實作部分很難拆解出來，而且不同的 scenario 都會有不同的流程或解法，就不把程式碼貼出來獻醜了。我想表達的重點是「<a href="http://blog.blackbing.net/post/2013/11/07/finite-state-machine">有限狀態機</a>」，其實將流程圖畫出來之後就會發現很適合用「有限狀態機」來表達流程與狀態，而且也可以避免在流程中任意改變狀態（如果你是自己處理事件的觸發），除了幫助自己理解流程之外，程式碼也會比較好維護。</p>
+<p>關於有限狀態機我也還在摸索階段，這是第一次嘗試應用在專案裡頭，有興趣歡迎再討論看看有哪些適合的案例。</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://speakerdeck.com/mikeyk/secrets-to-lightning-fast-mobile-design" target="_blank" rel="external">Secrets to Lightning Fast Mobile Design</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -296,7 +474,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-11-07T06:07:00+08:00">
                 2013-11-07
               </time>
@@ -313,7 +491,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/finite-state-machine/" itemprop="url" rel="index">
@@ -323,7 +501,7 @@
 
                 
                 
-                  . 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -485,7 +663,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-06-18T20:32:00+08:00">
                 2013-06-18
               </time>
@@ -610,7 +788,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-05-26T21:01:00+08:00">
                 2013-05-26
               </time>
@@ -660,7 +838,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/post/2013/05/26/2-13-jsdc-web-worker/#more" rel="contents">
-              Weiterlesen &raquo;
+              閱讀全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -700,7 +878,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2013/04/15/web-worker-intro2/">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2013/04/14/web-worker-intro2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Bingo Yang">
@@ -725,7 +903,7 @@
             
               
                 
-                <a class="post-title-link" href="/post/2013/04/15/web-worker-intro2/" itemprop="url">
+                <a class="post-title-link" href="/post/2013/04/14/web-worker-intro2/" itemprop="url">
                   Web Worker 經驗分享(二)
                 </a>
               
@@ -739,9 +917,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-04-15T13:38:00+08:00">
-                2013-04-15
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-04-14T13:38:00+08:00">
+                2013-04-14
               </time>
             
 
@@ -756,8 +934,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/post/2013/04/15/web-worker-intro2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2013/04/15/web-worker-intro2/" itemprop="commentCount"></span>
+                <a href="/post/2013/04/14/web-worker-intro2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2013/04/14/web-worker-intro2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -784,18 +962,67 @@
 
       
         
-          <p>本文章同步刊載於<a href="http://ithelp.ithome.com.tw/question/10118891">IT邦幫忙</a></p>
-<p>##那些年，我們一起讓瀏覽器當掉的日子</p>
-<p>昨天提到了 Worker 就像是主從式架構一樣，有要求才有產出，而前後端的任務切割，就是在將商業邏輯與頁面呈現區隔開來。但隨著專案越來越複雜，前端越來越包山包海，我們好像一直不斷的在挑戰瀏覽器一樣，在前端做更多更複雜的事情。</p>
+          
+            <p>本文章同步刊載於<a href="http://ithelp.ithome.com.tw/question/10118891" target="_blank" rel="external">IT邦幫忙</a></p>
+<h1 id="那些年，我們一起讓瀏覽器當掉的日子"><a href="#那些年，我們一起讓瀏覽器當掉的日子" class="headerlink" title="那些年，我們一起讓瀏覽器當掉的日子"></a>那些年，我們一起讓瀏覽器當掉的日子</h1><p>昨天提到了 Worker 就像是主從式架構一樣，有要求才有產出，而前後端的任務切割，就是在將商業邏輯與頁面呈現區隔開來。但隨著專案越來越複雜，前端越來越包山包海，我們好像一直不斷的在挑戰瀏覽器一樣，在前端做更多更複雜的事情。</p>
 <p><img src="http://i.imgur.com/kfNBLUH.jpg" alt="chrome ooops"></p>
 <p>有了 Worker 之後，或許我們會開始回憶起「那些年，我們一起讓瀏覽器當掉的日子」。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/post/2013/04/15/web-worker-intro2/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>回到主題，那麼到底有哪些情況會用到 Worker 呢？我們先來看看許多專家的說法：</p>
+<h1 id="Web-Worker的使用案例"><a href="#Web-Worker的使用案例" class="headerlink" title="Web Worker的使用案例"></a>Web Worker的使用案例</h1><ul>
+<li>影像辨識</li>
+<li>影音資料處理</li>
+<li>大量資料運算</li>
+<li>頻繁或大量的AJAX request</li>
+<li>較複雜的字串比對或分析</li>
+<li>Local 端資料庫的存取</li>
+<li>File IO (File Reader/Writer API)</li>
+</ul>
+<p>以往這些較複雜的運算可能都要透過 server 端來處理，既然前端都可以處理這些事情了，那我們就可以直接在前端處理這些複雜運算，可以再度的節省 server 端的使用。而 Server 端最重要的 Database ，加上 HTML5 LocalStorage 與 IndexDB 可以在前端建立資料庫，拿來做一些簡單的單機系統也會更加容易。</p>
+<p>但是這些很複雜的案例，並不是每個專案都有機會碰到，因此我想討論一些更common的案例。</p>
+<h2 id="前端可以處理的，就不在後端做"><a href="#前端可以處理的，就不在後端做" class="headerlink" title="前端可以處理的，就不在後端做"></a>前端可以處理的，就不在後端做</h2><p>例如上傳圖片，以前都是直接整個檔案直接丟到server端做 resize, crop等等，現在流行前端直接做好再丟到後端。<br>例如上傳/下載某種檔案支援格式(.txt, .xls, .blabla)，server端只要統一好格式，由前端組好在上傳到server端即可。</p>
+<h2 id="使用者操作時的「偷偷」動作"><a href="#使用者操作時的「偷偷」動作" class="headerlink" title="使用者操作時的「偷偷」動作"></a>使用者操作時的「偷偷」動作</h2><p>使用者在頻繁的操作系統時，如果此時要做一些<del>偷偷</del>背景動作，例如<del>偷偷</del>背景存資料，<del>偷偷</del>背景上傳檔案，讓使用者感覺「Wow，好快速。」例如：「文章自動儲存機制」，「程式碼高亮化(syntax highlight)」等。因為使用者正在操作系統，任何一個動作中斷都會讓使用者覺得系統當掉。</p>
+<p>反正重點就是：優化/節省 Server Side 的使用，搾乾 Client Side 的效能(偷笑)。當然，這只是討論，如果有更好的使用案例都歡迎分享。</p>
+<h1 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h1><p>有了這些基礎概念之後，我們就可以開始實作了。然而在實作上，我很快就遇到第一個問題。通常會需要用到 Worker 來幫忙的，可能會是比較複雜的專案，但中大型專案可能會用到 <a href="http://coffeescript.org/" target="_blank" rel="external">CoffeeScript</a> 來加速開發的速度，用 <a href="http://requirejs.org/" target="_blank" rel="external">RequireJS</a> 來管理模組間的相依性，如果將 Worker 的 script 拆出去，馬上就遇到 Dependency 的問題。舉例來說：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">worker = <span class="keyword">new</span> Worker(<span class="string">'/worker_path/my_worker.js'</span>);</div></pre></td></tr></table></figure>
+<p>這樣的路徑就失去了用 requirejs 的優勢，破壞了整個專案的 dependency ，如果為了用 Web Worker 而搞砸專案架構，那可是得不償失的，不過幸好，山不轉路轉。</p>
+<h2 id="Inline-Worker"><a href="#Inline-Worker" class="headerlink" title="Inline Worker"></a>Inline Worker</h2><p>在 new Worker 時，丟進 Worker 的參數是一個路徑，那麼我們就可以動態產生一個 blob url 路徑，傳給Worker ，動態產生 Woker。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">content = <span class="string">"""</span></div><div class="line">  //It is javascript content</div><div class="line">  var dosomething = function()&#123;</div><div class="line">    return 'ok dosomething';</div><div class="line">  &#125;;</div><div class="line">"""</div><div class="line">blobWorker = <span class="keyword">new</span> Blob([content], &#123;type:<span class="string">'application/javascript'</span>&#125;)</div><div class="line">blobWorker_url = URL.createObjectURL(blobWorker)</div><div class="line">inlineWorker = <span class="keyword">new</span> Worker(blobWorker_url)</div><div class="line">URL.revokeObjectURL(blobWorker_url)</div></pre></td></tr></table></figure>
+<p>如上，我們就可以動態用 content 來建立 inlineWorker 。只要確保 content 的產生是沒有問題的，用 string 的方式將它讀入就可以建立 Worker。</p>
+<p>另外 requireJS 也支援在 worker 裡頭使用，當你的 Worker 要做的事情很多時，可以用 RequireJS 來進行管理，參考<a href="http://requirejs.org/docs/api.html#webworker" target="_blank" rel="external">requireJS webworker</a></p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>Worker 裡頭沒有好用的 console 可以用，不過有 error 的 event 可以註冊。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">worker.addEventListener(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.error(error)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>另外也可以在 developer tool 裡頭的「Source」開啟「Workers: Pause on start」</p>
+<p><img src="http://i.imgur.com/o07J9GV.png" alt="debug worker"></p>
+<h2 id="引用外部程式"><a href="#引用外部程式" class="headerlink" title="引用外部程式"></a>引用外部程式</h2><p>Worker 是否可以引用外部程式? 答案是可以的，但需要注意的是它的限制是無法存取瀏覽器資源，所以跟 browser 相關的 API 例如 DOM 都不能用，所以不能使用 jQuery ,  Backbone 這種與 Browser 相依性很高的 Library (<del>廢話</del>)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">importScripts(<span class="string">"http://underscorejs.org/underscore.js"</span>)</div></pre></td></tr></table></figure>
+<p>值得一提的是，<figure class="highlight plain"><figcaption><span>access 就會造成整個 Worker 直接死掉。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 釋放Worker</div><div class="line"></div><div class="line">如果確定Worker做完事了，需要結束 Woker 以釋放瀏覽器資源，可以呼叫``terminate``來終結 worker</div><div class="line"></div><div class="line">``` javascript</div><div class="line">worker.terminate()</div></pre></td></tr></table></figure></p>
+<p>或是直接在 Worker 裡頭自己主動結束</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.close()</div></pre></td></tr></table></figure>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>Worker 其實還定義了 <a href="http://www.w3.org/TR/workers/#shared-workers-introduction" target="_blank" rel="external">Shared Worker</a> ，可以在不同頁面共享 Worker 的資源，在此不介紹是因為我想不到有比較有意義的應用，有興趣深入瞭解的朋友可以參考 <a href="http://www.html5rocks.com/en/tutorials/workers/basics/" target="_blank" rel="external">The Basics of Web Workers</a>，裡面有基本的用法介紹。</p>
+<h1 id="Just-do-it"><a href="#Just-do-it" class="headerlink" title="Just do it"></a>Just do it</h1><p>Web Worker 的 API 其實很簡單，難的是在實作上如何將這些動作拆開。建議可以慢慢的將一些動作移到 Worker 來處理，例如 AJAX request ，將資料處理與頁面 render 的程式分開。慢慢的就會更容易的掌握它。</p>
+<p>不過不要以為 Web Worker 就這樣結束了，這篇文章其實只是個起點，實際應用在專案上，還會遇到很多問題（嘿嘿～），有任何問題都歡迎提出討論喔 ，我們 <a href="http://jsdc.tw/" target="_blank" rel="external">2013 JSDC</a> 見。</p>
+<h1 id="廣告時間"><a href="#廣告時間" class="headerlink" title="廣告時間"></a>廣告時間</h1><p>「影分身好威喔！我也想要！」</p>
+<p>HTC One 的 Camera 也可以快速建立多重影分身</p>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/cNCmfk3x90g" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ol>
+<li><a href="http://dev.w3.org/html5/workers/" target="_blank" rel="external">http://dev.w3.org/html5/workers/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers?redirectlocale=en-US&amp;redirectslug=Using_web_workers" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers?redirectlocale=en-US&amp;redirectslug=Using_web_workers</a></li>
+<li><a href="http://blog.teamtreehouse.com/using-web-workers-to-speed-up-your-javascript-applications" target="_blank" rel="external">http://blog.teamtreehouse.com/using-web-workers-to-speed-up-your-javascript-applications</a></li>
+<li><a href="http://ejohn.org/blog/web-workers/" target="_blank" rel="external">http://ejohn.org/blog/web-workers/</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/workers/basics/" target="_blank" rel="external">http://www.html5rocks.com/en/tutorials/workers/basics/</a></li>
+<li><a href="http://debuggable.com/posts/run-intense-js-without-freezing-the-browser:480f4dd6-f864-4f72-ae16-41cccbdd56cb" target="_blank" rel="external">http://debuggable.com/posts/run-intense-js-without-freezing-the-browser:480f4dd6-f864-4f72-ae16-41cccbdd56cb</a></li>
+<li><a href="http://stackoverflow.com/questions/2773682/what-are-the-use-cases-for-web-workers" target="_blank" rel="external">http://stackoverflow.com/questions/2773682/what-are-the-use-cases-for-web-workers</a></li>
+<li><a href="http://html5hacks.com/blog/2012/09/22/web-workers-basics-of-the-web-browsers-ui-thread/" target="_blank" rel="external">http://html5hacks.com/blog/2012/09/22/web-workers-basics-of-the-web-browsers-ui-thread/</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/workers/basics/#toc-enviornment-subworkers" target="_blank" rel="external">http://www.html5rocks.com/en/tutorials/workers/basics/#toc-enviornment-subworkers</a></li>
+<li><a href="http://blogs.msdn.com/b/ie/archive/2011/07/01/web-workers-in-ie10-background-javascript-makes-web-apps-faster.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/ie/archive/2011/07/01/web-workers-in-ie10-background-javascript-makes-web-apps-faster.aspx</a></li>
+<li><a href="http://blogs.msdn.com/b/davrous/archive/2011/07/15/introduction-to-the-html5-web-workers-the-javascript-multithreading-approach.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/davrous/archive/2011/07/15/introduction-to-the-html5-web-workers-the-javascript-multithreading-approach.aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/hh549259.aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-us/hh549259.aspx</a></li>
+<li><a href="http://stackoverflow.com/questions/11871452/can-web-workers-utilize-100-of-a-multi-core-cpu?rq=1" target="_blank" rel="external">http://stackoverflow.com/questions/11871452/can-web-workers-utilize-100-of-a-multi-core-cpu?rq=1</a></li>
+<li><a href="http://www.smartjava.org/content/html5-easily-parallelize-jobs-using-web-workers-and-threadpool" target="_blank" rel="external">http://www.smartjava.org/content/html5-easily-parallelize-jobs-using-web-workers-and-threadpool</a></li>
+</ol>
+
+          
         
       
     </div>
@@ -871,7 +1098,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-04-14T13:38:00+08:00">
                 2013-04-14
               </time>
@@ -926,7 +1153,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/post/2013/04/14/web-worker-intro1/#more" rel="contents">
-              Weiterlesen &raquo;
+              閱讀全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1005,7 +1232,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-14T00:52:00+08:00">
                 2012-11-14
               </time>
@@ -1167,7 +1394,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-10-11T10:52:00+08:00">
                 2012-10-11
               </time>
@@ -1219,7 +1446,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/post/2012/10/11/auto-org-photo-strategy-windows/#more" rel="contents">
-              Weiterlesen &raquo;
+              閱讀全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1298,7 +1525,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-10-08T15:52:00+08:00">
                 2012-10-08
               </time>
@@ -1348,7 +1575,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/post/2012/10/08/auto-org-photo-strategy/#more" rel="contents">
-              Weiterlesen &raquo;
+              閱讀全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1427,7 +1654,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">發表於</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-08-14T04:50:00+08:00">
                 2012-08-14
               </time>
@@ -1477,136 +1704,7 @@
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/post/2012/08/14/my-first-sale/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/07/23/preview-image-before-upload-flash/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Bingo Yang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Blackbing Playground">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/2012/07/23/preview-image-before-upload-flash/" itemprop="url">
-                  preview image before upload(Flash篇)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-07-23T13:12:00+08:00">
-                2012-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/post/2012/07/23/preview-image-before-upload-flash/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2012/07/23/preview-image-before-upload-flash/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>##這是老掉牙的問題吧？<br>其實這個題目很常見，但我覺得一路走來的心路歷程也算是有些經驗，<br>而瀏覽器進步的快速，也讓網路上充斥着各種不同的解法，<br>初學者很容易就掉進這個深淵。回頭看看這幾年走過的路，<br>也可以由這個問題看出開發者不斷地在跟瀏覽器的能耐做角力，<br>然後隨著技術的進步，終於讓我有比較理想的解法。<br>決定記錄下來。</p>
-<p>如果只是要找解法的話可以直接看「preview image before upload(html5篇)」。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/post/2012/07/23/preview-image-before-upload-flash/#more" rel="contents">
-              Weiterlesen &raquo;
+              閱讀全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1682,8 +1780,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">108</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
@@ -1691,7 +1789,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分類</span>
               
             </div>
           
@@ -1748,11 +1846,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
 </div>
 
 <div class="theme-info">
-  Theme -
+  主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
