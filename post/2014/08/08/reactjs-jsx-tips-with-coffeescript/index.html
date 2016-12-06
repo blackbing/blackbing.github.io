@@ -1,0 +1,766 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="由於一開始我沒有認真看 JSX (而且也很懶得看)就開始使用 coffeescript 來寫 React 了，所以一直沒有去搞懂 JSX 到底要怎麼寫，直到最近才開始認真使用 JSX 來開發，詳看上集。關於 jsx 的 tip 其實官方有介紹一些技巧與注意事項：可以參考 React Tips Introduction。
+因為自己習慣用 coffee 的關係，所以會遇到一些小問題，這篇文章主要紀錄一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[ReactJS] tips of Writting JSX with CoffeeScript">
+<meta property="og:url" content="http://blog.blackbing.net/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="由於一開始我沒有認真看 JSX (而且也很懶得看)就開始使用 coffeescript 來寫 React 了，所以一直沒有去搞懂 JSX 到底要怎麼寫，直到最近才開始認真使用 JSX 來開發，詳看上集。關於 jsx 的 tip 其實官方有介紹一些技巧與注意事項：可以參考 React Tips Introduction。
+因為自己習慣用 coffee 的關係，所以會遇到一些小問題，這篇文章主要紀錄一">
+<meta property="og:image" content="http://bingo.d.pr/ncso.png">
+<meta property="og:updated_time" content="2016-12-06T05:35:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[ReactJS] tips of Writting JSX with CoffeeScript">
+<meta name="twitter:description" content="由於一開始我沒有認真看 JSX (而且也很懶得看)就開始使用 coffeescript 來寫 React 了，所以一直沒有去搞懂 JSX 到底要怎麼寫，直到最近才開始認真使用 JSX 來開發，詳看上集。關於 jsx 的 tip 其實官方有介紹一些技巧與注意事項：可以參考 React Tips Introduction。
+因為自己習慣用 coffee 的關係，所以會遇到一些小問題，這篇文章主要紀錄一">
+<meta name="twitter:image" content="http://bingo.d.pr/ncso.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/"/>
+
+
+
+
+
+  <title> [ReactJS] tips of Writting JSX with CoffeeScript | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [ReactJS] tips of Writting JSX with CoffeeScript
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-08-08T09:47:00+08:00">
+                2014-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/" itemprop="url" rel="index">
+                    <span itemprop="name">jsx</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactJS</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/react/CoffeeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">CoffeeScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/react/CoffeeScript/Coffee/" itemprop="url" rel="index">
+                    <span itemprop="name">Coffee</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由於一開始我沒有認真看 JSX (而且也很懶得看)就開始使用 coffeescript 來寫 React 了，所以一直沒有去搞懂 JSX 到底要怎麼寫，直到最近才開始認真使用 JSX 來開發，<a href="/post/2014/08/05/reactjs-jsx-or-coffee-style">詳看上集</a>。關於 jsx 的 tip 其實官方有介紹一些技巧與注意事項：可以參考 <a href="http://facebook.github.io/react/tips/introduction.html" target="_blank" rel="external">React Tips Introduction</a>。</p>
+<p>因為自己習慣用 coffee 的關係，所以會遇到一些小問題，這篇文章主要紀錄一下用 coffee 寫 react 需要注意的地方與心得，本篇文章的程式碼也都是 coffeescript。</p>
+<h2 id="browserify"><a href="#browserify" class="headerlink" title="browserify"></a>browserify</h2><p>強烈建議一定要使用 <a href="http://browserify.org/" target="_blank" rel="external">browserify</a> ，官方寫的 <a href="https://github.com/facebook/react/tree/master/examples/todomvc-flux" target="_blank" rel="external">todomvc-flux</a>就是用 <a href="http://browserify.org/" target="_blank" rel="external">browserify</a> 來打包程式的，用了 <a href="http://browserify.org/" target="_blank" rel="external">browserify</a> 之後就可以用 <a href="https://github.com/substack/coffeeify" target="_blank" rel="external">coffeeify</a> 和 <a href="https://github.com/andreypopp/reactify" target="_blank" rel="external">reactify</a> 來 compile 程式了。</p>
+<p>關於 browserify 的設定可以參考我的專案設定 <a href="https://github.com/blackbing/htccs-webapp/blob/master/gulp/tasks/browserify.coffee" target="_blank" rel="external">https://github.com/blackbing/htccs-webapp/blob/master/gulp/tasks/browserify.coffee</a></p>
+<h2 id="jsx-header"><a href="#jsx-header" class="headerlink" title="jsx header"></a>jsx header</h2><p>若程式之中有需要做 reactify 的程式要在第一行加上這行，讓 reactify 認得要 parse jsx 語法。</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`/** @jsx React.DOM */`</div></pre></td></tr></table></figure>
+<h2 id="jsx-component"><a href="#jsx-component" class="headerlink" title="jsx component"></a>jsx component</h2><p>jsx 特有的語法就是用 element tag name 來當語法，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> HelloMessage = React.createClass(&#123;</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &lt;div&gt;Hello &#123;this.props.name&#125;&lt;/div&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>用 coffee 來撰寫時就會用到 ``` 來轉成 javascript 再交給 reactify 來處理。<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    <span class="keyword">return</span> `<span class="javascript">&lt;div&gt;Hello &#123;<span class="keyword">this</span>.props.name&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="this-and"><a href="#this-and" class="headerlink" title="this and @"></a>this and @</h2><p>coffee 用 <code>@</code> 代表 this，但小心不要在 jsx 語法裡頭用 <code>@</code>，因為被 `` 包住的部分會被當成 javascript 來處理，coffeeify不會去處理這部分。舉例來說。</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  onClick: <span class="function">-&gt;</span></div><div class="line">    alert <span class="string">'onClick'</span></div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div onClick=&#123;@onClick&#125;&gt;Hello &#123;@props.name&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>如此 <code>@onClick</code> 就會變成 undefined。應該要改成 <code>this.onClick</code> 來處理。像這樣：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  onClick: <span class="function">-&gt;</span></div><div class="line">    alert <span class="string">'onClick'</span></div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div onClick=&#123;<span class="keyword">this</span>.onClick&#125;&gt;Hello &#123;<span class="keyword">this</span>.props.name&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="every-component-need-a-root-parent"><a href="#every-component-need-a-root-parent" class="headerlink" title="every component need a root parent"></a>every component need a root parent</h2><p>每一個 component 都需要一個 parent 來包住，例如你不能這樣寫 jsx：<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div&gt;Hello foo&lt;<span class="regexp">/div&gt;</span></span></div><div class="line">    &lt;div&gt;Hello bar&lt;/div&gt;</div><div class="line">    &lt;div&gt;Hello foobar&lt;/div&gt;`</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>而是要用一個 element 包住：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div&gt;</span></div><div class="line">      &lt;div&gt;Hello foo&lt;/div&gt;</div><div class="line">      &lt;div&gt;Hello bar&lt;<span class="regexp">/div&gt;</span></div><div class="line">      &lt;div&gt;Hello foobar&lt;/div&gt;</div><div class="line">    &lt;/div&gt;`</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>由於這可能會影響 HTML 的結構，需要跟 Designer 確定一些實做細節。</p>
+<h2 id="Empty-text-node-will-wrap-by"><a href="#Empty-text-node-will-wrap-by" class="headerlink" title="Empty text node will wrap by \"></a>Empty text node will wrap by \<span\></span\></h2><p>例如<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`<span class="javascript">&lt;th&gt;type&#123;foo&#125;&lt;<span class="regexp">/th&gt;</span></span>`</div></pre></td></tr></table></figure><br>會變成這樣<br><img src="http://bingo.d.pr/ncso.png" style="width:600px;"></p>
+<p>這可能會跟原本預期的不太一樣，為了避免樣式問題，可能要跟 Designer 確認避免產生空的文字節點。</p>
+<h2 id="Sperate-component-if-there’s-any-logic-control"><a href="#Sperate-component-if-there’s-any-logic-control" class="headerlink" title="Sperate component if there’s any logic control"></a>Sperate component if there’s any logic control</h2><p>用了 jsx 之後會發現遇到邏輯部分的程式會不太好寫。例如用 js/coffee 來寫的話會像是這樣。<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    R.div className=<span class="string">"form-component"</span></div><div class="line">     <span class="keyword">if</span> type <span class="keyword">is</span> <span class="string">'image'</span></div><div class="line">       R.img src:data.src</div><div class="line">     <span class="keyword">else</span> <span class="keyword">if</span> type <span class="keyword">is</span> <span class="string">'input'</span></div><div class="line">       <span class="keyword">if</span> inputType <span class="keyword">is</span> <span class="string">'text'</span></div><div class="line">       	 R.input type:<span class="string">"text"</span></div><div class="line">       <span class="keyword">else</span> <span class="keyword">if</span> inputType <span class="keyword">is</span> <span class="string">'radio'</span></div><div class="line">         R.input type:<span class="string">"radio"</span></div><div class="line">    <span class="comment">#...(skip)</span></div></pre></td></tr></table></figure></p>
+<p>而用 jsx 要在一個 render function 做這些判斷會看起來很可怕。建議盡量拆 component，拆 component 是不用錢的。由於 component 都是單一物件的設計，所以盡可能的將一個 component 的邏輯簡化。如上例，可以將裡頭的 if-else 判斷拆出去 <code>FormItem</code>，像這樣：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">FormItem = React.createClass</div><div class="line">  render: <span class="function">-&gt;</span></div><div class="line">    data = @props.data</div><div class="line">    <span class="keyword">if</span> data.type <span class="keyword">is</span> <span class="string">'image'</span></div><div class="line">       `<span class="javascript">&lt;img src=&#123;data.src&#125; /&gt;</span>`</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> data.type <span class="keyword">is</span> <span class="string">'input'</span></div><div class="line">      <span class="keyword">if</span> data.inputType <span class="keyword">is</span> <span class="string">'text'</span></div><div class="line">        `<span class="javascript">&lt;input type=<span class="string">"text"</span> value=&#123;data.value&#125; /&gt;</span>`</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> data.inputType <span class="keyword">is</span> <span class="string">'radio'</span></div><div class="line">        `<span class="javascript">&lt;input type=<span class="string">"radio"</span> value=&#123;data.value&#125; /&gt;</span>`</div><div class="line">        </div><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div className=<span class="string">"form-component"</span></span></div><div class="line">      &lt;FormItem data=&#123;data&#125; /&gt;</div><div class="line">     &lt;/div&gt;`</div><div class="line">    <span class="comment">#...(skip)</span></div></pre></td></tr></table></figure>
+<p>這是一個很簡單的技巧也可以將 component 快速的拆開，不要嘗試在一個 component 裡頭包入太複雜的邏輯判斷。另一個好處是可以針對單一個 component 來做 unit-test。</p>
+<h1 id="false-in-jsx"><a href="#false-in-jsx" class="headerlink" title="false in jsx"></a>false in jsx</h1><p>false 在 jsx 裡頭有些不同的意義，在 <a href="http://facebook.github.io/react/tips/false-in-jsx.html" target="_blank" rel="external">http://facebook.github.io/react/tips/false-in-jsx.html</a> 有說明，不過<del>因為很重要所以要講三次</del>。</p>
+<p>其中最重要的是 false element<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`<span class="javascript">&lt;div&gt;&#123;<span class="literal">false</span>&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div></pre></td></tr></table></figure><br>這樣會變成 <code>&lt;div&gt;&lt;/div&gt;</code>，成為一個空的節點。在做一些邏輯判斷時還蠻好用的。</p>
+<h2 id="Never-modify-DOM-by-yourself"><a href="#Never-modify-DOM-by-yourself" class="headerlink" title="Never modify DOM by yourself"></a>Never modify DOM by yourself</h2><p>如果你開始使用 React 了，請戒掉用 jquery 操作 DOM 的「壞習慣」。真的，一開始會很不習慣，例如<code>addClass(&#39;loading&#39;)</code> 太方便了，但是摻雜使用的後果就是很難 debug。建議要做任何 DOM 的操作都交給 state/props 來決定。</p>
+<p>如果有其他使用 React 的小技巧也歡迎分享喔～</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2014/08/05/reactjs-jsx-or-coffee-style/" rel="next" title="[ReactJS] jsx or coffee style">
+                <i class="fa fa-chevron-left"></i> [ReactJS] jsx or coffee style
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2014/12/25/wedding-party-hackday/" rel="prev" title="Wedding Party Hackday">
+                Wedding Party Hackday <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#browserify"><span class="nav-number">1.</span> <span class="nav-text">browserify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsx-header"><span class="nav-number">2.</span> <span class="nav-text">jsx header</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsx-component"><span class="nav-number">3.</span> <span class="nav-text">jsx component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this-and"><span class="nav-number">4.</span> <span class="nav-text">this and @</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-component-need-a-root-parent"><span class="nav-number">5.</span> <span class="nav-text">every component need a root parent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Empty-text-node-will-wrap-by"><span class="nav-number">6.</span> <span class="nav-text">Empty text node will wrap by \</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sperate-component-if-there’s-any-logic-control"><span class="nav-number">7.</span> <span class="nav-text">Sperate component if there’s any logic control</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#false-in-jsx"><span class="nav-number"></span> <span class="nav-text">false in jsx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Never-modify-DOM-by-yourself"><span class="nav-number">1.</span> <span class="nav-text">Never modify DOM by yourself</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/';
+
+      var disqus_title = "[ReactJS] tips of Writting JSX with CoffeeScript";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

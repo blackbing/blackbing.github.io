@@ -1,0 +1,622 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前端程式越搞越複雜，接踵而至的問題越來越多，雖然瀏覽器的效能不斷地提昇，但是只要IE6沒被淘汰的一天，網頁程式設計師永遠要替IE6補洞，Memory Leak是一個非常難搞得議題。關於微軟的官方說法可以參考Understanding and Solving Internet Explorer Leak Patterns，裡頭有詳細說明IE6會如何發生memory leak的情況。發生memory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ie6 Memory Leak的解決方式">
+<meta property="og:url" content="http://blog.blackbing.net/post/2009/08/01/ie6-memory-leak-solution/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="前端程式越搞越複雜，接踵而至的問題越來越多，雖然瀏覽器的效能不斷地提昇，但是只要IE6沒被淘汰的一天，網頁程式設計師永遠要替IE6補洞，Memory Leak是一個非常難搞得議題。關於微軟的官方說法可以參考Understanding and Solving Internet Explorer Leak Patterns，裡頭有詳細說明IE6會如何發生memory leak的情況。發生memory">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ie6 Memory Leak的解決方式">
+<meta name="twitter:description" content="前端程式越搞越複雜，接踵而至的問題越來越多，雖然瀏覽器的效能不斷地提昇，但是只要IE6沒被淘汰的一天，網頁程式設計師永遠要替IE6補洞，Memory Leak是一個非常難搞得議題。關於微軟的官方說法可以參考Understanding and Solving Internet Explorer Leak Patterns，裡頭有詳細說明IE6會如何發生memory leak的情況。發生memory">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2009/08/01/ie6-memory-leak-solution/"/>
+
+
+
+
+
+  <title> ie6 Memory Leak的解決方式 | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2009/08/01/ie6-memory-leak-solution/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ie6 Memory Leak的解決方式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2009-08-01T03:13:00+08:00">
+                2009-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前端程式越搞越複雜，接踵而至的問題越來越多，雖然瀏覽器的效能不斷地提昇，但是只要IE6沒被淘汰的一天，網頁程式設計師永遠要替IE6補洞，Memory Leak是一個非常難搞得議題。關於微軟的官方說法可以參考<a href="http://msdn.microsoft.com/en-us/library/bb250448(VS.85).aspx" target="_blank">Understanding and Solving Internet Explorer Leak Patterns</a>，裡頭有詳細說明IE6會如何發生memory leak的情況。發生memory leak的徵狀就是：記憶體不斷飆上去，就算reload頁面，記憶體也不會被釋放，除非關掉瀏覽器。</p><br><p>在此不介紹為何為引發memory leak，因為我覺得這是瀏覽器應該要處理的問題，要拿出來講只是因為IE6沒辦法處理好罷了，雖然其他瀏覽器也並不是沒有這個問題，但是至少問題都沒有這麼嚴重，因此只需要針對IE6來處理即可。以下是我整理出幾種比較好的處理方式：<a id="more"></a></p><br><ol><br><li><a href="http://javascript.crockford.com" target="_blank">Douglas Crockford</a>針對memory leak的議題發表一篇文章：<a href="http://javascript.crockford.com/memory/leak.html" target="_blank">JScript Memory Leaks</a>提出一個purge的function，概念非常簡單，就是遍歷元素底下的所有節點，將所有的function設為null（這屬於closure的循環參照索引發的memory leak）。一般來說可以在unload時或者你要removeNode之前來做這個動作，例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">purge</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = d.attributes, i, l, n;</div><div class="line">    <span class="keyword">if</span> (a) &#123;</div><div class="line">        l = a.length;</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &amp;lt; l; i += <span class="number">1</span>) &#123;</div><div class="line">            n = a[i].name;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> d[n] === <span class="string">'function'</span>) &#123;</div><div class="line">                d[n] = <span class="literal">null</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    a = d.childNodes;</div><div class="line">    <span class="keyword">if</span> (a) &#123;</div><div class="line">        l = a.length;</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &amp;lt; l; i += <span class="number">1</span>) &#123;</div><div class="line">            purge(d.childNodes[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    purge(<span class="built_in">document</span>.body);</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br> </li><br><li><a href="http://novemberborn.net/javascript/event-cache" target="_blank">Event Cache</a> ：若你的專案沒用到一些framework時，可能會用到一些自訂的addEvent方法，這時可以透過EventCache.add來將事件加入cache，然後在unload時做EventCache.flush。這樣可以避免在unload時循環整個body，雖然降低了memory leak，但卻吃掉cpu的效能。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> EventCache = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> listEvents = [];</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">listEvents</span>: listEvents,</div><div class="line">      <span class="attr">add</span>: <span class="function"><span class="keyword">function</span> (<span class="params">node, sEventName, fHandler, bCapture</span>) </span>&#123;</div><div class="line">        listEvents.push(<span class="built_in">arguments</span>);</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">flush</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> i, item;</div><div class="line">        <span class="keyword">for</span> (i = listEvents.length - <span class="number">1</span>; i &amp; gt; = <span class="number">0</span>; i = i - <span class="number">1</span>) &#123;</div><div class="line">          item = listEvents[i];</div><div class="line">          <span class="keyword">if</span> (item[<span class="number">0</span>].removeEventListener) &#123;</div><div class="line">            item[<span class="number">0</span>].removeEventListener(item[<span class="number">1</span>], item[<span class="number">2</span>], item[<span class="number">3</span>]);</div><div class="line">          &#125;;</div><div class="line">          <span class="comment">/* From this point on we need the event names to be prefixed with 'on&amp;quot; */</span></div><div class="line">          <span class="keyword">if</span> (item[<span class="number">1</span>].substring(<span class="number">0</span>, <span class="number">2</span>) != &amp; quot; on &amp; quot;) &#123;</div><div class="line">            item[<span class="number">1</span>] = &amp; quot;</div><div class="line">            on &amp; quot; + item[<span class="number">1</span>];</div><div class="line">          &#125;;</div><div class="line">          <span class="keyword">if</span> (item[<span class="number">0</span>].detachEvent) &#123;</div><div class="line">            item[<span class="number">0</span>].detachEvent(item[<span class="number">1</span>], item[<span class="number">2</span>]);</div><div class="line">          &#125;;</div><div class="line">          item[<span class="number">0</span>][item[<span class="number">1</span>]] = <span class="literal">null</span>;</div><div class="line">        &#125;;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">  &#125;();</div></pre></td></tr></table></figure><br><br> </li><br><li><a href="http://www.hedgerwow.com/360/dhtml/ie6_memory_leak_fix/" target="_blank">利用try…finally來清除不被引用的參考</a>：這常會發生在我們利用function來creat Element時，忽略了不再被引用的參考，然後直接return，在IE6中會引發memory leak，這篇文章透過try,finally來清除不被引用的參考，例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createButton</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> obj = <span class="built_in">document</span>.createElement(&amp;quot;button&amp;quot;);</div><div class="line">      obj.innerHTML = &amp;quot;click me&amp;quot;;</div><div class="line">      obj.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//handle onclick</span></div><div class="line">      &#125;</div><div class="line">      obj.onmouseover = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//handle onmouseover</span></div><div class="line">      &#125;</div><div class="line">      <span class="comment">//this helps to fix the memory leak issue</span></div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">return</span> obj;</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        obj = <span class="literal">null</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure><br><br> </li><br><li><a href="http://www.julienlecomte.net/blog/2007/12/38/" target="_blank" rel="external">innerHTML所引發的memory leak</a>：這個議題最為常見，innerHTML不被W3C列為標準，但因為他比起操作DOM元素容易的多了，因此廣泛的被使用，但是之前有提到，最好是在removeNode時做一次檢查，將node裡頭的function全部設為null，以避免closure所引發的memory leak，但是innerHTML實在太方便了，讓所有programer將這個問題拋在腦後，因為我隨時可以設定某個元素的innerHTML，哪怕他裡頭又肥又大，一句innerHTML就可以改變DOM元素。文章裡頭的例子用YUI來做示範，不過事實上，他還是用了Douglas了perge來清除循環引用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">YAHOO.util.Dom.setInnerHTML = <span class="function"><span class="keyword">function</span> (<span class="params">el, html</span>) </span>&#123;</div><div class="line">    el = YAHOO.util.Dom.get(el);</div><div class="line">    <span class="keyword">if</span> (!el || <span class="keyword">typeof</span> html !== <span class="string">'string'</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// Break circular references.</span></div><div class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> a = o.attributes, i, l, n, c;</div><div class="line">        <span class="keyword">if</span> (a) &#123;</div><div class="line">            l = a.length;</div><div class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &amp;lt; l; i += <span class="number">1</span>) &#123;</div><div class="line">                n = a[i].name;</div><div class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span> o[n] === <span class="string">'function'</span>) &#123;</div><div class="line">                    o[n] = <span class="literal">null</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        a = o.childNodes;</div><div class="line">        <span class="keyword">if</span> (a) &#123;</div><div class="line">            l = a.length;</div><div class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &amp;lt; l; i += <span class="number">1</span>) &#123;</div><div class="line">                c = o.childNodes[i];</div><div class="line">                <span class="comment">// Purge child nodes.</span></div><div class="line">                <span class="built_in">arguments</span>.callee(c);</div><div class="line">                <span class="comment">// Removes all listeners attached to the element via YUI's addListener.</span></div><div class="line">                YAHOO.util.Event.purgeElement(c);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;)(el);</div><div class="line">    <span class="comment">// Remove scripts from HTML string, and set innerHTML property</span></div><div class="line">    el.innerHTML = html.replace(<span class="regexp">/&amp;lt;script[^&amp;gt;]*&amp;gt;[\S\s]*?&amp;lt;\/script[^&amp;gt;]*&amp;gt;/ig</span>, &amp;quot;&amp;quot;);</div><div class="line">    <span class="comment">// Return a reference to the first child</span></div><div class="line">    <span class="keyword">return</span> el.firstChild;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><br><br> </li><br></ol><br><p>大概是這樣了，memory leak實在是個很惱人的議題，不過有責任感的前端工程是還是要將之視為己任的，畢竟項目越做越大，然而記憶體越吃越兇，這是很可怕的一件事。</p>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2009/07/25/urmap-ymap-gmap/" rel="next" title="UrMap、GMap、YMap電子地圖圖示比一比">
+                <i class="fa fa-chevron-left"></i> UrMap、GMap、YMap電子地圖圖示比一比
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2009/08/02/what-is-this-in-javascript/" rel="prev" title="What is "this" in Javascript（上）">
+                What is "this" in Javascript（上） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2009/08/01/ie6-memory-leak-solution/';
+
+      var disqus_title = "ie6 Memory Leak的解決方式";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

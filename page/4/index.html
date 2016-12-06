@@ -1,0 +1,1729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blackbing Playground">
+<meta property="og:url" content="http://blog.blackbing.net/page/4/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blackbing Playground">
+<meta name="twitter:description" content="記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/page/4/"/>
+
+
+
+
+
+  <title> Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/06/14/my-working-environment/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2012/06/14/my-working-environment/" itemprop="url">
+                  我的日常工作環境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-06-14T08:26:00+08:00">
+                2012-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2012/06/14/my-working-environment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2012/06/14/my-working-environment/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天來聊聊我的工作環境，其實之前就想寫一篇來記錄了，<br>只是一直都很懶。</p>
+<p>OK，準確一點的說是我使用電腦的「工作環境」。<br>最近覺得自己的配置明顯加速了我的開發時間，<br>因此也順便做個記錄。</p>
+<p>###虛擬機器<br>一開始是申請<a href="http://aws.amazon.com/">AWS</a>的服務，instance放在最便宜的美西，AWS真的很便宜，<br>但AWS設定多，操作相對複雜，而且美西的速度實在太慢。<br>比起來<a href="http://www.linode.com/">Linode</a>就直覺多了，而且可以申請在東京的instance，速度很快。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/post/2012/06/14/my-working-environment/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/05/29/mac-and-me/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2012/05/29/mac-and-me/" itemprop="url">
+                  Mac與我的愛恨情仇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-05-29T16:00:00+08:00">
+                2012-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>自從換了工作之後，換了Mac來使用，<br>後來也愛上它了。<br>認識我的朋友都知道，<br>我以前罵apple罵的要死，結果現在卻用Mac當做我的開發工具了，<br>這之間揪竟有什麼愛恨糾葛呢？<br>讓我們繼續看下去。</p>
+<p>####窮酸學生時期<br>當然只能用盜版windows，當時對apple的印象就是，設計很漂亮，但那是給有錢人用的，因此對一個窮酸學生而言，<br>apple對我就是有錢人的玩具，而他獨樹一格的規格設計，也是讓我嫌棄到爆炸的主因。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/post/2012/05/29/mac-and-me/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/04/30/require-backbone-initial-project/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2012/04/30/require-backbone-initial-project/" itemprop="url">
+                  require+Backbone initial project
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-04-30T16:00:00+08:00">
+                2012-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最近用<a href="http://requirejs.org/">requirejs</a>用的很頻繁，因此把平常開發的架構拉出來成一個project template，<br>若以後要開發就只要fork出來，或者是<a href="http://help.github.com/move-a-repo/">move a repo</a>。</p>
+<p>由於require.js 的架構很容易擴充，因此非常適合模組化的開發，模組化的開發優點就是可大可小，<br>對於程式的相依關係也可以處理的很清楚，<br>非常建議在開發初期就導入模組化的開發方式。要接手或者維護都可以很快速的轉換。</p>
+<p>分享一下我自己的開發流程：</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/post/2012/04/30/require-backbone-initial-project/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/04/29/bye-bye-wordpress-and-hello-jekyll/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2012/04/29/bye-bye-wordpress-and-hello-jekyll/" itemprop="url">
+                  bye bye wordpress and Hello Jekyll
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-04-29T16:00:00+08:00">
+                2012-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####Migration wordpress to Jekyll</p>
+<p>用了<a href="http://wordpress.org/" target="_blank" rel="external">Wordpress</a>幾年了，最初的動機是不喜歡外面的blog server綁手綁腳，限制一堆，<br>要什麼沒什麼，於是就自己架自己的wordpress，<br>另外一個原因也是想要練習管理server，熟悉一下各種設定。<br>而中間隨著一些時間的演進也搬了好幾次主機，基本上對於這些可以做自定義的功能也還算滿意。</p>
+<p>但隨著年紀的增長也越來越懶，越來越不想要再做這麼多客制化，<br>看到大家紛紛都改用<a href="https://github.com/mojombo/jekyll" target="_blank" rel="external">Jekyll</a>，<br>並且直接host在<a href="http://pages.github.com/" target="_blank" rel="external">github pages</a>上，<br>讓我蠻心動的。<br>不過之前一直沒有花時間去搞懂這個東西，也因為這樣，讓我更懶得寫文章，<br>因為一直想說要換掉wordpress，所以懶得寫在wordpress上面。<br>每次想寫點東西一開啓wordpress就又放棄了，真的是很懶。</p>
+<p>最近終於花點時間研究了一下，並且成功的轉換過來了，關於網址之類的部分就之後再慢慢轉換吧。<br>Migrate的部分我要求不多，因此只有參考<a href="https://github.com/mojombo/jekyll/wiki/blog-migrations" target="_blank" rel="external">BLog Migrations</a>作轉換，網址什麼的就不管了，<br>我想反正以後放在免費的server上也是我主要的考量。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="https://github.com/mojombo/jekyll" target="_blank" rel="external">Jekyll</a></li>
+<li><a href="http://blog.lyhdev.com/2012/02/jekyll-github-pages.html" target="_blank" rel="external">使用Jekyll與Github pages架站</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/03/21/charles-web-debugging-proxy/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2012/03/21/charles-web-debugging-proxy/" itemprop="url">
+                  Charles Web Debugging Proxy
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-03-21T03:47:00+08:00">
+                2012-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="http://www.charlesproxy.com/"><img src="http://dl.dropbox.com/u/751847/blog/charlesIntro/charles1.jpg" alt="" /></a></p>
+<p><a href="http://www.charlesproxy.com/LoZ6j7P268-w">Charles Web Debugging Proxy</a>是個非常好用的debugging tool，我很常用的功能是<a href="http://www.charlesproxy.com/documentation/tools/map-local/">Map-Local</a>，<a href="http://www.charlesproxy.com/documentation/tools/map-remote/">Map-Remote</a>，以及監看Http的request/response。甚至修改request or response的內容，這在debug上非常的有用，也能很快釐清到底是哪一層的問題。不過我一直以為他只能run在某個系統上，所以我在每個VM上都要安裝一次Charles，結果強者我同事看到說不用這麼麻煩，只要指定proxy就什麼都解決了，所以你只要在Local安裝好，每個VM裡頭指定好Proxy，就可以錄到所有的request/response，尤其是在debug IE，因為IE6/7/8沒有Net 監控，所以用Charles可以幫忙除錯，非常好用，特此記錄一下。</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/post/2012/03/21/charles-web-debugging-proxy/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/01/12/logger-js-for-switching-production-and-development/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2012/01/12/logger-js-for-switching-production-and-development/" itemprop="url">
+                  logger.js for switching production and development
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-01-12T06:44:00+08:00">
+                2012-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在開發時常常會需要用console來除錯或是檢查流程，但推到production上必須要將這些log清除，雖然console很好用，但適當的log可以輔助除錯，如果推到production就強制將console.log都從code裡頭移除也不一定是好事，因此常常會看到會有一個管理log的global  function，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> log = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">console</span> !== <span class="string">'undefined'</span> &amp;&amp; <span class="built_in">console</span> !== <span class="literal">null</span>) &#123;</div><div class="line">          <span class="keyword">return</span> <span class="built_in">console</span>.log(s);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>不過這樣簡單的function就不夠彈性，結合大家的想法，希望這個logger至少能夠handle幾種情況</p>
+<ul>
+<li>可以直接呼叫Logger(‘foo’)</li>
+<li>也可以擁有console api 的功能，例如warn, info, group等等特殊功能</li>
+<li>快速切換production or dev環境</li>
+<li>就算有人不小心寫了console.log，只要我切換到production環境，就不會印任何東西</li>
+<li>萬惡的IE也要能運作正常，而不是強制關掉log(例如開啟開發人員工具還是可以看到log)</li>
+</ul>
+<p>於是，Logger.js 就誕生了，由於現在都用<a href="coffeeScript">http://coffeescript.org/</a> 寫js（用了就回不去了），因此js是coffee產生出來的。也順便做了<a href="require.js">http://requirejs.org/</a>的require版本，若在專案有用到 require.js 可以直接require。<br>雖然只是很簡單的 code，不過對我來說很實用，跟大家分享。</p>
+<p>###Get the sourcecode(Github): <a href="Logger.js">http://github.com/blackbing/logger.js/</a></p>
+<p>實作上遇到幾個問題，原本構想是希望像jQuery一樣，可以直接呼叫，也可以呼叫function處理，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#main'</span>)</div><div class="line">  $.ajax()</div><div class="line">  $.bind()</div></pre></td></tr></table></figure>
+<p>原本我以為要用覆寫prototype的方式來處理，繞了一大圈纔知道根本不用（真是暈了我），javascript原本就是「物件」導向，所有變數都可以是物件，因此function其實也是物件。犛清了這個觀念之後，實作就很容易了，首先宣告為function，接著再一一指派，大功告成。有興趣的就再研究 <a href="Logger.js">http://github.com/blackbing/logger.js/</a>吧。乾杯。</p>
+<p>###<a href="Logger.js">http://github.com/blackbing/logger.js/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/10/31/thanks-everyone-in-urmap/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2011/10/31/thanks-everyone-in-urmap/" itemprop="url">
+                  國四無雙之下台一鞠躬
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-10-31T06:33:00+08:00">
+                2011-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在<a href="http://www.urmap.com" target="_blank">URMAP</a>的日子竟然匆匆過了四年，回想起來真是不可思議，在這兒，我學到不少東西，也是個很好發揮的地方，URMAP畢竟還是台灣少數的圖資應用廠商之一，舉凡LBS相關的服務、車隊系統、定址系統、導航系統、地圖API等等，都是台灣少數可以跟Google Map相抗衡的地方，研發團隊一直都很堅強，這也是我一直很樂此不疲的地方，在這裡有不定時的宅宅分享會，大家一起分享討論新的技術，看看是否可以應用在新的地方。</p><br><p>URMAP很特別，因為LBS的領域其實是有點專門的領域，能夠接觸到GIS相關的知識，這也是我一直很感興趣的地方，而各個領域都有很棒的同事在負責，我們用到的技術、創新服務也非常多，在這兒，真的是一個很好發揮的舞台。</p><br><p>時間過得非常快，四年好像一轉眼就過了，臨走前，我在宅宅分享會分享了最後一個主題：「<a href="http://blackbing.github.com/demo/presentation/browser-extension/" target="_blank" rel="external">Web Developer不可忽視的瀏覽器擴充元件</a>」，主要是我認為隨著Google Chromium的發展，瀏覽器擴充元件會成為Web application中很重要的一環，除了web的know how，web Developer一定要知道browser extension可以做到什麼，或許也可以帶給網站一些有趣的應用。並且用我在閒暇之餘做過的<a href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni?hl=zh-TW" target="_blank" rel="external">Download FB album</a>當作例子以及code review。</p><br><p><a title="browser-extension/" href="http://blackbing.github.com/demo/presentation/browser-extension/" target="_blank" rel="external">投影片請按此<br></a></p><br><p>投影片裡頭的特效是用HTML5 + CSS3來完成，由於時間有點趕，因此我沒測試過Firefox，所以只能用Chrome來開啟，另外由於公司投影機測試的解析度問題，所以也會有點小誤差。除了Extension的概念之外，其實我主要想分享的概念是「熱情」。</p><br><p>投影片裡頭的所有特效，除了slide的框架，其他都是自己寫出來的，看起來好像沒什麼，但是卻是花了很多時間在處理一些小細節，有同事問說：「為什麼要自己寫？也太閒了吧！」，我當時回答說：「因為爽」，不過其實我想分享的是一個「熱情」的精神，因為有熱情，你才會投入，哪怕是這個細節需要花你很多時間來做，事實上，所有的工作都是這樣的，「魔鬼藏在細節裡」，你不實做，永遠都不知道細節是什麼。</p><br><p>之前看過一篇文章：「<a href="http://w3ctech.com/b/archives/603" target="_blank" rel="external">什麼是重要的</a>」，裡頭講到幾句話另我深有感觸：</p><br><ol><br><li>追寻这些新技术，很容易让人有种走在技术前沿很牛逼的虚荣感。</li><br><li>以为走在前沿，其实只是凑个热闹，迟早成为舞台下的观众。</li><br><li>对于武林高手，内功最重要。招式套路，只能街头赚个掌声。</li><br><li>对于程序员，真正的核心竞争力是基本功。</li><br><li>永远不要舍本逐末，否则你学的新东西越多，被淘汰的可能性反而越大。</li><br></ol><br><p>事實上，我認為中國大陸的前端技術能力非常堅強，已經不輸給國外的技術了，我常常找資料都找到大陸的技術博客，雖然大陸clone的文化還是有，但他們就是有能力做出一個一模一樣的技術，這不是也令人刮目相看？</p><br><p>總歸一句話，熱情才會創造出更有趣的應用，否則技術永遠只是死的，Programer 最有價值的地方就在於，能夠發揮創意並且實做出來，最怕的就是在看某個應用，然後說：「哦～這個不就是XX再加上OO，這我之前也想過」，那麼，你有實做出來嗎？在WEB當道的時代，創意已經不值錢了，值錢的是，將他實做出來。</p><br><p>「熱情，才能成就你自己」。共勉之。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/10/07/download-fb-album-for-high-resolution-pictures/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2011/10/07/download-fb-album-for-high-resolution-pictures/" itemprop="url">
+                  Download FB album (for high resolution pictures)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-10-07T18:31:00+08:00">
+                2011-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank"><img class="alignleft" title="Download_FB_new_feature" src="http://dl.dropbox.com/u/751847/Lab/blogImg/Download_FB_new_feature.png" alt="Download_FB_new_feature" width="257" height="189"></a>之前做了這個下載照片的小工具<a href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank">Download FB album</a>，說真的，我沒想到會有這麼多人下載，雖然是chrome Extension，但隨著Chrome瀏覽器成長的快速，使用者與開發者也成長的非常快速，代表只要你的產品有碰到使用者，是真的能夠有這個市場，而且在chrome Web Store也已經有付費機制，也就是說你能夠透過web strore來跟使用者收取費用，讓開發人員更有興趣來Rock the World。</p>
+<p>話說回來，<a title="Down FB album" href="https://www.facebook.com/pages/Download-FB-Album/228649750527323" target="_blank">Download FB album</a>的目的只是要下載整個相簿的照片，而原本的概念也僅僅只是要替換縮圖與原圖的URL而已，然而，發佈之後才發現很多人反應沒辦法下載原始大小的圖檔，於是我再檢查是否可以取到相對應的原始大小圖檔，但結論是沒辦法，就連每一張圖片的高解析尺寸，FB都是重新發request來取得，而且包含html一起回來，這代表FB為了防止抓圖機器人大量抓圖（指）而採行的策略，於是我雙手一攤，那我就沒辦法囉～各位使用者，Sorry～（逃～）</p>
+<p>但在這期間，我收到好幾個使用者直接寄信來反應是否可以提供下載高解析度照片，並且很認真的跟我討論實做的方法，大部分使用者一開始都提到只要改一個字元而已，仔細討論之後才發現真的沒那麼簡單，所以最後都不了了之。但隨著使用者下載的次數越來越多（目前已經38000以上人次下載），我的責任感卻增加了，於是我開始很認真的思考我該如何取得high resolution的圖片。歸納出以下結論：</p>
+<p>facebook的圖片共分為三種格式</p>
+<ul>
+<li>預覽縮圖(120*160)px</li>
+<li>播放縮圖(960*640)px</li>
+<li>高解析尺寸(2048*1536)px<ul>
+<li>高解析尺寸的URL需要發AJAX來取得（每一張圖片都要）。</li>
+<li>回傳的格式是JSON，但內容卻是一份HTML字串。因此需要parse HTML才能得到高解析尺寸的連結。</li>
+</ul>
+</li>
+</ul>
+<p>兩種尺寸的縮圖URL只差一個字元，因此知道縮圖連結之後，進行簡單的替換即可，然而高解析度的圖片URL需要一張一張跟server問。首先是想到的是流量問題，如果相簿裡頭有上百上千張圖片，那就要在短時間內發送上百上千的查詢，會不會引起FB的注意也是個問題。之前當我發布這個工具之後，碰巧與<a title="photojacker" href="http://www.photojacker.com/" target="_blank">photojacker</a>的作者聊到，他有提到之前因為流量太大被FB注意到並要求強制移除，當時他非常憤怒。並提醒我要注意這一點。不過為了解決這個問題，我暫時就不管這件事了。我只是想解決問題而已(抱頭～)。</p>
+<p>另外一個問題則是Chrome Extenstion架構限制，在<a title="content_scripts" href="http://code.google.com/chrome/extensions/content_scripts.html" target="_blank">官方文件</a>上寫到：</p>
+<p>However, content scripts have some limitations. They cannot</p>
+<ul>
+<li>Use chrome.* APIs (except for parts of <a href="http://code.google.com/chrome/extensions/extension.html" target="_blank" rel="external"><code>chrome.extension</code></a>)</li>
+<li>Use variables or functions defined by their extension’s pages</li>
+<li>Use variables or functions defined by web pages or by other content scripts</li>
+</ul>
+<p>These limitations aren’t as bad as they sound. Content scripts can <em>indirectly</em> use the chrome.* APIs, get access to extension data, and request extension actions by exchanging <a href="http://code.google.com/chrome/extensions/messaging.html" target="_blank" rel="external">messages</a> with their parent extension. Content scripts can also make <a href="http://code.google.com/chrome/extensions/xhr.html" target="_blank" rel="external">cross-site XMLHttpRequests</a> to the same sites as their parent extensions, and they can <a href="http://code.google.com/chrome/extensions/content_scripts.html#host-page-communication" target="_blank" rel="external">communicate with web pages</a> using the shared DOM. For more insight into what content scripts can and can’t do, learn about the <a href="http://code.google.com/chrome/extensions/content_scripts.html#execution-environment" target="_blank" rel="external">execution environment</a>.</p>
+<p>你可以進行跨域的AJAX請求，並且禁止存取該頁的任何變數和function。而既然是不同的domain，當然就無法進行AJAX的溝通。然而他們卻可以「<a href="http://code.google.com/chrome/extensions/content_scripts.html#host-page-communication" target="_blank">Communication with the embedding page</a>」，這就有趣了，既然我可以access DOM，我就可以進行該頁面的任何動作，包括進行AJAX<del>攻擊</del>請求。是否？是否？細節不多提啦，有興趣的再私底下討論，這篇文章只是想說明<a title="Download FB album " href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank">Download FB album</a>做了突破性的更新，不管會不會被Facebook阻擋，分享就是Rock the world的精神阿阿阿～</p>
+<p>另外Chrome Store的評論和討論的互動性機制還蠻差的，所以我弄了一個Facebook粉絲頁（<a title="Facebook Page for Download FB album" href="https://www.facebook.com/pages/Download-FB-Album/228649750527323?sk=wall&amp;filter=1" target="_blank">Face book Page for Download FB album</a>）如果在操作或使用上有任何問題請別客氣的進來鞭我吧。</p>
+<iframe style="border: none; overflow: hidden; width: 385px; height: 304px;" src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FDownload-FB-Album%2F228649750527323&amp;width=385&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true&amp;height=304" frameborder="0" scrolling="no" width="320" height="240"> </iframe>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/09/21/urmap-addressing-system/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2011/09/21/urmap-addressing-system/" itemprop="url">
+                  批量AJAX query 系統（友邁科技定址程式）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-09-21T22:27:00+08:00">
+                2011-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div><a title="友邁科技定址系統" href="http://api.urmap.com/parseAddressCSV/web/" target="_blank"><img title="友邁科技多筆地址輸出系統" src="https://lh4.googleusercontent.com/-a1I4IU_dwvk/Tnm0soBglRI/AAAAAAAAF80/pTy7UZQ0Wxs/s800/parseAddress_printscreen.png" alt="友邁科技多筆地址輸出系統" width="800" height="592"></a></div>
+
+<h1 id="重寫舊系統"><a href="#重寫舊系統" class="headerlink" title="重寫舊系統"></a>重寫舊系統</h1><p><a href="http://www.urmap.com" target="_blank" rel="external">URMAP</a> 有一個很實用的系統「地址轉經緯度」，可以 parse 台灣的地址，轉成 <a href="http://zh.wikipedia.org/zh-hant/WGS84" target="_blank" rel="external">WGS84</a> 經緯度或 <a href="http://blog.minstrel.idv.tw/2004/05/twd67-twd97.html" target="_blank" rel="external">TWD97</a> 座標，並且API化，可以使用AJAX的方式來做查詢，會將地址做正規劃，查詢到最靠近的點。由於是HTTP的方式，因此很容易實做，就算要做批次的查詢，只要會寫程式都可以很快速的做出批量做座標轉換。然而對於某些公司而言，他們不想要為了這個功能而花時間寫程式，希望能夠提供直接做查詢的使用方式，於是早期就有一套轉換系統，用JAVA撰寫之後包成jar檔，直接在windows或linux下command line，指定讀取的file，就會輸出成指定的CSV檔案。由於大家也懶，因此這樣的程式就流傳下來，連自己都覺得這樣的方式很不方便，而且每次都要指定參數，操作方式並不是很友善。後來看到 <a href="http://nodejs.org/" target="_blank" rel="external">node.js</a> event io 的概念才有 IO 存取的概念，類似像這種批量查詢的需求，一般來說都是以同步的概念下去執行，也就是一個查詢完成之後再做下一個查詢，查詢一百次、一千次就要同步的等待每一個request完成。有沒有辦法讓查詢更快？可以用多執行緒來解決，無奈程式不好寫，除錯不容易，因此一直沒有實做。</p>
+<h1 id="Clinet端的檔案輸入與輸出"><a href="#Clinet端的檔案輸入與輸出" class="headerlink" title="Clinet端的檔案輸入與輸出"></a>Clinet端的檔案輸入與輸出</h1><p>於是我用node.js來實做這種批次查詢功能，利用Event IO的概念來實做，的確可以很快速的做回應，但通常要批量轉換的地址資料都會很大，若在本機執行還沒什麼大問題，但若做成web系統，就還要讓使用者上傳、解析文件等等，非常麻煩，因此這樣的方式也不理想。最後我把腦筋動到 <a href="http://www.html5rocks.com/en/tutorials/file/dndfiles/" target="_blank" rel="external">HTML5 FileReader</a>，稍微試了一下，可以讓使用者選擇檔案，並直接透過javascript來讀取檔案內容，parse正確資料之後就可以在client端做AJAX批次的查詢。然而有輸入，就要有輸出，html5 FileWriter API幾乎沒有瀏覽器實做，因此Writer無法使用，不過我找到兩種方式來做文字檔的輸出：</p>
+<ul>
+<li>另開新檔：<a href="http://stackoverflow.com/questions/6464828/cross-browser-save-as-txt" target="_blank" rel="external">http://stackoverflow.com/questions/6464828/cross-browser-save-as-txt</a> 這種方式利用瀏覽器開啟檔案的方式來實做，但 IE 系列不支援，若資料單純且可以排除IE，可以用這種方式來做，非常簡單。</li>
+<li><a href="https://github.com/dcneiner/Downloadify" target="_blank" rel="external">Downloadify</a> 則是用flash來實做另存檔案，使用上也不難。</li>
+</ul>
+<p>萬事具備，只欠Coding。那就來實做吧。</p>
+<p>javascript根本就是天生拿來做這種事情的，不費吹灰之力就完成了批次輸出系統，由於是用非同步的ajax來做查詢，因此同時發出ajax查詢之後等待回傳結果，而查詢的效能也非常的快，完全取決於server端給不給力的傳回資料。用說的實在是不過隱，分享片段的程式來瞧瞧。</p>
+<h1 id="試用連結"><a href="#試用連結" class="headerlink" title="試用連結"></a>試用連結</h1><p><a href="http://api.urmap.com/parseAddressCSV/web/" target="_blank" rel="external">友邁科技多筆定址輸出系統</a>，歡迎企業有大量需求申請使用。</p>
+<h1 id="讀取檔案"><a href="#讀取檔案" class="headerlink" title="讀取檔案"></a>讀取檔案</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//讀取檔案</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> files = $(<span class="string">'#filesInput'</span>)[<span class="number">0</span>].files;</div><div class="line">    <span class="keyword">if</span> (!files.length) &#123;</div><div class="line">        alert(<span class="string">'請輸入'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> file = files[<span class="number">0</span>];</div><div class="line">    <span class="keyword">var</span> fileName = file.fileName;</div><div class="line">    <span class="keyword">var</span> fileSize = file.fileSize;</div><div class="line">    <span class="keyword">var</span> info = [<span class="string">'檔案名稱：'</span> + file.fileName, <span class="string">'檔案大小：'</span> + (file.fileSize / <span class="number">1024</span>) + <span class="string">'k'</span>];</div><div class="line">    <span class="keyword">if</span> (file.lastModifiedDate) &#123;</div><div class="line">        info.push(<span class="string">'最近修改日期：'</span> + file.lastModifiedDate.toLocaleDateString());</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> infoHTML = info.join(<span class="string">'&amp;amp;nbsp;&amp;lt;br&amp;gt;'</span>);</div><div class="line">    $(<span class="string">'#d2-info'</span>).html(infoHTML);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">    reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="string">'#d2-content'</span>).text(reader.result);</div><div class="line">        $(<span class="string">'#d2'</span>).dialog(<span class="string">'open'</span>);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> encoding = $(<span class="string">'#encoding option:selected'</span>).text();</div><div class="line">    reader.readAsText(file, encoding);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="匯出成CSV"><a href="#匯出成CSV" class="headerlink" title="匯出成CSV"></a>匯出成CSV</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//匯出成CSV</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">exportCSV</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//    console.log('export');</span></div><div class="line">    <span class="keyword">var</span> data = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; addressCallback.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> line = [];</div><div class="line">        <span class="keyword">var</span> addressLine = addressCallback[i];</div><div class="line">        line.push(addressLine.address);</div><div class="line">        line.push(addressLine.formal_address);</div><div class="line">        line.push(addressLine.city);</div><div class="line">        line.push(addressLine.area);</div><div class="line">        line.push(addressLine.longitude);</div><div class="line">        line.push(addressLine.latitude);</div><div class="line">        line.push(addressLine.xcoor);</div><div class="line">        line.push(addressLine.ycoor);</div><div class="line">        line.push(addressLine.level);</div><div class="line">        line.push(addressLine.position_result);</div><div class="line">        data.push(line.join(<span class="string">','</span>));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> exportData = data.join(<span class="string">'\n'</span>);</div><div class="line">    <span class="comment">//var newDoc = window.open( &amp;quot;data:application/x-download;charset=utf-8,&amp;quot;  , 'address_export.csv', '', '');</span></div><div class="line">    <span class="comment">//newDoc.document.write(data);</span></div><div class="line">    Downloadify.create(<span class="string">'downloadify'</span>, &#123;</div><div class="line">        <span class="attr">filename</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> ts = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">            <span class="keyword">return</span> <span class="string">'address_export'</span> + ts + <span class="string">'.csv'</span>;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">data</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> exportData;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            alert(<span class="string">'You must put something in the File Contents or there will be nothing to save!'</span>);</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">transparent</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">swf</span>: <span class="string">'./downloadify/downloadify.swf'</span>,</div><div class="line">        <span class="attr">downloadImage</span>: <span class="string">'./CSV.64.png'</span>,</div><div class="line">        <span class="attr">width</span>: <span class="number">64</span>,</div><div class="line">        <span class="attr">height</span>: <span class="number">64</span>,</div><div class="line">        <span class="attr">transparent</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">append</span>: <span class="literal">false</span></div><div class="line">    &#125;);</div><div class="line">    $(<span class="string">'#downloadify'</span>).show();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>值得一提的是，利用 <a href="http://api.jquery.com/jQuery.getScript/" target="_blank" rel="external">jQuery.getScript</a> 的方式比 <a href="http://api.jquery.com/jQuery.ajax/" target="_blank" rel="external">jQuery.ajax</a> 的方式要快，我想是用 getScript 的方式來直接執行 javascript 更快速。同樣的概念我想可以應用在所有需要批量輸入輸出的系統上，只要打開 browser，不需要安裝任何東西，也不需要上傳檔案到 server 端處理，完全透過 client 端解決所有的事情，javascript 的應用真是越來越廣泛了，有需要使用這個好用的系統請洽 <a href="http://www.urmap.com/cs/report.php" target="_blank" rel="external">友邁科技客服</a>，會有親切的小姐跟您聯絡XD。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/09/15/keep-foolish-and-hungry/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2011/09/15/keep-foolish-and-hungry/" itemprop="url">
+                  繼續保持又笨又餓
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-09-15T18:31:00+08:00">
+                2011-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img class="alignleft" src="http://3.crazymike.tw/upload/product/62/16/m4158_1_1313462957.jpg" alt="stay hungry, stay foolish" width="250" height="250">前陣子一些因緣際會的關係，讓我有機會跟<a href="http://www.miiicasa.com/" target="_blank">miiicasa</a>的<a href="http://josephj.com/" target="_blank">Awoo</a>深入的聊天，看到他的努力與成就，深深地佩服不已，多跟高手切磋，果然會有更深的體悟，並瞭解自己的渺小。回頭看看自己走進資訊這條路也走了好幾年，工作之後的這幾年，讓我的經驗值增加不少，不敢說自己多有成就，但至少在這條路上，我還抱持著一股熱血想要為這個領域付出心血。「分享才是王道」。在這個領域上，分享的精神在網路上蔓延開來，有多少次我想分享的動力，是因為我在網路上遍尋不到（或是自己腦殘不知道怎麼找）平常取用於網路資源，偶爾也該貢獻一下，這樣的精神，讓我在<a href="http://josephj.com/" target="_blank">Awoo</a>與他的團隊身上找到令人感動且熱血沸騰的血液。</p><br><p>其實技術本身是不值錢的，技術一定需要實踐與應用才會彰顯他的價值，然而工作中，有時後會遇到某些人，也許技術能力很強，但卻很容易對某些人因為不懂得某些技術而嗤之以鼻，例如：「拜託，什麼時代了還在用Table切版」、「某國立大學的連相對路徑和絕對路徑都搞不懂？」。事實上「聞道有先後，術業有專攻」，你會這些知識，也許只是因為你活在這個時代罷了，你敢保證你會得這些技術，到了十年後還會再用嗎？沒有人能保證。事實上很多技術只是「知道」或「不知道」而已，就像食譜，為什麼師父很在意食譜被偷走，因為某個配方被偷走就會被模仿開來。（除了日本人很注重的「用心」沒辦法偷走之外）但技術這種東西，你知道了，沒有應用、沒有分享是不會有價值的。programer的價值不在於懂多少，而是在於解決問題的能力，當遇到問題時是否能找到最合適的方法來解決。</p><br><p>前陣子看到一個很棒的小故事：出自哪我已經忘了，上網搜尋到處都是轉貼，我想來源已經不可考了，所幸直接貼上了：</p><br><p style="padding-left: 60px;"><span style="color: #434343;">話說有二個和尚，他們分別在相鄰的二座山上的廟裡。</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">這二座山之間有一條溪於是這二個和尚，每天都會在同一時間下山去溪邊挑水，久而久之，他們便成為好朋友了。就這樣，時間在每天挑水中，不知不覺己經過了五年。</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">突然有一天，左邊這座山的和尚沒有下山挑水 ，右邊那座山的和尚心想:「他大概睡過頭了。」便不以為意。</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">哪知第二天，左邊這座山的和尚，還是沒有下山挑水，第三天也一樣，過了一個星期，還是一樣直到過了一個月，右邊那座山的和尚，終於受不了了。</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">他心想:「我的朋友可能生病了,我要過去拜訪他，「看看能幫上什麼忙。」</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">於是他便爬上了左邊這座山， 去探望他的老朋友等他到達左邊這座山的廟，看到他的老友之後，大吃一驚 因為他的老友，正在廟前打太極拳，一點也不像一個月沒喝水的人。</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">他好奇地問:「你巳經一個月，沒有下山挑水了，難道你可以不用喝水嗎?」</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">左邊這座山的和尚說:「來來來，我帶你去看。」 於是，他帶著右邊那座山的和尚走到廟的後院指著一口井說:「這五年來，我每天做完功課後，都會抽空挖這口井。即使有時很忙，能挖多少就算多少。</span></p><br><p style="padding-left: 30px;"><span style="color: #434343;">如今，終於讓我挖出井水，我就不必再下山挑水，我可以有更多時間，練我喜歡的太極拳。」</span></p><br><p>看完這個故事很有感觸，其實各行各業，都需要保持著這樣的心態，為自己的未來而努力，每天為自己的井多挖深一點，哪怕有一天，你就可以挖出井水；與其每天都在抱怨懷才不遇、工作無聊，不如換個心態，轉個心境讓自己隨時都為了下一步而準備。我常常在深夜裡，還在為某個問題而思考、搜尋，或者survey新的技術，工作固然重要，撥點時間保持自己的頭腦運轉也是很重要的。除了思考工作遇到的問題之外，從日常生活中找出想解決的事情，保持熱忱，保持實做的力量，將會是無比的競爭力。</p><br><p>賈伯斯告訴大家：「保持著又笨又餓吧」。<a title="Stay Hungry, Stay Foolish" href="http://blog.blackbing.net/?p=370">Stay Hungry, Stay Foolish</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = 'page/4/index.html';
+
+      var disqus_title = "";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

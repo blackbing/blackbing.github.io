@@ -1,0 +1,2283 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blackbing Playground">
+<meta property="og:url" content="http://blog.blackbing.net/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blackbing Playground">
+<meta name="twitter:description" content="記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/"/>
+
+
+
+
+
+  <title> Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2016/07/24/we-developed-cnyes-app-with-react-native/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2016/07/24/we-developed-cnyes-app-with-react-native/" itemprop="url">
+                  我們用 react-native 開發鉅亨網 app
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-24T07:08:00+08:00">
+                2016-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2016/07/24/we-developed-cnyes-app-with-react-native/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2016/07/24/we-developed-cnyes-app-with-react-native/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>身為一個 frontend developer，在看到 react-native 問世之後一直對 react-native 很有興趣，最近終於有機會可以碰到了，也因此才有這篇 <del>勸世文</del> 心得，本文主要想記錄一下開發到目前為止所踩過的坑，為還在 survey 技術的團隊開路。</p>
+<h1 id="適合用-react-native-開發嗎？"><a href="#適合用-react-native-開發嗎？" class="headerlink" title="適合用 react-native 開發嗎？"></a>適合用 react-native 開發嗎？</h1><p>在接觸 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 之前，其實我們對開發 app 是還沒有信心的，一來這東西太新，二來我們也沒有實際開發過 app 的經驗，很多 UI 效果都要 survey 才知道到底做不做的到，就算 native support 也不知道 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 有沒有 support。一直到我們真的把 app 上架之後，才覺得比較有一點信心。但在開始之前，先確認一下是否有對 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 誤解：</p>
+<h3 id="不是-write-once-run-everywhere，而是-learn-once-write-anywhere"><a href="#不是-write-once-run-everywhere，而是-learn-once-write-anywhere" class="headerlink" title="不是 write once, run everywhere，而是 learn once, write anywhere"></a>不是 write once, run everywhere，而是 learn once, write anywhere</h3><p>   在大多數的情況下，你可以讓 Android/IOS 共用同一份 code，但這不代表你可以爽爽的不管平台問題就可以實作出功能。兩個平台畢竟還是有一些不樣的 user experience，例如 iPhone 沒有 back button，所以你需要為了 android 多處理 back button 的 behavior (<a href="https://facebook.github.io/react-native/docs/backandroid.html" target="_blank" rel="external">BackAndroid</a>)。也因此在程式裡頭還是免不了得判斷 <a href="https://facebook.github.io/react-native/docs/platform-specific-code.html" target="_blank" rel="external">Platform</a>。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  <span class="attr">height</span>: (Platform.OS === <span class="string">'ios'</span>) ? <span class="number">200</span> : <span class="number">100</span>,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>不過很方便的地方在於因為 react 本身就是個 view 的 engine，因此要將 component 拆開是輕而易舉的事情，而 react-native 可以讓你很輕鬆的將程式分開。</p>
+<p>例如原本我們有一隻 <code>NewsDetailPagger.js</code> 的 component，但由於在實作上 Android 和 ios 上面的行為遇到不同的問題。後來就將這個 component 拆成</p>
+<ul>
+<li><code>NewsDetailPagger.android.js</code></li>
+<li><code>NewsDetailPagger.ios.js</code></li>
+</ul>
+<p>就可以讓兩種平台在 compile 時就只 build 相對應的程式，也許之後也會有</p>
+<ul>
+<li><code>NewsDetailPagger.ms.js</code></li>
+<li><code>NewsDetailPagger.tizen.js</code></li>
+</ul>
+<p>註：<a href="https://techcrunch.com/2016/04/13/facebooks-react-native-open-source-project-gets-backing-from-microsoft-and-samsung/" target="_blank" rel="external">Facebook’s React Native gets backing from Microsoft and Samsung</a></p>
+<p>總之，用 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 開發也是得考慮不同 platform 的問題，雖然 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 官方已經解決大多數的繁瑣的部分，但你仍須思考不同平台是否適合同一套 UI/邏輯。</p>
+<h3 id="react-native-不是-webview"><a href="#react-native-不是-webview" class="headerlink" title="react-native 不是 webview"></a><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 不是 webview</h3><p>不要以為你原本就用 react 開發 mobile web 之後就可以移植到 react-native，基本上可共用的部分可能只有 pure 的商業邏輯，跟 view 有關的部分都會需要重寫。</p>
+<h1 id="react-native-的優點"><a href="#react-native-的優點" class="headerlink" title="react-native 的優點"></a><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 的優點</h1><p>整理一下用 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 開發的優點：</p>
+<h3 id="debug-非常方便："><a href="#debug-非常方便：" class="headerlink" title="debug 非常方便："></a>debug 非常方便：</h3><p> 基本上如果只是 view 的 update，<a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 都已經做好 hot reload 了，只要程式碼修改就會局部 rerender。</p>
+<h3 id="React-大幅降低學習成本"><a href="#React-大幅降低學習成本" class="headerlink" title="React 大幅降低學習成本"></a>React 大幅降低學習成本</h3><p>如果你原本就熟悉 react 的開發流程，從 react 跳進 react-native 很快，因為原本的經驗是可以繼續累積的，包含 react, flux, redux, 各種 react performance 調效的經驗都是有用的。</p>
+<h3 id="感受不到跟寫-web-有太大的差別"><a href="#感受不到跟寫-web-有太大的差別" class="headerlink" title="感受不到跟寫 web 有太大的差別"></a>感受不到跟寫 web 有太大的差別</h3><p>一開始最讓我驚喜的其實是用 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 開發我真的不覺得我在開發 app，反而就像是多了一種特異的 browser 而已，而且 debug 也是用熟悉的 console 在 debug。<a href="https://github.com/jhen0409/react-native-debugger" target="_blank" rel="external">react-native-debugger</a> 也可以看到 jsx 的 tree。<br><img src="https://cloud.githubusercontent.com/assets/3001525/15636231/9e47d322-262a-11e6-8326-9a05fc73adec.png" alt=""></p>
+<h3 id="專心寫你的商業邏輯"><a href="#專心寫你的商業邏輯" class="headerlink" title="專心寫你的商業邏輯"></a>專心寫你的商業邏輯</h3><p>基本上 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 已經處理掉大部分的效能問題，例如 <a href="https://facebook.github.io/react-native/docs/listview.html" target="_blank" rel="external">listView</a> 已經處理了大量列表只會顯示使用者看到的部份而已。這讓開發者可以專注於產品功能的實現，不用花費太多心力在調整 UI 上的效能。</p>
+<h3 id="react-native-的生態圈非常完整"><a href="#react-native-的生態圈非常完整" class="headerlink" title="react-native 的生態圈非常完整"></a><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 的生態圈非常完整</h3><p><a href="https://github.com/jondot/awesome-react-native/" target="_blank" rel="external">awesome-react-native</a> 有整理了幾乎目前有的 resource ，包含教學，components 等等，看也看不完的東西。open source 的世界就是這麼迷人，based on 全世界工程師的開發與回饋造就健壯的社群。</p>
+<h3 id="Frontend-resource"><a href="#Frontend-resource" class="headerlink" title="Frontend resource"></a>Frontend resource</h3><p>藉由 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a>，自此 frontend Engineer 可以支援 app 的開發，開發UI 上的經驗可以共用，對於組織內人力的配置也可以更加靈活彈性。</p>
+<h3 id="UI-Explorer"><a href="#UI-Explorer" class="headerlink" title="UI Explorer"></a>UI Explorer</h3><p><a href="https://github.com/facebook/react-native/tree/master/Examples/UIExplorer" target="_blank" rel="external">UI Explorer</a> 列出了幾乎所有 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 支援的 component 與範例，看 UIExplorer 有時比文件寫得更完整。</p>
+<h1 id="react-native-的缺點"><a href="#react-native-的缺點" class="headerlink" title="react-native 的缺點"></a><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 的缺點</h1><p>雖然開發到現在覺得很滿意，不過還是得列一下缺點。</p>
+<h3 id="掰咖的-style"><a href="#掰咖的-style" class="headerlink" title="掰咖的 style"></a>掰咖的 style</h3><p><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 用 javascript 來實現 css 的設計(<a href="https://facebook.github.io/react-native/docs/style.html" target="_blank" rel="external">style</a>)，但並不是支援所有的屬性，例如 <code>z-index</code> (<a href="https://github.com/facebook/react-native/commit/d64368b9e239b574039f4a6508bf2aeb0806121b" target="_blank" rel="external">0.29 之後支援 ios</a>)。</p>
+<p>沒有 <code>image-background</code>，沒有 <code>background-repeat</code> 等等。不過雖然少了這些東西，大部分的需求還是可以想辦法實現的，也可以藉由 <a href="https://github.com/magicismight/react-native-svg" target="_blank" rel="external">react-native-svg</a> 做到很多漂亮的 UI。</p>
+<h3 id="各種踩坑"><a href="#各種踩坑" class="headerlink" title="各種踩坑"></a>各種踩坑</h3><p>一開始在用 navigator 時用了 <a href="https://facebook.github.io/react-native/releases/0.30/docs/navigation.html#navigationexperimental" target="_blank" rel="external">NavigationExperimental</a>，但由於是 experimental，每次 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 更新都有 api change，因此每次都要隨著更新。</p>
+<p>像是這個新聞內頁左右翻動的功能，看似很簡單，但因為資料是動態的，所以嘗試了好幾種 pagger 的實作，最後是用 <a href="https://github.com/race604/react-native-viewpager" target="_blank" rel="external">react-native-viewpager</a><br><img src="https://lh3.googleusercontent.com/nrxIQQQCuICKGRm87HQRZQCbvtiiSDm64W8FyWGRaxtqXuWQVKAoYt0YNp-6MulGF_w=h900-rw" alt=""></p>
+<h3 id="升級總是很痛苦"><a href="#升級總是很痛苦" class="headerlink" title="升級總是很痛苦"></a>升級總是很痛苦</h3><p><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 每兩週就會 realease 一個版本，這使得我們在開發到第一次上架成功之間就升級了無數次，第一個版本是 <code>0.21</code>，到目前為止已經是 <code>0.30</code>，中間有幾次升級是非常重大的更新，很多相依的 package 也要跟著更新才能順利更新上去。</p>
+<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 讓前端工程師可以站在巨人的肩膀上更快速的開發，雖然到目前為止在實作中還是有許多地雷，但相信在 open source 的基礎下會更加的健壯，若您在開發的 app 功能都沒有跳脫 <a href="https://github.com/facebook/react-native/tree/master/Examples/UIExplorer" target="_blank" rel="external">UI Explorer</a> 的範例，相信要用 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 來開發可以相對的降低開發的時間與成本。</p>
+<h1 id="鉅亨網-App"><a href="#鉅亨網-App" class="headerlink" title="鉅亨網 App"></a>鉅亨網 App</h1><ul>
+<li><a href="https://play.google.com/store/apps/details?id=com.cnyes.android" target="_blank" rel="external">Android 下載連結</a></li>
+<li><a href="https://itunes.apple.com/tw/app/ju-heng-cai-jing-xin-wen/id1071014509?l=zh&amp;mt=8" target="_blank" rel="external">IOS 下載連結</a></li>
+</ul>
+<p>另外 <a href="https://facebook.github.io/react-native/releases/0.28/showcase.html" target="_blank" rel="external">react-native showcase</a> 也有我們的身影喔！(不過後來因為 showcase 的政策更新被移掉了)。</p>
+<p>歡迎討論 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 開發的相關問題。</p>
+<h1 id="工商服務時間"><a href="#工商服務時間" class="headerlink" title="工商服務時間"></a>工商服務時間</h1><p>歡迎有熱情於互聯網科技、財經資訊、金融理財的專家人才<a href="https://www.104.com.tw/jobbank/custjob/index.php?r=cust&amp;j=54524b736674475e393a426b5a5c3e21940524c2f3c7447292929292840592e2d008j52&amp;jobsource=" target="_blank" rel="external">加入鉅亨網</a>。</p>
+<ul>
+<li><a href="https://goo.gl/CbOQKa" target="_blank" rel="external">Senior backend engineer</a></li>
+<li><a href="https://goo.gl/tIGWWK" target="_blank" rel="external">Backend engineer</a></li>
+<li><a href="https://www.104.com.tw/job/?jobno=4s4rq&amp;jobsource=" target="_blank" rel="external">Frontend engineer</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2015/08/19/react-react-numeral-input/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2015/08/19/react-react-numeral-input/" itemprop="url">
+                  [react] react-numeral-input
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-19T08:25:00+08:00">
+                2015-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/input/" itemprop="url" rel="index">
+                    <span itemprop="name">input</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/input/numeral-input/" itemprop="url" rel="index">
+                    <span itemprop="name">numeral-input</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2015/08/19/react-react-numeral-input/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2015/08/19/react-react-numeral-input/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="react-numeral-input"><a href="#react-numeral-input" class="headerlink" title="react-numeral-input"></a>react-numeral-input</h1><p><img src="http://bingo.d.pr/yWSq.gif" alt=""></p>
+<p>之前寫了一個 <a href="http://blackbing.github.io/react-numeral-input/" target="_blank" rel="external">react-numeral-input</a>，主要是可以所見即所得的處理數字的格式，例如 100000 直接顯示為 100,000。原本的想法是將所有的輸入都轉成數字，然後將輸入的數字加上數字的格式。</p>
+<p>不過這樣的作法會造成一個問題，就是當使用者在開啟輸入法時，打的任何值都會被吃掉（看起來像是鍵盤沒用的樣子）。網路上找到的解法大部分都是去做字串取代，但這樣無法解決問題。</p>
+<h1 id="input-type-”number”"><a href="#input-type-”number”" class="headerlink" title="input type=”number”"></a>input type=”number”</h1><p>html 的 <code>&lt;input type=&quot;number&quot; &gt;</code> 無法顯示非數字，因此在做這個 component 時就知道不能用這個 type 了。</p>
+<h1 id="ime-mode-disabled"><a href="#ime-mode-disabled" class="headerlink" title="ime-mode: disabled"></a>ime-mode: disabled</h1><p>於是查了一下發現看起來最簡單的方法就是 disable <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/ime-mode" title="ime-mode" target="_blank" rel="external">ime-mode</a>，但 ime-mode 只有在 firefox 和 IE 上能動。沒辦法跨瀏覽器。</p>
+<h1 id="keycode-229"><a href="#keycode-229" class="headerlink" title="keycode 229"></a>keycode 229</h1><p>接著發現當使用者用輸入法輸入時，收到的 keyCode 都是 229，也就是說是可以檢查使用者目前是開啟輸入法的，也可以提醒使用者關閉輸入法已確保正確的輸入。但麻煩的是還要額外提醒使用者的 UI 或者 notice。<br><img src="http://bingo.d.pr/tQBa.png" alt="React-numeral-input_by_blackbing.jpg"></p>
+<h1 id="User-Feedback"><a href="#User-Feedback" class="headerlink" title="User Feedback"></a>User Feedback</h1><p>轉個念一想，其實問題是在使用者輸入時，沒有對應的 user feedback 給他，才會造成誤解欄位無法輸入的情況，因此保留不正確的格式好像也不是一個問題？<br><img src="http://bingo.d.pr/xURl.png" alt="螢幕快照_2015-08-19_下午4_42_28（2）.jpg"></p>
+<p>這樣就不需要去考慮輸入法什麼問題，類似這種所見即所得的工具，可以改變使用者的輸入，但要避免讓使用者誤解「輸入 -&gt; 輸出沒反應。」</p>
+<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><p>如此要解決的問題就顯得容易的多，當你在輸入時開啟輸入法，還是可以輸入，但程式不會將你輸入錯的值吃掉，而是返回給試用者，至於是否要顯示 error message，則交給系統自己決定即可。看似簡單的問題，卻繞了一大圈回來才想到解法。</p>
+<h1 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h1><p>有興趣的人可以玩玩看　<a href="http://blackbing.github.io/react-numeral-input/" target="_blank" rel="external">react-numeral-input</a>，或是直接安裝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react-numeral-input --save-dev</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2015/07/06/javascript-use-the-deferred-processing-dynamic-order-of-tasks/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2015/07/06/javascript-use-the-deferred-processing-dynamic-order-of-tasks/" itemprop="url">
+                  [javascript] 利用 Deferred 處理動態的順序性任務
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-06T09:29:00+08:00">
+                2015-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/Deferred/" itemprop="url" rel="index">
+                    <span itemprop="name">Deferred</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/Deferred/pipe/" itemprop="url" rel="index">
+                    <span itemprop="name">pipe</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2015/07/06/javascript-use-the-deferred-processing-dynamic-order-of-tasks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2015/07/06/javascript-use-the-deferred-processing-dynamic-order-of-tasks/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h1><p>之前寫了一篇 <a href="http://blog.blackbing.net/post/2014/05/09/javascript-deferred-ordered-task">利用 Deferred 處理順序性任務</a>，主要是利用 Deferred 來避免 callback 寫法的缺點。</p>
+<p>不過在實務上，可能會遇到更複雜一點的情況，例如：</p>
+<p><img src="http://bingo.d.pr/RcfB.png" alt="pipe array flow.png"></p>
+<p>這張圖的意思是要確保任務是 A-&gt;B-&gt;C　的執行順序，而且當 A,B,C　有任一個 fail　就會停止，不會再執行下去。我們直接來看應該要怎麼處理這樣的程式。</p>
+<h1 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = $.Deferred();</div><div class="line"><span class="keyword">var</span> b = $.Deferred();</div><div class="line"><span class="keyword">var</span> c = $.Deferred();</div><div class="line"></div><div class="line"><span class="keyword">var</span> checkA = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'checkA'</span>);</div><div class="line">  <span class="keyword">return</span> a.reject();</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> checkB = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'checkB'</span>);</div><div class="line">  <span class="keyword">return</span> b.resolve();</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> checkC = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'checkC'</span>);</div><div class="line">  <span class="keyword">return</span> c.reject();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> checkAll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> _dfr = $.Deferred().resolve();</div><div class="line">  _dfr = _dfr</div><div class="line">    .pipe(checkA)</div><div class="line">    .pipe(checkB)</div><div class="line">    .pipe(checkC);</div><div class="line">  <span class="keyword">return</span> _dfr.promise();</div><div class="line">&#125;;</div><div class="line"></div><div class="line">checkAll().done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'checkAll done'</span>);</div><div class="line">&#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'checkAll fail'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>為了簡化程式，我直接在 checkA/B/C　的 function 中回傳 Deferred reject or resolve。上述的例子可以直接看<a href="http://jsbin.com/yegipo/edit?js,console" target="_blank" rel="external">結果</a>。<br>可以看到結果只會印出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"checkA"</span></div><div class="line"><span class="string">"checkAll fail"</span></div></pre></td></tr></table></figure>
+<p>是因為 checkA 執行時就被 reject 了，因此不會再繼續執行下去。您可以自己試試看將 reject 改成 resolve　看一下執行的結果會變成怎麼樣。</p>
+<h1 id="Dynamic-task-function"><a href="#Dynamic-task-function" class="headerlink" title="Dynamic task function"></a>Dynamic task function</h1><p>實務操作上 task 也許會是動態的，我們可以很簡單的將任務指派成一個 array 的形式，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> funList = [checkA, checkB, checkC];</div></pre></td></tr></table></figure>
+<p>然後將 checkAll 的任務串起來</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> checkAll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> _dfr = $.Deferred().resolve();</div><div class="line">  <span class="keyword">var</span> funList = [checkA, checkB, checkC];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;funList.length; i++)&#123;</div><div class="line">    _dfr = _dfr.pipe(funList[i]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> _dfr.promise();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>最後的程式碼結果請<a href="http://jsbin.com/decuga/edit?js,console" target="_blank" rel="external">猛擊這裡</a></p>
+<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><p>要注意的是不能用 <a href="https://api.jquery.com/jQuery.when/" target="_blank" rel="external">jQuery.when</a>，when 是一次發出去執行，會等到全部做完才會回來。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="http://stackoverflow.com/questions/11833851/jquery-deferred-with-an-array-of-functions/31241768#31241768" target="_blank" rel="external">jQuery Deferred with an array of functions</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2015/04/15/react-selection-auto-complete-component/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2015/04/15/react-selection-auto-complete-component/" itemprop="url">
+                  [react] selection auto-complete component
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-15T06:45:00+08:00">
+                2015-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-components/" itemprop="url" rel="index">
+                    <span itemprop="name">react-components</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-components/auto-complete/" itemprop="url" rel="index">
+                    <span itemprop="name">auto-complete</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-components/auto-complete/Selection/" itemprop="url" rel="index">
+                    <span itemprop="name">Selection</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2015/04/15/react-selection-auto-complete-component/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2015/04/15/react-selection-auto-complete-component/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在找一個 selection 的 react component，但希望可以支援 auto-complete，找了好幾個不是整合有問題，就是彈性不夠，試了幾個都不太好整合。後來找到這個，<a href="http://jedwatson.github.io/react-select/" target="_blank" rel="external">http://jedwatson.github.io/react-select/</a>，蠻不錯的 UI，想要的功能也都支援。特此記錄一下。</p>
+<h1 id="react-select"><a href="#react-select" class="headerlink" title="react-select"></a><a href="https://github.com/JedWatson/react-select" target="_blank" rel="external">react-select</a></h1><p><a href="http://jedwatson.github.io/react-select/" target="_blank" rel="external">demo</a></p>
+<p><img src="http://bingo.d.pr/Dh7d.png" alt="螢幕快照 2015-04-15 下午2.45.56.png"><br>蠻喜歡這種 UI 的，兼具 input 和 select 的控制項。</p>
+<h2 id="以下是其他類似的，但用過都還是有缺點"><a href="#以下是其他類似的，但用過都還是有缺點" class="headerlink" title="以下是其他類似的，但用過都還是有缺點"></a>以下是其他類似的，但用過都還是有缺點</h2><ol>
+<li><a href="https://github.com/asbjornenge/react-datalist" target="_blank" rel="external">https://github.com/asbjornenge/react-datalist</a><br>利用 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist" target="_blank" rel="external">html5 datalist</a>，用 react 的特性其實很好操作，缺點是 支援瀏覽器有限(<a href="http://caniuse.com/#search=datalist" target="_blank" rel="external">http://caniuse.com/#search=datalist</a>)，polyfill 太醜然後某些 action 操作不太一樣。</li>
+<li><a href="https://github.com/fmoo/react-typeahead" target="_blank" rel="external">https://github.com/fmoo/react-typeahead</a><br>看到 typeahead 我以為是 twitter 的 <a href="https://twitter.github.io/typeahead.js/" target="_blank" rel="external">typeahead</a> 的 react 版本，後來看了 sourcecode 才發現作者是重頭實做了一次 typeahead ，但是很多部分跟原本的 typeahead 不太一樣。操作起來綁手綁腳的。</li>
+<li><p><a href="https://github.com/eliseumds/react-autocomplete" target="_blank" rel="external">https://github.com/eliseumds/react-autocomplete</a><br>這個 repository 取名取得很好不過跟 npm 的 <a href="https://www.npmjs.com/package/react-autocomplete" target="_blank" rel="external">react-autocomplete</a> 又不一樣，然後 npm 的 react-autocomplete 的命名其實是 combobox ，而且沒在維護，連 source code 也不在 github 上了。</p>
+</li>
+<li><p><a href="https://github.com/prometheusresearch/react-selectbox" target="_blank" rel="external">https://github.com/prometheusresearch/react-selectbox</a><br>因為星星數不夠多，所以根本沒用過。</p>
+</li>
+</ol>
+<p>以上。雖然網路資源很多，但是找起來好像在查 paper 的感覺，希望有幫助到有相關需求的人。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2015/01/19/secrets-on-npm-packagejson/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2015/01/19/secrets-on-npm-packagejson/" itemprop="url">
+                  Secrets in npm package.json
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-19T06:46:00+08:00">
+                2015-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/npm/" itemprop="url" rel="index">
+                    <span itemprop="name">npm</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/npm/講個秘訣/" itemprop="url" rel="index">
+                    <span itemprop="name">講個秘訣</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2015/01/19/secrets-on-npm-packagejson/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2015/01/19/secrets-on-npm-packagejson/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="講個秘訣"><a href="#講個秘訣" class="headerlink" title="講個秘訣"></a>講個秘訣</h2><p>在用 npm 來管理 node package 時，愚昧如我只會用 <code>npm install</code> 來 install package，在歷經一些痛苦之後決定好好來看一下 package.json 的秘密。</p>
+<h1 id="dependencies-V-S-devDependencies"><a href="#dependencies-V-S-devDependencies" class="headerlink" title="dependencies V.S. devDependencies"></a>dependencies V.S. devDependencies</h1><p>區分專案的開發時的模組相依性。一般來說開發時都會用 <code>npm i $PACKAGE_NAME --save-dev</code> 這樣就會設定成該模組的 devDependency。但如果參數是給 <code>--save</code> 就會是 dependency。這是用來區別 production mode 時不需要下載 devDependency 的 package。</p>
+<p>需要注意的是，<code>npm install</code> 預設會載入 devDependency 的 package，若是在 production mode 時，要做<br> <code>npm i --production</code> 指定只載入 dependency 的 package，如此就不會多載入一些開發才需要用到的 package。</p>
+<h1 id="npm-scripts"><a href="#npm-scripts" class="headerlink" title="npm scripts"></a>npm scripts</h1><p>不知道有沒有人跟我一樣，看到 Caesar 大大這個討論串，<a href="https://www.facebook.com/clonncd/posts/10153426073214838?pnref=story" target="_blank" rel="external">多想三秒，其實可以不用 grunt &amp; gulp.</a>，才發現原來 npm 可以自訂 scripts，然後傻傻的打 <code>npm watch</code>，結果不能執行，後來查了一下才知道 npm 有預設的指令，如果要執行自訂的指令要用 <code>npm run xxx</code>來執行。所以可以搭配一些 shell 指令來簡單的做你想做的事情。</p>
+<h2 id="pre-post-scripts"><a href="#pre-post-scripts" class="headerlink" title="pre/post scripts"></a>pre/post scripts</h2><p>然後在看 npm scripts 時看到一個蠻有趣的用法。</p>
+<blockquote>
+<p>Pre and post commands with matching names will be run for those as well (e.g. premyscript, myscript, postmyscript).</p>
+</blockquote>
+<p>簡單來說可以分開執行 script 的順序，在做複雜的指令還蠻好用的。 例如你可以自訂：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">        <span class="attr">"bingo"</span>: <span class="string">"echo Bingo"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以當執行 <code>npm bingo</code> 就會 echo <code>Bingo</code>，接著加上 pre/post 的話，例如：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"bingo"</span>: <span class="string">"echo Bingo"</span>,</div><div class="line">    <span class="attr">"prebingo"</span>: <span class="string">"echo Hello"</span>,</div><div class="line">    <span class="attr">"postbingo"</span>: <span class="string">"echo World"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>這樣執行 <code>npm bingo</code> 就會 echo </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Hello</div><div class="line">Bingo</div><div class="line">World</div></pre></td></tr></table></figure>
+<p>舉例來說，我會搭配 bower 來管理前端需要用的 package，我就可以加上 postinstall 的指令來做 bower install。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"postinstall"</span>: <span class="string">"bower install"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>當執行 <code>npm install</code> 之後就會接著做 <code>bower install</code>。</p>
+<p>所以 <strong>ReadME</strong> 就不用再寫 Step1, Step2, …。只要 <code>npm install</code> 就可以搞定啦，而且 jenkins 的 job 設定也可以變的比較一致性了，專案自己該做的事情就寫在這些 scripts 即可。回過頭來說，<strong>「多想三秒，你真的可以不用 grunt &amp; gulp.」</strong></p>
+<h1 id="package-version-control"><a href="#package-version-control" class="headerlink" title="package version control"></a>package version control</h1><p>不知道有沒有人注意到，在執行 <code>npm install $PACKAGE_NAME</code> 時，他會指定成 “^1.2.3”，這是 follow <a href="https://github.com/npm/node-semver" target="_blank" rel="external">https://github.com/npm/node-semver</a> 的版本號規則。</p>
+<p>需要注意的是預設的 “^1.2.3”，意思是 <code>[ &#39;&gt;=1.2.3-0&#39;, &#39;&lt;2.0.0-0&#39; ]</code>，所以若 package 版本有更新，會自己升上去。最近幾次有遇到 jenkins 自己莫名其妙 build fail 就是因為版本不同而造成的問題。建議可以改成 “~1.2.3” <code>[ &#39;&gt;=1.2.3&#39;, &#39;&lt;1.3.0&#39; ]</code> 或是寫死版本 “=1.2.3”，再視專案而定更新就好。團隊開發時版本的控制很重要，沒有指定好大家拉不同的 code 常常會造成浪費時間的 debug。其他更詳細的用法就在參考 <a href="https://github.com/npm/node-semver" target="_blank" rel="external">https://github.com/npm/node-semver</a> 囉。</p>
+<h1 id="npm-outdated"><a href="#npm-outdated" class="headerlink" title="npm outdated"></a>npm outdated</h1><p>有空可以執行 <code>npm outdated</code> 來檢查 package 的更新，視情況而決定是否要更新 package。建議是開 feature branch 來做 upgrade package，沒問題再 merge 回去。</p>
+<p>以上，這些大概是開發常會遇到的一些心得與秘訣，如果想看更詳細的解釋就請直接看 doc 啦。</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><ul>
+<li><a href="https://docs.npmjs.com/files/package.json" target="_blank" rel="external">https://docs.npmjs.com/files/package.json</a></li>
+<li><a href="https://docs.npmjs.com/misc/scripts" target="_blank" rel="external">https://docs.npmjs.com/misc/scripts</a></li>
+<li><a href="https://github.com/npm/node-semver" target="_blank" rel="external">https://github.com/npm/node-semver</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/12/25/wedding-party-hackday/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2014/12/25/wedding-party-hackday/" itemprop="url">
+                  Wedding Party Hackday
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-25T04:38:00+08:00">
+                2014-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/12/25/wedding-party-hackday/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/12/25/wedding-party-hackday/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://bingo.d.pr/OwTR.jpg" alt="16.jpg"><br>最近完成了終身大事，也終於有點時間記錄一下了，身為一個宅宅工程師，我堅持自己的婚禮也要充斥一點宅味，當然也要感謝我的老婆容忍我的任性(疑~)。</p>
+<p>其實很久以前就想過婚禮時可以做哪些系統了，有鑑於大家都說到時候不會有時間做這些事情，於是我提早開始準備我要做的系統。</p>
+<h1 id="互動式婚紗照片"><a href="#互動式婚紗照片" class="headerlink" title="互動式婚紗照片"></a>互動式婚紗照片</h1><p>我一直覺得婚紗本又重又難收藏，所以我很早就想把婚紗照直接用螢幕輸出，但只做播放太無聊了，所以我想要加入一些互動的元素，很直覺就想到用「motion detect」來做翻頁。</p>
+<h2 id="gest-js"><a href="#gest-js" class="headerlink" title="gest.js"></a>gest.js</h2><p><a href="https://github.com/hadimichael/gest.js" target="_blank" rel="external">gest.js</a>這套 Library 可以用 camera 來辨識揮手的動作，辨識上下左右。試了一下辨識度還不錯。</p>
+<h2 id="jssor-slider"><a href="#jssor-slider" class="headerlink" title="jssor slider"></a>jssor slider</h2><p>要找適合的 slider library 反而找比較久，因為我希望可以支援上下左右的滑動效果，自動播放時也有一些客製化的特效，但大部分的 slide show 都只有左右滑動，最後找到這個客製化程度蠻高的 library <a href="http://www.jssor.com/" target="_blank" rel="external">jssor slider</a> ，實際使用時其實他也沒辦法直接用上下滑動，所以我有修改了他的原始碼，讓他可以支援動態改變左右滑動與上下滑動。</p>
+<p>最後就生出來這個版本了：<a href="http://blackbing.github.io/wedding-slides/" target="_blank" rel="external">DEMO</a>，有興趣玩的人只要把 /image/photos/ 底下的照片換掉即可。有空我再寫 README。</p>
+<p><img src="http://bingo.d.pr/KpyI.jpg" alt="10850072_10152841915926539_3126894732238031620_n.jpg"></p>
+<p>現場是用 iMac 顯示，然後在桌上弄點布置這樣，真是頗具巧思（自己說）。不過事實證明，沒有人介紹的話其實鮮少有人會發現可以用手控制，然後應該是小孩比較有興趣而已XD。</p>
+<h1 id="婚禮留言板"><a href="#婚禮留言板" class="headerlink" title="婚禮留言板"></a>婚禮留言板</h1><p>這個是我一直想做的東西，每次參加婚禮在開場前賓客都會不知道要幹嘛，早到的朋友會有點無聊，為了增加一點互動性，應該安排一些小活動給大家玩，類似的東西就是實體的留言箱，大家發一張小卡，然後上面些一些祝福的話，最後新人抽獎出來之類，不過因為沒有辦法看到大家的留言，少了一點即時的參與感。於是我又打算 web 化（沒辦法，我只會這個XD），讓賓客用手機留言，然後即時顯示在投影布幕上。</p>
+<h2 id="桌卡"><a href="#桌卡" class="headerlink" title="桌卡"></a>桌卡</h2><p>桌卡的範本來自於 <a href="http://www.mybigday.com.tw/" target="_blank" rel="external">mybigday</a> (個人覺得不好用)，不過我用了他的桌卡範本改成我要的格式，放了 QR code 和連結上去。<br><img src="http://bingo.d.pr/z1jq.png" alt="桌卡"></p>
+<h2 id="手機留言"><a href="#手機留言" class="headerlink" title="手機留言"></a>手機留言</h2><p><img src="http://bingo.d.pr/iLb3.jpg" alt="c21c5f114d9bbcba443f0d334b36f5ed (1).jpg"></p>
+<h2 id="留言板"><a href="#留言板" class="headerlink" title="留言板"></a>留言板</h2><p><img src="http://bingo.d.pr/1EAh.png" alt="螢幕快照 2014-12-25 13.20.21.png"></p>
+<h1 id="抽獎活動"><a href="#抽獎活動" class="headerlink" title="抽獎活動"></a>抽獎活動</h1><p>留言當然要用點誘因來讓大家留言囉，於是我做了一個透過手機抽獎，可以讓主持人邀請重要嘉賓抽獎的部分。<br><img src="http://bingo.d.pr/K3At.jpg" alt="c21c5f114d9bbcba443f0d334b36f5ed.jpg"></p>
+<p>最後的重頭戲就是抽獎了，由於前陣子很愛玩 ranger ，而且他的抽獎動畫實在是太可愛了，所以我就把裡面的動畫擷取出來做抽獎，效果不錯（自己說）。<br><img src="http://bingo.d.pr/Ms3h.png" alt="螢幕快照 2014-12-25 13.19.11.png"></p>
+<h1 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h1><p>千古不變的定律， live demo 一定會出狀況，當天果然也是，原因是我以為 facebookid 都會拿到一串數字，結果我自己白痴塞了一些預設的 string id 進去，本來是拿數字 id 來取 mod 所以就出狀況了。好在我有堅強的 HTC FE 團隊協助我當場的 debug（hug)。<br><img src="http://bingo.d.pr/U0Yv.jpg" alt="1619141_10201994217896298_4293646646054564328_n.jpg"></p>
+<p><img src="http://bingo.d.pr/Itqz.jpg" alt="10806202_10201994262017401_6262181042209528548_n.jpg"></p>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><ol>
+<li>QR code 很不普及。</li>
+<li>桌卡做的太假掰，有人以為是餐廳的根本不想理。</li>
+<li>非常非常需要 promote，下次有機會（疑？）應該要請工作人員一桌一桌介紹或施加壓力(?)留言，要讓大家更有參與感一點，最後的抽獎才會 high。</li>
+<li>其實只是搞死自己而已，其實我程式早在兩個月前就準備好了，不過婚禮前幾個禮拜測試發現 firebase 的 auth 部分改版了，結果為了要測 auth 的部分又花了一些時間修改程式。中間一度想要放棄這個活動。下次有機會（疑？）就乖乖的走完流成就好了。</li>
+<li>我老婆好票釀。</li>
+<li>謝謝大家的參與，大家下次見（疑？）</li>
+<li>我愛我老婆。</li>
+</ol>
+<p><img src="http://bingo.d.pr/9Yir.jpg" alt="62.jpg"></p>
+<p>最後順便打個廣告，如果有人對這個留言系統和抽獎程式有興趣的話請來信聯絡，保證以友情價情義相挺。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/" itemprop="url">
+                  [ReactJS] tips of Writting JSX with CoffeeScript
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-08-08T09:47:00+08:00">
+                2014-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/" itemprop="url" rel="index">
+                    <span itemprop="name">jsx</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactJS</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/react/CoffeeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">CoffeeScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsx/ReactJS/react/CoffeeScript/Coffee/" itemprop="url" rel="index">
+                    <span itemprop="name">Coffee</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由於一開始我沒有認真看 JSX (而且也很懶得看)就開始使用 coffeescript 來寫 React 了，所以一直沒有去搞懂 JSX 到底要怎麼寫，直到最近才開始認真使用 JSX 來開發，<a href="/post/2014/08/05/reactjs-jsx-or-coffee-style">詳看上集</a>。關於 jsx 的 tip 其實官方有介紹一些技巧與注意事項：可以參考 <a href="http://facebook.github.io/react/tips/introduction.html" target="_blank" rel="external">React Tips Introduction</a>。</p>
+<p>因為自己習慣用 coffee 的關係，所以會遇到一些小問題，這篇文章主要紀錄一下用 coffee 寫 react 需要注意的地方與心得，本篇文章的程式碼也都是 coffeescript。</p>
+<h2 id="browserify"><a href="#browserify" class="headerlink" title="browserify"></a>browserify</h2><p>強烈建議一定要使用 <a href="http://browserify.org/" target="_blank" rel="external">browserify</a> ，官方寫的 <a href="https://github.com/facebook/react/tree/master/examples/todomvc-flux" target="_blank" rel="external">todomvc-flux</a>就是用 <a href="http://browserify.org/" target="_blank" rel="external">browserify</a> 來打包程式的，用了 <a href="http://browserify.org/" target="_blank" rel="external">browserify</a> 之後就可以用 <a href="https://github.com/substack/coffeeify" target="_blank" rel="external">coffeeify</a> 和 <a href="https://github.com/andreypopp/reactify" target="_blank" rel="external">reactify</a> 來 compile 程式了。</p>
+<p>關於 browserify 的設定可以參考我的專案設定 <a href="https://github.com/blackbing/htccs-webapp/blob/master/gulp/tasks/browserify.coffee" target="_blank" rel="external">https://github.com/blackbing/htccs-webapp/blob/master/gulp/tasks/browserify.coffee</a></p>
+<h2 id="jsx-header"><a href="#jsx-header" class="headerlink" title="jsx header"></a>jsx header</h2><p>若程式之中有需要做 reactify 的程式要在第一行加上這行，讓 reactify 認得要 parse jsx 語法。</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`/** @jsx React.DOM */`</div></pre></td></tr></table></figure>
+<h2 id="jsx-component"><a href="#jsx-component" class="headerlink" title="jsx component"></a>jsx component</h2><p>jsx 特有的語法就是用 element tag name 來當語法，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> HelloMessage = React.createClass(&#123;</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &lt;div&gt;Hello &#123;this.props.name&#125;&lt;/div&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>用 coffee 來撰寫時就會用到 ``` 來轉成 javascript 再交給 reactify 來處理。<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    <span class="keyword">return</span> `<span class="javascript">&lt;div&gt;Hello &#123;<span class="keyword">this</span>.props.name&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="this-and"><a href="#this-and" class="headerlink" title="this and @"></a>this and @</h2><p>coffee 用 <code>@</code> 代表 this，但小心不要在 jsx 語法裡頭用 <code>@</code>，因為被 `` 包住的部分會被當成 javascript 來處理，coffeeify不會去處理這部分。舉例來說。</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  onClick: <span class="function">-&gt;</span></div><div class="line">    alert <span class="string">'onClick'</span></div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div onClick=&#123;@onClick&#125;&gt;Hello &#123;@props.name&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>如此 <code>@onClick</code> 就會變成 undefined。應該要改成 <code>this.onClick</code> 來處理。像這樣：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  onClick: <span class="function">-&gt;</span></div><div class="line">    alert <span class="string">'onClick'</span></div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div onClick=&#123;<span class="keyword">this</span>.onClick&#125;&gt;Hello &#123;<span class="keyword">this</span>.props.name&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="every-component-need-a-root-parent"><a href="#every-component-need-a-root-parent" class="headerlink" title="every component need a root parent"></a>every component need a root parent</h2><p>每一個 component 都需要一個 parent 來包住，例如你不能這樣寫 jsx：<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div&gt;Hello foo&lt;<span class="regexp">/div&gt;</span></span></div><div class="line">    &lt;div&gt;Hello bar&lt;/div&gt;</div><div class="line">    &lt;div&gt;Hello foobar&lt;/div&gt;`</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>而是要用一個 element 包住：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div&gt;</span></div><div class="line">      &lt;div&gt;Hello foo&lt;/div&gt;</div><div class="line">      &lt;div&gt;Hello bar&lt;<span class="regexp">/div&gt;</span></div><div class="line">      &lt;div&gt;Hello foobar&lt;/div&gt;</div><div class="line">    &lt;/div&gt;`</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>由於這可能會影響 HTML 的結構，需要跟 Designer 確定一些實做細節。</p>
+<h2 id="Empty-text-node-will-wrap-by"><a href="#Empty-text-node-will-wrap-by" class="headerlink" title="Empty text node will wrap by \"></a>Empty text node will wrap by \<span\></span\></h2><p>例如<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`<span class="javascript">&lt;th&gt;type&#123;foo&#125;&lt;<span class="regexp">/th&gt;</span></span>`</div></pre></td></tr></table></figure><br>會變成這樣<br><img src="http://bingo.d.pr/ncso.png" style="width:600px;"></p>
+<p>這可能會跟原本預期的不太一樣，為了避免樣式問題，可能要跟 Designer 確認避免產生空的文字節點。</p>
+<h2 id="Sperate-component-if-there’s-any-logic-control"><a href="#Sperate-component-if-there’s-any-logic-control" class="headerlink" title="Sperate component if there’s any logic control"></a>Sperate component if there’s any logic control</h2><p>用了 jsx 之後會發現遇到邏輯部分的程式會不太好寫。例如用 js/coffee 來寫的話會像是這樣。<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    R.div className=<span class="string">"form-component"</span></div><div class="line">     <span class="keyword">if</span> type <span class="keyword">is</span> <span class="string">'image'</span></div><div class="line">       R.img src:data.src</div><div class="line">     <span class="keyword">else</span> <span class="keyword">if</span> type <span class="keyword">is</span> <span class="string">'input'</span></div><div class="line">       <span class="keyword">if</span> inputType <span class="keyword">is</span> <span class="string">'text'</span></div><div class="line">       	 R.input type:<span class="string">"text"</span></div><div class="line">       <span class="keyword">else</span> <span class="keyword">if</span> inputType <span class="keyword">is</span> <span class="string">'radio'</span></div><div class="line">         R.input type:<span class="string">"radio"</span></div><div class="line">    <span class="comment">#...(skip)</span></div></pre></td></tr></table></figure></p>
+<p>而用 jsx 要在一個 render function 做這些判斷會看起來很可怕。建議盡量拆 component，拆 component 是不用錢的。由於 component 都是單一物件的設計，所以盡可能的將一個 component 的邏輯簡化。如上例，可以將裡頭的 if-else 判斷拆出去 <code>FormItem</code>，像這樣：</p>
+<figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">FormItem = React.createClass</div><div class="line">  render: <span class="function">-&gt;</span></div><div class="line">    data = @props.data</div><div class="line">    <span class="keyword">if</span> data.type <span class="keyword">is</span> <span class="string">'image'</span></div><div class="line">       `<span class="javascript">&lt;img src=&#123;data.src&#125; /&gt;</span>`</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> data.type <span class="keyword">is</span> <span class="string">'input'</span></div><div class="line">      <span class="keyword">if</span> data.inputType <span class="keyword">is</span> <span class="string">'text'</span></div><div class="line">        `<span class="javascript">&lt;input type=<span class="string">"text"</span> value=&#123;data.value&#125; /&gt;</span>`</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> data.inputType <span class="keyword">is</span> <span class="string">'radio'</span></div><div class="line">        `<span class="javascript">&lt;input type=<span class="string">"radio"</span> value=&#123;data.value&#125; /&gt;</span>`</div><div class="line">        </div><div class="line">HelloMessage = React.createClass(</div><div class="line">  render: <span class="function"><span class="params">()</span>-&gt;</span></div><div class="line">    `<span class="javascript">&lt;div className=<span class="string">"form-component"</span></span></div><div class="line">      &lt;FormItem data=&#123;data&#125; /&gt;</div><div class="line">     &lt;/div&gt;`</div><div class="line">    <span class="comment">#...(skip)</span></div></pre></td></tr></table></figure>
+<p>這是一個很簡單的技巧也可以將 component 快速的拆開，不要嘗試在一個 component 裡頭包入太複雜的邏輯判斷。另一個好處是可以針對單一個 component 來做 unit-test。</p>
+<h1 id="false-in-jsx"><a href="#false-in-jsx" class="headerlink" title="false in jsx"></a>false in jsx</h1><p>false 在 jsx 裡頭有些不同的意義，在 <a href="http://facebook.github.io/react/tips/false-in-jsx.html" target="_blank" rel="external">http://facebook.github.io/react/tips/false-in-jsx.html</a> 有說明，不過<del>因為很重要所以要講三次</del>。</p>
+<p>其中最重要的是 false element<br><figure class="highlight coffee"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`<span class="javascript">&lt;div&gt;&#123;<span class="literal">false</span>&#125;&lt;<span class="regexp">/div&gt;</span></span>`</div></pre></td></tr></table></figure><br>這樣會變成 <code>&lt;div&gt;&lt;/div&gt;</code>，成為一個空的節點。在做一些邏輯判斷時還蠻好用的。</p>
+<h2 id="Never-modify-DOM-by-yourself"><a href="#Never-modify-DOM-by-yourself" class="headerlink" title="Never modify DOM by yourself"></a>Never modify DOM by yourself</h2><p>如果你開始使用 React 了，請戒掉用 jquery 操作 DOM 的「壞習慣」。真的，一開始會很不習慣，例如<code>addClass(&#39;loading&#39;)</code> 太方便了，但是摻雜使用的後果就是很難 debug。建議要做任何 DOM 的操作都交給 state/props 來決定。</p>
+<p>如果有其他使用 React 的小技巧也歡迎分享喔～</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/08/05/reactjs-jsx-or-coffee-style/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2014/08/05/reactjs-jsx-or-coffee-style/" itemprop="url">
+                  [ReactJS] jsx or coffee style
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-08-05T10:03:00+08:00">
+                2014-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/ReactJS/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactJS</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/ReactJS/jsx/" itemprop="url" rel="index">
+                    <span itemprop="name">jsx</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/ReactJS/jsx/Coffee/" itemprop="url" rel="index">
+                    <span itemprop="name">Coffee</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/ReactJS/jsx/Coffee/CoffeeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">CoffeeScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/08/05/reactjs-jsx-or-coffee-style/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/08/05/reactjs-jsx-or-coffee-style/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><p>在寫 ReactJS 時，官方建議使用 <a href="http://facebook.github.io/react/docs/jsx-in-depth.html" target="_blank" rel="external">jsx</a> 這樣的語法來處理 html，這有點像是 template engine，不知道什麼是 jsx 的同學可以在 <a href="http://facebook.github.io/react/jsx-compiler.html" target="_blank" rel="external">jsx compiler</a> 玩玩看。jsx 其實不是必要的東西，如果你開心的話也可以直接用 <figure class="highlight plain"><figcaption><span>jsx 充滿了疑惑，要做一些邏輯性的操作(例如 if-else, foo-loop)等等，相對的有點麻煩。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">後來看到了一篇文章，推薦用 coffeescript 的特性來直接撰寫 React component：[React, JSX, and CoffeeScript](http://neugierig.org/software/blog/2014/02/react-jsx-coffeescript.html)。文章提到用 coffeescript 的特性來操作 component 會更加的得心應手，於是我也動手把 component 直接改成 coffee style。寫出來的程式大概長成這樣：</div><div class="line"></div><div class="line">```coffeescript</div><div class="line">  R.div id: &apos;list-view&apos;, className: &apos;view tab-pane fade in active&apos;,</div><div class="line">	if listType is &apos;foo&apos;</div><div class="line">		R.div className: &apos;back&apos;, &apos;←&apos;</div><div class="line">			R.p className: &apos;alert alert-warning&apos;,</div><div class="line">			R.i className: &apos;fa fa-exclamation-circle&apos;</div><div class="line">	if listType is &apos;bar&apos;</div><div class="line">		R.span null, &apos;Hello world&apos;</div><div class="line">	else</div><div class="line">		R.span null, &apos;Magic!&apos;</div></pre></td></tr></table></figure></p>
+<h3 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h3><h4 id="利用縮排來-beautify-程式"><a href="#利用縮排來-beautify-程式" class="headerlink" title="利用縮排來 beautify 程式"></a>利用縮排來 beautify 程式</h4><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">R = React.DOM</div><div class="line">R.p <span class="literal">null</span>,</div><div class="line">    R.a href:<span class="string">'foo'</span>, <span class="string">'bar'</span>  <span class="comment"># note omitted comma here</span></div><div class="line">    R.a href:<span class="string">'foo2'</span>, rel:<span class="string">'nofollow'</span>, <span class="string">'second link'</span></div></pre></td></tr></table></figure>
+<h3 id="利用-foo-loop-來產生-template"><a href="#利用-foo-loop-來產生-template" class="headerlink" title="利用 foo-loop 來產生 template"></a>利用 foo-loop 來產生 template</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">R.ol <span class="literal">null</span>,</div><div class="line">  <span class="keyword">for</span> result <span class="keyword">in</span> @results</div><div class="line">    R.li key:result.id, result.text</div></pre></td></tr></table></figure>
+<p>相比之下用 jsx 就囉唆許多：<a href="http://facebook.github.io/react/docs/multiple-components.html" target="_blank" rel="external">http://facebook.github.io/react/docs/multiple-components.html</a></p>
+<h3 id="寫-if-else-像是在喝水的簡單"><a href="#寫-if-else-像是在喝水的簡單" class="headerlink" title="寫 if-else 像是在喝水的簡單"></a>寫 if-else 像是在喝水的簡單</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if not @state.editing</div><div class="line">  R.div null,</div><div class="line">    @props.text</div><div class="line">    &apos; &apos; </div><div class="line">    R.span className:&apos;link-button mini-button&apos;, onClick:@edit, &apos;change&apos;</div><div class="line">else</div><div class="line">  R.div style:&#123;position:&apos;relative&apos;&#125;,</div><div class="line">    R.input</div><div class="line">      style:&#123;position:&apos;absolute&apos;, top:-16, left:-7&#125;</div><div class="line">      type:&apos;text&apos;, ref:&apos;text&apos;, defaultValue:@props.text</div><div class="line">      onKeyUp:@onKey, onBlur:@finishEdit</div></pre></td></tr></table></figure>
+<p>相比之下 jsx 的 if-else 限制很多：<a href="http://facebook.github.io/react/tips/if-else-in-JSX.html" target="_blank" rel="external">http://facebook.github.io/react/tips/if-else-in-JSX.html</a></p>
+<h3 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h3><p>但是一直到最近我放棄了，所以我來說說 coffee style 的缺點。</p>
+<h4 id="無法使用在太複雜的-DOM-結構"><a href="#無法使用在太複雜的-DOM-結構" class="headerlink" title="無法使用在太複雜的 DOM 結構"></a>無法使用在太複雜的 DOM 結構</h4><p>其實可想而知，若DOM結構複雜的話，這樣做會搞死自己，雖然我們自以為對 javascript/coffee 非常熟稔，但人眼終究敵不過 template 的複雜度。這是一段我曾經寫的 component 的程式，坦白說這個結構沒有很複雜，但我看第二次的時候我自己都想殺了我自己，大家可以笑笑：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">R.fieldset(className:<span class="string">"form-group <span class="subst">#&#123;ex_className&#125;</span>"</span>,</div><div class="line">  R.legend( &#123;className:<span class="string">"scheduler-border"</span>&#125;, item.name),</div><div class="line">  R.div( &#123;className:<span class="string">"table-responsive"</span>&#125;,</div><div class="line">    R.table( &#123;className:<span class="string">"table table-hover"</span>&#125;,</div><div class="line">      R.tbody(<span class="literal">null</span>,</div><div class="line">        <span class="keyword">for</span> d_items, key <span class="keyword">in</span>  item.dynamic_item</div><div class="line">          <span class="built_in">console</span>.log d_items</div><div class="line">          R.tr(<span class="literal">null</span>,</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">of</span>  d_items</div><div class="line">              d_item = d_items[i]</div><div class="line">              <span class="keyword">if</span> d_item.type <span class="keyword">is</span> <span class="string">'dropdown'</span></div><div class="line">                R.td(<span class="literal">null</span>,  DropdownItem(item:d_item))</div><div class="line">              <span class="keyword">else</span></div><div class="line">                R.td(<span class="literal">null</span>,  TextItem( item: d_item))</div><div class="line">            R.td(<span class="literal">null</span>,</div><div class="line">              R.button( &#123;type:<span class="string">"button"</span>,className:<span class="string">"btn btn-default btn-sm"</span>,</div><div class="line">              onClick: <span class="keyword">do</span>(key)=&gt;</div><div class="line">                =&gt; @removeItem(key)</div><div class="line">              &#125;,</div><div class="line">                R.i( &#123;className:<span class="string">"glyphicon glyphicon-remove"</span>&#125;)</div><div class="line">              )</div><div class="line">            )</div><div class="line">          )</div><div class="line">      )</div><div class="line">    ),</div><div class="line">    R.div(<span class="literal">null</span>,</div><div class="line">      R.button( &#123;</div><div class="line">        type:<span class="string">"button"</span></div><div class="line">        className:<span class="string">"btn btn-info btn-xs extend form-add"</span></div><div class="line">        onClick: @addItem</div><div class="line">      &#125;,</div><div class="line">      R.i( &#123;className:<span class="string">"glyphicon glyphicon-plus"</span>&#125;)</div><div class="line">      )</div><div class="line">    )</div><div class="line">  )</div><div class="line">)</div></pre></td></tr></table></figure>
+<h4 id="難以維護"><a href="#難以維護" class="headerlink" title="難以維護"></a>難以維護</h4><p>由於 coffee 終究是 javascript，用 coffee 來寫基本上就只是在寫程式，一開始我對於可以使用 underscore 之類的 library 來寫 react component 感到很興奮，最後發現這根本沒辦法維護。比方說，我們可以這樣用</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">React.DOM.div <span class="literal">null</span>, foo.bar.map( <span class="function"><span class="params">(r)</span>-&gt;</span> fruit[r]).join(<span class="string">', '</span>)</div></pre></td></tr></table></figure>
+<p>看起來很簡單，而且寫起來很乾淨，但是當 template 摻雜著太多的邏輯，可就不好玩了，因為你很難控制團隊中大家會怎麼去使用這些東西，其實 template 應該還是回歸單純，只能接收 data，顯示 data。邏輯等等的東西應該都不要跟 template 有太多瓜葛。</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>在經過一段時間的實做之後，我認為這些缺點非常致命，因此我不建議使用 coffee 來寫 react component，雖然說官方也提到 jsx 不是必要，但若是團隊合作的專案之中，建議還是乖乖的使用 jsx 來處理 template，盡量將邏輯與 template 分開。</p>
+<p>下次會分享一些使用 jsx 的小技巧。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/07/28/express-api-proxy-config/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2014/07/28/express-api-proxy-config/" itemprop="url">
+                  [expressjs] request proxy
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-28T17:07:00+08:00">
+                2014-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/expressjs/" itemprop="url" rel="index">
+                    <span itemprop="name">expressjs</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/expressjs/express/" itemprop="url" rel="index">
+                    <span itemprop="name">express</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/expressjs/express/request/" itemprop="url" rel="index">
+                    <span itemprop="name">request</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/expressjs/express/request/proxy/" itemprop="url" rel="index">
+                    <span itemprop="name">proxy</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/expressjs/express/request/proxy/redirect/" itemprop="url" rel="index">
+                    <span itemprop="name">redirect</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/07/28/express-api-proxy-config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/07/28/express-api-proxy-config/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="api-proxy"><a href="#api-proxy" class="headerlink" title="api proxy"></a>api proxy</h1><p>最近使用 expressjs 要將 api proxy 到另外一個 domain 的 api server 上。查了一下最簡單的做法是用 <a href="https://github.com/mikeal/request" target="_blank" rel="external">request</a> 來處理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> API_HOST = <span class="string">'xxx.com'</span>;</div><div class="line">app.use(<span class="string">'/proxy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> request_params, url;</div><div class="line">  url = <span class="string">'http://'</span> + API_HOST + req.url;</div><div class="line">  request_params = &#123;</div><div class="line">    <span class="attr">followAllRedirects</span>: <span class="literal">true</span>,  <span class="comment">//redirect if 301~400</span></div><div class="line">    body: <span class="built_in">JSON</span>.stringify(req.body) <span class="comment">//POST/PUT/DELETE data </span></div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">return</span> req.pipe(request(url, request_params)).pipe(res);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>看起來很簡單不過為了要解決 api server 會做 301/302 redirect 的動作，追了<a href="https://github.com/mikeal/request/blob/master/request.js#L799" target="_blank" rel="external">sourcecode</a>才知道有這個 <code>followAllRedirects</code> 的設定，特此記錄一下。</p>
+<h3 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h3><ul>
+<li><a href="http://stackoverflow.com/a/20539239/797411" target="_blank" rel="external">http://stackoverflow.com/a/20539239/797411</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/07/14/phantomjs-function-prototype-bind/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2014/07/14/phantomjs-function-prototype-bind/" itemprop="url">
+                  [PhantomJS] Function.prototype.bind
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-14T17:52:00+08:00">
+                2014-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/phantomjs/" itemprop="url" rel="index">
+                    <span itemprop="name">phantomjs</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/phantomjs/polyfill/" itemprop="url" rel="index">
+                    <span itemprop="name">polyfill</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/07/14/phantomjs-function-prototype-bind/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/07/14/phantomjs-function-prototype-bind/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="PhantomJS-1-9-7-Mac-OS-X-ERROR"><a href="#PhantomJS-1-9-7-Mac-OS-X-ERROR" class="headerlink" title="PhantomJS 1.9.7 (Mac OS X) ERROR"></a>PhantomJS 1.9.7 (Mac OS X) ERROR</h1><p>使用 reactjs 來寫 test case 時，用 PhantomJS 執行時就遇到這個 error，奇怪的是用其他的 browser 來執行就沒有問題。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">TypeError: &apos;undefined&apos; is not a function (evaluating &apos;RegExp.prototype.test.bind(</div><div class="line">      /^(data|aria)-[a-z_][a-z\d_.\-]*$/</div><div class="line">    )&apos;)</div></pre></td></tr></table></figure></p>
+<p>查了一下追到這個 issue <a href="https://github.com/ariya/phantomjs/issues/10522" target="_blank" rel="external">Function.prototype.bind is undefined</a>，看起來是 PhantomJS 的內核沒有支援 Function.prototype.bind。於是再找到 MDN 的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="external">Function.prototype.bind</a>，在載入 reactJS 之前先將這個 polyfill 加進去就可以解決了。</p>
+<h4 id="karma-conf-js"><a href="#karma-conf-js" class="headerlink" title="karma.conf.js"></a>karma.conf.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">files: [</div><div class="line">	<span class="string">'test/polyfill/*.js'</span>,</div><div class="line">	<span class="string">'app/bower_components/react/react-with-addons.js'</span>,</div><div class="line">	<span class="string">'.tmp/test/spec/*.js'</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<h4 id="phantom-bind-polyfill-js-2014-8-3-updated"><a href="#phantom-bind-polyfill-js-2014-8-3-updated" class="headerlink" title="phantom_bind_polyfill.js(2014/8/3 updated)"></a>phantom_bind_polyfill.js(2014/8/3 updated)</h4><p>use <a href="https://github.com/facebook/react/blob/master/src/test/phantomjs-shims.js" target="_blank" rel="external">react official polyfill</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Ap = <span class="built_in">Array</span>.prototype;</div><div class="line"><span class="keyword">var</span> slice = Ap.slice;</div><div class="line"><span class="keyword">var</span> Fp = <span class="built_in">Function</span>.prototype;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (!Fp.bind) &#123;</div><div class="line">  <span class="comment">// PhantomJS doesn't support Function.prototype.bind natively, so</span></div><div class="line">  <span class="comment">// polyfill it whenever this module is required.</span></div><div class="line">  Fp.bind = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> func = <span class="keyword">this</span>;</div><div class="line">    <span class="keyword">var</span> args = slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bound</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> invokedAsConstructor = func.prototype &amp;&amp; (<span class="keyword">this</span> <span class="keyword">instanceof</span> func);</div><div class="line">      <span class="keyword">return</span> func.apply(</div><div class="line">        <span class="comment">// Ignore the context parameter when invoking the bound function</span></div><div class="line">        <span class="comment">// as a constructor. Note that this includes not only constructor</span></div><div class="line">        <span class="comment">// invocations using the new keyword but also calls to base class</span></div><div class="line">        <span class="comment">// constructors such as BaseClass.call(this, ...) or super(...).</span></div><div class="line">        !invokedAsConstructor &amp;&amp; context || <span class="keyword">this</span>,</div><div class="line">        args.concat(slice.call(<span class="built_in">arguments</span>))</div><div class="line">      );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// The bound function must share the .prototype of the unbound</span></div><div class="line">    <span class="comment">// function so that any object created by one constructor will count</span></div><div class="line">    <span class="comment">// as an instance of both constructors.</span></div><div class="line">    bound.prototype = func.prototype;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> bound;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = 'index.html';
+
+      var disqus_title = "";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

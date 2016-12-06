@@ -1,0 +1,661 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="重寫舊系統URMAP 有一個很實用的系統「地址轉經緯度」，可以 parse 台灣的地址，轉成 WGS84 經緯度或 TWD97 座標，並且API化，可以使用AJAX的方式來做查詢，會將地址做正規劃，查詢到最靠近的點。由於是HTTP的方式，因此很容易實做，就算要做批次的查詢，只要會寫程式都可以很快速的做出批量做座標轉換。然而對於某些公司而言，他們不想要為了這個功能而花時間寫程式，希望能夠提供直接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="批量AJAX query 系統（友邁科技定址程式）">
+<meta property="og:url" content="http://blog.blackbing.net/post/2011/09/21/urmap-addressing-system/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="重寫舊系統URMAP 有一個很實用的系統「地址轉經緯度」，可以 parse 台灣的地址，轉成 WGS84 經緯度或 TWD97 座標，並且API化，可以使用AJAX的方式來做查詢，會將地址做正規劃，查詢到最靠近的點。由於是HTTP的方式，因此很容易實做，就算要做批次的查詢，只要會寫程式都可以很快速的做出批量做座標轉換。然而對於某些公司而言，他們不想要為了這個功能而花時間寫程式，希望能夠提供直接">
+<meta property="og:image" content="https://lh4.googleusercontent.com/-a1I4IU_dwvk/Tnm0soBglRI/AAAAAAAAF80/pTy7UZQ0Wxs/s800/parseAddress_printscreen.png">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="批量AJAX query 系統（友邁科技定址程式）">
+<meta name="twitter:description" content="重寫舊系統URMAP 有一個很實用的系統「地址轉經緯度」，可以 parse 台灣的地址，轉成 WGS84 經緯度或 TWD97 座標，並且API化，可以使用AJAX的方式來做查詢，會將地址做正規劃，查詢到最靠近的點。由於是HTTP的方式，因此很容易實做，就算要做批次的查詢，只要會寫程式都可以很快速的做出批量做座標轉換。然而對於某些公司而言，他們不想要為了這個功能而花時間寫程式，希望能夠提供直接">
+<meta name="twitter:image" content="https://lh4.googleusercontent.com/-a1I4IU_dwvk/Tnm0soBglRI/AAAAAAAAF80/pTy7UZQ0Wxs/s800/parseAddress_printscreen.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2011/09/21/urmap-addressing-system/"/>
+
+
+
+
+
+  <title> 批量AJAX query 系統（友邁科技定址程式） | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/09/21/urmap-addressing-system/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                批量AJAX query 系統（友邁科技定址程式）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-09-21T22:27:00+08:00">
+                2011-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div><a title="友邁科技定址系統" href="http://api.urmap.com/parseAddressCSV/web/" target="_blank"><img title="友邁科技多筆地址輸出系統" src="https://lh4.googleusercontent.com/-a1I4IU_dwvk/Tnm0soBglRI/AAAAAAAAF80/pTy7UZQ0Wxs/s800/parseAddress_printscreen.png" alt="友邁科技多筆地址輸出系統" width="800" height="592"></a></div>
+
+<h1 id="重寫舊系統"><a href="#重寫舊系統" class="headerlink" title="重寫舊系統"></a>重寫舊系統</h1><p><a href="http://www.urmap.com" target="_blank" rel="external">URMAP</a> 有一個很實用的系統「地址轉經緯度」，可以 parse 台灣的地址，轉成 <a href="http://zh.wikipedia.org/zh-hant/WGS84" target="_blank" rel="external">WGS84</a> 經緯度或 <a href="http://blog.minstrel.idv.tw/2004/05/twd67-twd97.html" target="_blank" rel="external">TWD97</a> 座標，並且API化，可以使用AJAX的方式來做查詢，會將地址做正規劃，查詢到最靠近的點。由於是HTTP的方式，因此很容易實做，就算要做批次的查詢，只要會寫程式都可以很快速的做出批量做座標轉換。然而對於某些公司而言，他們不想要為了這個功能而花時間寫程式，希望能夠提供直接做查詢的使用方式，於是早期就有一套轉換系統，用JAVA撰寫之後包成jar檔，直接在windows或linux下command line，指定讀取的file，就會輸出成指定的CSV檔案。由於大家也懶，因此這樣的程式就流傳下來，連自己都覺得這樣的方式很不方便，而且每次都要指定參數，操作方式並不是很友善。後來看到 <a href="http://nodejs.org/" target="_blank" rel="external">node.js</a> event io 的概念才有 IO 存取的概念，類似像這種批量查詢的需求，一般來說都是以同步的概念下去執行，也就是一個查詢完成之後再做下一個查詢，查詢一百次、一千次就要同步的等待每一個request完成。有沒有辦法讓查詢更快？可以用多執行緒來解決，無奈程式不好寫，除錯不容易，因此一直沒有實做。</p>
+<h1 id="Clinet端的檔案輸入與輸出"><a href="#Clinet端的檔案輸入與輸出" class="headerlink" title="Clinet端的檔案輸入與輸出"></a>Clinet端的檔案輸入與輸出</h1><p>於是我用node.js來實做這種批次查詢功能，利用Event IO的概念來實做，的確可以很快速的做回應，但通常要批量轉換的地址資料都會很大，若在本機執行還沒什麼大問題，但若做成web系統，就還要讓使用者上傳、解析文件等等，非常麻煩，因此這樣的方式也不理想。最後我把腦筋動到 <a href="http://www.html5rocks.com/en/tutorials/file/dndfiles/" target="_blank" rel="external">HTML5 FileReader</a>，稍微試了一下，可以讓使用者選擇檔案，並直接透過javascript來讀取檔案內容，parse正確資料之後就可以在client端做AJAX批次的查詢。然而有輸入，就要有輸出，html5 FileWriter API幾乎沒有瀏覽器實做，因此Writer無法使用，不過我找到兩種方式來做文字檔的輸出：</p>
+<ul>
+<li>另開新檔：<a href="http://stackoverflow.com/questions/6464828/cross-browser-save-as-txt" target="_blank" rel="external">http://stackoverflow.com/questions/6464828/cross-browser-save-as-txt</a> 這種方式利用瀏覽器開啟檔案的方式來實做，但 IE 系列不支援，若資料單純且可以排除IE，可以用這種方式來做，非常簡單。</li>
+<li><a href="https://github.com/dcneiner/Downloadify" target="_blank" rel="external">Downloadify</a> 則是用flash來實做另存檔案，使用上也不難。</li>
+</ul>
+<p>萬事具備，只欠Coding。那就來實做吧。</p>
+<p>javascript根本就是天生拿來做這種事情的，不費吹灰之力就完成了批次輸出系統，由於是用非同步的ajax來做查詢，因此同時發出ajax查詢之後等待回傳結果，而查詢的效能也非常的快，完全取決於server端給不給力的傳回資料。用說的實在是不過隱，分享片段的程式來瞧瞧。</p>
+<h1 id="試用連結"><a href="#試用連結" class="headerlink" title="試用連結"></a>試用連結</h1><p><a href="http://api.urmap.com/parseAddressCSV/web/" target="_blank" rel="external">友邁科技多筆定址輸出系統</a>，歡迎企業有大量需求申請使用。</p>
+<h1 id="讀取檔案"><a href="#讀取檔案" class="headerlink" title="讀取檔案"></a>讀取檔案</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//讀取檔案</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> files = $(<span class="string">'#filesInput'</span>)[<span class="number">0</span>].files;</div><div class="line">    <span class="keyword">if</span> (!files.length) &#123;</div><div class="line">        alert(<span class="string">'請輸入'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> file = files[<span class="number">0</span>];</div><div class="line">    <span class="keyword">var</span> fileName = file.fileName;</div><div class="line">    <span class="keyword">var</span> fileSize = file.fileSize;</div><div class="line">    <span class="keyword">var</span> info = [<span class="string">'檔案名稱：'</span> + file.fileName, <span class="string">'檔案大小：'</span> + (file.fileSize / <span class="number">1024</span>) + <span class="string">'k'</span>];</div><div class="line">    <span class="keyword">if</span> (file.lastModifiedDate) &#123;</div><div class="line">        info.push(<span class="string">'最近修改日期：'</span> + file.lastModifiedDate.toLocaleDateString());</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> infoHTML = info.join(<span class="string">'&amp;amp;nbsp;&amp;lt;br&amp;gt;'</span>);</div><div class="line">    $(<span class="string">'#d2-info'</span>).html(infoHTML);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">    reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="string">'#d2-content'</span>).text(reader.result);</div><div class="line">        $(<span class="string">'#d2'</span>).dialog(<span class="string">'open'</span>);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> encoding = $(<span class="string">'#encoding option:selected'</span>).text();</div><div class="line">    reader.readAsText(file, encoding);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="匯出成CSV"><a href="#匯出成CSV" class="headerlink" title="匯出成CSV"></a>匯出成CSV</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//匯出成CSV</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">exportCSV</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//    console.log('export');</span></div><div class="line">    <span class="keyword">var</span> data = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; addressCallback.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> line = [];</div><div class="line">        <span class="keyword">var</span> addressLine = addressCallback[i];</div><div class="line">        line.push(addressLine.address);</div><div class="line">        line.push(addressLine.formal_address);</div><div class="line">        line.push(addressLine.city);</div><div class="line">        line.push(addressLine.area);</div><div class="line">        line.push(addressLine.longitude);</div><div class="line">        line.push(addressLine.latitude);</div><div class="line">        line.push(addressLine.xcoor);</div><div class="line">        line.push(addressLine.ycoor);</div><div class="line">        line.push(addressLine.level);</div><div class="line">        line.push(addressLine.position_result);</div><div class="line">        data.push(line.join(<span class="string">','</span>));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> exportData = data.join(<span class="string">'\n'</span>);</div><div class="line">    <span class="comment">//var newDoc = window.open( &amp;quot;data:application/x-download;charset=utf-8,&amp;quot;  , 'address_export.csv', '', '');</span></div><div class="line">    <span class="comment">//newDoc.document.write(data);</span></div><div class="line">    Downloadify.create(<span class="string">'downloadify'</span>, &#123;</div><div class="line">        <span class="attr">filename</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> ts = +<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">            <span class="keyword">return</span> <span class="string">'address_export'</span> + ts + <span class="string">'.csv'</span>;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">data</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> exportData;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            alert(<span class="string">'You must put something in the File Contents or there will be nothing to save!'</span>);</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">transparent</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">swf</span>: <span class="string">'./downloadify/downloadify.swf'</span>,</div><div class="line">        <span class="attr">downloadImage</span>: <span class="string">'./CSV.64.png'</span>,</div><div class="line">        <span class="attr">width</span>: <span class="number">64</span>,</div><div class="line">        <span class="attr">height</span>: <span class="number">64</span>,</div><div class="line">        <span class="attr">transparent</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">append</span>: <span class="literal">false</span></div><div class="line">    &#125;);</div><div class="line">    $(<span class="string">'#downloadify'</span>).show();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>值得一提的是，利用 <a href="http://api.jquery.com/jQuery.getScript/" target="_blank" rel="external">jQuery.getScript</a> 的方式比 <a href="http://api.jquery.com/jQuery.ajax/" target="_blank" rel="external">jQuery.ajax</a> 的方式要快，我想是用 getScript 的方式來直接執行 javascript 更快速。同樣的概念我想可以應用在所有需要批量輸入輸出的系統上，只要打開 browser，不需要安裝任何東西，也不需要上傳檔案到 server 端處理，完全透過 client 端解決所有的事情，javascript 的應用真是越來越廣泛了，有需要使用這個好用的系統請洽 <a href="http://www.urmap.com/cs/report.php" target="_blank" rel="external">友邁科技客服</a>，會有親切的小姐跟您聯絡XD。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2011/09/15/keep-foolish-and-hungry/" rel="next" title="繼續保持又笨又餓">
+                <i class="fa fa-chevron-left"></i> 繼續保持又笨又餓
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2011/10/07/download-fb-album-for-high-resolution-pictures/" rel="prev" title="Download FB album (for high resolution pictures)">
+                Download FB album (for high resolution pictures) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重寫舊系統"><span class="nav-number">1.</span> <span class="nav-text">重寫舊系統</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Clinet端的檔案輸入與輸出"><span class="nav-number">2.</span> <span class="nav-text">Clinet端的檔案輸入與輸出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#試用連結"><span class="nav-number">3.</span> <span class="nav-text">試用連結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#讀取檔案"><span class="nav-number">4.</span> <span class="nav-text">讀取檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匯出成CSV"><span class="nav-number">5.</span> <span class="nav-text">匯出成CSV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#心得"><span class="nav-number">6.</span> <span class="nav-text">心得</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2011/09/21/urmap-addressing-system/';
+
+      var disqus_title = "批量AJAX query 系統（友邁科技定址程式）";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

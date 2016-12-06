@@ -1,0 +1,667 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="今天遇到一個客戶提出的需求，需要在前端做中文的筆劃排序，雖然已經跟客戶提出說UTF8很難做筆劃排序，但他們還是要求要依照筆劃來做排序。於是我就開始陷入編碼的世界而無法自拔（汗）。搜尋google大神的結果幾乎都是從資料庫端來解決，然而這次遇到的問題並不是單純將資料庫資料撈出來排序就可以搞定，而是要顯示在前端做動態的分群並且排序。因為實在是花了太多時間在找資料，而且大部分的解決方式都是N年前的解法，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript UTF-8 繁體中文筆劃排序 解決之道">
+<meta property="og:url" content="http://blog.blackbing.net/post/2011/08/17/javascript-utf-8-stroke-sorting-solution/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="今天遇到一個客戶提出的需求，需要在前端做中文的筆劃排序，雖然已經跟客戶提出說UTF8很難做筆劃排序，但他們還是要求要依照筆劃來做排序。於是我就開始陷入編碼的世界而無法自拔（汗）。搜尋google大神的結果幾乎都是從資料庫端來解決，然而這次遇到的問題並不是單純將資料庫資料撈出來排序就可以搞定，而是要顯示在前端做動態的分群並且排序。因為實在是花了太多時間在找資料，而且大部分的解決方式都是N年前的解法，">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript UTF-8 繁體中文筆劃排序 解決之道">
+<meta name="twitter:description" content="今天遇到一個客戶提出的需求，需要在前端做中文的筆劃排序，雖然已經跟客戶提出說UTF8很難做筆劃排序，但他們還是要求要依照筆劃來做排序。於是我就開始陷入編碼的世界而無法自拔（汗）。搜尋google大神的結果幾乎都是從資料庫端來解決，然而這次遇到的問題並不是單純將資料庫資料撈出來排序就可以搞定，而是要顯示在前端做動態的分群並且排序。因為實在是花了太多時間在找資料，而且大部分的解決方式都是N年前的解法，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2011/08/17/javascript-utf-8-stroke-sorting-solution/"/>
+
+
+
+
+
+  <title> javascript UTF-8 繁體中文筆劃排序 解決之道 | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/08/17/javascript-utf-8-stroke-sorting-solution/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript UTF-8 繁體中文筆劃排序 解決之道
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-08-17T19:03:00+08:00">
+                2011-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天遇到一個客戶提出的需求，需要在前端做中文的筆劃排序，雖然已經跟客戶提出說UTF8很難做筆劃排序，但他們還是要求要依照筆劃來做排序。於是我就開始陷入編碼的世界而無法自拔（汗）。搜尋google大神的結果幾乎都是從資料庫端來解決，然而這次遇到的問題並不是單純將資料庫資料撈出來排序就可以搞定，而是要顯示在前端做動態的分群並且排序。因為實在是花了太多時間在找資料，而且大部分的解決方式都是N年前的解法，不適合現在的應用環境（UTF-8編碼），本篇文章是希望後續有人遇到類似的問題可以省點力氣，整理一些解決的方式。重點如下：</p>
+<ol>
+<li>用javascript做中文排序至目前為止不可能，原因是UTF-8不是以筆劃排序，類似的方式可以用big5編碼轉成ASCII code做排序，但還是有缺點：</li>
+<li>Big-5 碼是按筆劃排，但是次常用字會排在後面，也就是說筆劃少的次常用字，反而會排在筆劃多的常用字後面，例如『万』會排在『籲』後面去。</li>
+<li>現在已經沒有人在用big5編碼了，javascript UTF-8轉big5編碼沒有更好的支援函式，就算有也要load進一個大的table來做比對，因此在前端做排序幾乎是不可能。</li>
+<li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/localeCompare" target="_blank" rel="external">localCompare</a> 如果一定要在前端做排序，這個方法是最簡單的用法，但是實際使用的結果也不是依照筆劃排序，看起來應該跟系統的實做有關，如果能夠用這個方法安撫客戶，那就用這個吧。</li>
+<li><p><a href="https://gist.github.com/1150937" target="_blank" rel="external">cht_strokesort.php</a>：我自製的排序 API，sourcecode 放在<a href="https://gist.github.com/1150937" target="_blank" rel="external">https://gist.github.com/1150937</a>，具體實現如下：</p>
+<ol>
+<li>將UTF-8轉成big5編碼。</li>
+<li>用big5碼反查筆劃，筆劃資料來源為<a href="http://bbs.ecstart.com/viewthread.php?tid=15553&amp;extra=page%3D1" target="_blank" rel="external">倚天中文字型筆劃順序內碼對照表</a>，不是單純以ASCII Code來決定筆劃順序。</li>
+<li>做了一個http接口，可利用AJAX來做到中文排序。</li>
+</ol>
+</li>
+</ol>
+<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO :"></a>DEMO :</h3><p><a href="http://blackbing.net/lab/CHTSort/cht_strokesort.html" target="_blank" rel="external">http://blackbing.net/lab/CHTSort/cht_strokesort.html</a></p>
+<h3 id="原始碼："><a href="#原始碼：" class="headerlink" title="原始碼："></a>原始碼：</h3><p><a href="https://gist.github.com/1150937" target="_blank" rel="external">https://gist.github.com/1150937</a></p>
+<h1 id="參考資料："><a href="#參考資料：" class="headerlink" title="參考資料："></a>參考資料：</h1><ol>
+<li><a href="http://blog.longwin.com.tw/2004/12/big5-%E7%A2%BC%E5%90%8D%E7%A8%B1%E7%9A%84%E7%94%B1%E4%BE%86/" target="_blank" rel="external">Big5 碼名稱的由來</a></li>
+<li><a href="http://hyperrate.com/topic-view-thread.php?tid=976" target="_blank" rel="external">中文排序的問題</a></li>
+<li><a href="http://kewangtw.wordpress.com/2007/07/21/%E5%A6%82%E4%BD%95%E7%94%A8javascript%E5%81%9A%E4%B8%AD%E6%96%87%E6%8E%92%E5%BA%8F/" target="_blank" rel="external">如何用javascript做中文排序</a></li>
+<li><a href="http://atedev.wordpress.com/2007/01/03/%E8%AE%93%E8%B3%87%E6%96%99%E6%8C%89%E7%85%A7%E4%B8%AD%E6%96%87%E7%AD%86%E5%8A%83%E6%8E%92%E5%BA%8F/" target="_blank" rel="external">讓資料按照中文筆劃排序</a></li>
+</ol>
+<h3 id="暫時解決這個問題，但眼睛好痛，編碼這種事真不是人幹的。收工！"><a href="#暫時解決這個問題，但眼睛好痛，編碼這種事真不是人幹的。收工！" class="headerlink" title="暫時解決這個問題，但眼睛好痛，編碼這種事真不是人幹的。收工！"></a>暫時解決這個問題，但眼睛好痛，編碼這種事真不是人幹的。收工！</h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2011/08/12/auto-play-in-facebook-theater-mode/" rel="next" title="Auto play in Facebook Theater Mode">
+                <i class="fa fa-chevron-left"></i> Auto play in Facebook Theater Mode
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2011/08/19/tetris-with-canvas/" rel="prev" title="俄羅斯方塊with Canvas">
+                俄羅斯方塊with Canvas <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">1.</span> <span class="nav-text">DEMO :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原始碼："><span class="nav-number">2.</span> <span class="nav-text">原始碼：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考資料："><span class="nav-number"></span> <span class="nav-text">參考資料：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#暫時解決這個問題，但眼睛好痛，編碼這種事真不是人幹的。收工！"><span class="nav-number">1.</span> <span class="nav-text">暫時解決這個問題，但眼睛好痛，編碼這種事真不是人幹的。收工！</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2011/08/17/javascript-utf-8-stroke-sorting-solution/';
+
+      var disqus_title = "javascript UTF-8 繁體中文筆劃排序 解決之道";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

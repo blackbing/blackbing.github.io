@@ -1,0 +1,647 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="之前做了這個下載照片的小工具Download FB album，說真的，我沒想到會有這麼多人下載，雖然是chrome Extension，但隨著Chrome瀏覽器成長的快速，使用者與開發者也成長的非常快速，代表只要你的產品有碰到使用者，是真的能夠有這個市場，而且在chrome Web Store也已經有付費機制，也就是說你能夠透過web strore來跟使用者收取費用，讓開發人員更有興趣來Rock">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Download FB album (for high resolution pictures)">
+<meta property="og:url" content="http://blog.blackbing.net/post/2011/10/07/download-fb-album-for-high-resolution-pictures/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="之前做了這個下載照片的小工具Download FB album，說真的，我沒想到會有這麼多人下載，雖然是chrome Extension，但隨著Chrome瀏覽器成長的快速，使用者與開發者也成長的非常快速，代表只要你的產品有碰到使用者，是真的能夠有這個市場，而且在chrome Web Store也已經有付費機制，也就是說你能夠透過web strore來跟使用者收取費用，讓開發人員更有興趣來Rock">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Lab/blogImg/Download_FB_new_feature.png">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Download FB album (for high resolution pictures)">
+<meta name="twitter:description" content="之前做了這個下載照片的小工具Download FB album，說真的，我沒想到會有這麼多人下載，雖然是chrome Extension，但隨著Chrome瀏覽器成長的快速，使用者與開發者也成長的非常快速，代表只要你的產品有碰到使用者，是真的能夠有這個市場，而且在chrome Web Store也已經有付費機制，也就是說你能夠透過web strore來跟使用者收取費用，讓開發人員更有興趣來Rock">
+<meta name="twitter:image" content="http://dl.dropbox.com/u/751847/Lab/blogImg/Download_FB_new_feature.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2011/10/07/download-fb-album-for-high-resolution-pictures/"/>
+
+
+
+
+
+  <title> Download FB album (for high resolution pictures) | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/10/07/download-fb-album-for-high-resolution-pictures/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Download FB album (for high resolution pictures)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-10-07T18:31:00+08:00">
+                2011-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank"><img class="alignleft" title="Download_FB_new_feature" src="http://dl.dropbox.com/u/751847/Lab/blogImg/Download_FB_new_feature.png" alt="Download_FB_new_feature" width="257" height="189"></a>之前做了這個下載照片的小工具<a href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank">Download FB album</a>，說真的，我沒想到會有這麼多人下載，雖然是chrome Extension，但隨著Chrome瀏覽器成長的快速，使用者與開發者也成長的非常快速，代表只要你的產品有碰到使用者，是真的能夠有這個市場，而且在chrome Web Store也已經有付費機制，也就是說你能夠透過web strore來跟使用者收取費用，讓開發人員更有興趣來Rock the World。</p>
+<p>話說回來，<a title="Down FB album" href="https://www.facebook.com/pages/Download-FB-Album/228649750527323" target="_blank">Download FB album</a>的目的只是要下載整個相簿的照片，而原本的概念也僅僅只是要替換縮圖與原圖的URL而已，然而，發佈之後才發現很多人反應沒辦法下載原始大小的圖檔，於是我再檢查是否可以取到相對應的原始大小圖檔，但結論是沒辦法，就連每一張圖片的高解析尺寸，FB都是重新發request來取得，而且包含html一起回來，這代表FB為了防止抓圖機器人大量抓圖（指）而採行的策略，於是我雙手一攤，那我就沒辦法囉～各位使用者，Sorry～（逃～）</p>
+<p>但在這期間，我收到好幾個使用者直接寄信來反應是否可以提供下載高解析度照片，並且很認真的跟我討論實做的方法，大部分使用者一開始都提到只要改一個字元而已，仔細討論之後才發現真的沒那麼簡單，所以最後都不了了之。但隨著使用者下載的次數越來越多（目前已經38000以上人次下載），我的責任感卻增加了，於是我開始很認真的思考我該如何取得high resolution的圖片。歸納出以下結論：</p>
+<p>facebook的圖片共分為三種格式</p>
+<ul>
+<li>預覽縮圖(120*160)px</li>
+<li>播放縮圖(960*640)px</li>
+<li>高解析尺寸(2048*1536)px<ul>
+<li>高解析尺寸的URL需要發AJAX來取得（每一張圖片都要）。</li>
+<li>回傳的格式是JSON，但內容卻是一份HTML字串。因此需要parse HTML才能得到高解析尺寸的連結。</li>
+</ul>
+</li>
+</ul>
+<p>兩種尺寸的縮圖URL只差一個字元，因此知道縮圖連結之後，進行簡單的替換即可，然而高解析度的圖片URL需要一張一張跟server問。首先是想到的是流量問題，如果相簿裡頭有上百上千張圖片，那就要在短時間內發送上百上千的查詢，會不會引起FB的注意也是個問題。之前當我發布這個工具之後，碰巧與<a title="photojacker" href="http://www.photojacker.com/" target="_blank">photojacker</a>的作者聊到，他有提到之前因為流量太大被FB注意到並要求強制移除，當時他非常憤怒。並提醒我要注意這一點。不過為了解決這個問題，我暫時就不管這件事了。我只是想解決問題而已(抱頭～)。</p>
+<p>另外一個問題則是Chrome Extenstion架構限制，在<a title="content_scripts" href="http://code.google.com/chrome/extensions/content_scripts.html" target="_blank">官方文件</a>上寫到：</p>
+<p>However, content scripts have some limitations. They cannot</p>
+<ul>
+<li>Use chrome.* APIs (except for parts of <a href="http://code.google.com/chrome/extensions/extension.html" target="_blank" rel="external"><code>chrome.extension</code></a>)</li>
+<li>Use variables or functions defined by their extension’s pages</li>
+<li>Use variables or functions defined by web pages or by other content scripts</li>
+</ul>
+<p>These limitations aren’t as bad as they sound. Content scripts can <em>indirectly</em> use the chrome.* APIs, get access to extension data, and request extension actions by exchanging <a href="http://code.google.com/chrome/extensions/messaging.html" target="_blank" rel="external">messages</a> with their parent extension. Content scripts can also make <a href="http://code.google.com/chrome/extensions/xhr.html" target="_blank" rel="external">cross-site XMLHttpRequests</a> to the same sites as their parent extensions, and they can <a href="http://code.google.com/chrome/extensions/content_scripts.html#host-page-communication" target="_blank" rel="external">communicate with web pages</a> using the shared DOM. For more insight into what content scripts can and can’t do, learn about the <a href="http://code.google.com/chrome/extensions/content_scripts.html#execution-environment" target="_blank" rel="external">execution environment</a>.</p>
+<p>你可以進行跨域的AJAX請求，並且禁止存取該頁的任何變數和function。而既然是不同的domain，當然就無法進行AJAX的溝通。然而他們卻可以「<a href="http://code.google.com/chrome/extensions/content_scripts.html#host-page-communication" target="_blank">Communication with the embedding page</a>」，這就有趣了，既然我可以access DOM，我就可以進行該頁面的任何動作，包括進行AJAX<del>攻擊</del>請求。是否？是否？細節不多提啦，有興趣的再私底下討論，這篇文章只是想說明<a title="Download FB album " href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank">Download FB album</a>做了突破性的更新，不管會不會被Facebook阻擋，分享就是Rock the world的精神阿阿阿～</p>
+<p>另外Chrome Store的評論和討論的互動性機制還蠻差的，所以我弄了一個Facebook粉絲頁（<a title="Facebook Page for Download FB album" href="https://www.facebook.com/pages/Download-FB-Album/228649750527323?sk=wall&amp;filter=1" target="_blank">Face book Page for Download FB album</a>）如果在操作或使用上有任何問題請別客氣的進來鞭我吧。</p>
+<iframe style="border: none; overflow: hidden; width: 385px; height: 304px;" src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FDownload-FB-Album%2F228649750527323&amp;width=385&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true&amp;height=304" frameborder="0" scrolling="no" width="320" height="240"> </iframe>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2011/09/21/urmap-addressing-system/" rel="next" title="批量AJAX query 系統（友邁科技定址程式）">
+                <i class="fa fa-chevron-left"></i> 批量AJAX query 系統（友邁科技定址程式）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2011/10/31/thanks-everyone-in-urmap/" rel="prev" title="國四無雙之下台一鞠躬">
+                國四無雙之下台一鞠躬 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2011/10/07/download-fb-album-for-high-resolution-pictures/';
+
+      var disqus_title = "Download FB album (for high resolution pictures)";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

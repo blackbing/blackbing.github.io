@@ -1,0 +1,743 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="javascript 是 Event Based 的語言，因此可以很輕易的實作事件綁定來處理非同步的動作，為了將表現層與資料層分離，就會用「值」的改變來 trigger 事件。例如在 Backbone Model 裡頭可以做 change:value 的事件處理。例如：1book.on(&quot;change:title change:author&quot;, ...);
+但是隨著應用程式越來越複雜，value">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有限狀態機">
+<meta property="og:url" content="http://blog.blackbing.net/post/2013/11/07/finite-state-machine/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="javascript 是 Event Based 的語言，因此可以很輕易的實作事件綁定來處理非同步的動作，為了將表現層與資料層分離，就會用「值」的改變來 trigger 事件。例如在 Backbone Model 裡頭可以做 change:value 的事件處理。例如：1book.on(&quot;change:title change:author&quot;, ...);
+但是隨著應用程式越來越複雜，value">
+<meta property="og:image" content="http://user-image.logdown.io/user/96/blog/96/post/74188/0kO2w4TVCcNxFUaUbugq_Screen%20Shot%202013-11-07%20at%20%E4%B8%8B%E5%8D%881.09.47.png">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有限狀態機">
+<meta name="twitter:description" content="javascript 是 Event Based 的語言，因此可以很輕易的實作事件綁定來處理非同步的動作，為了將表現層與資料層分離，就會用「值」的改變來 trigger 事件。例如在 Backbone Model 裡頭可以做 change:value 的事件處理。例如：1book.on(&quot;change:title change:author&quot;, ...);
+但是隨著應用程式越來越複雜，value">
+<meta name="twitter:image" content="http://user-image.logdown.io/user/96/blog/96/post/74188/0kO2w4TVCcNxFUaUbugq_Screen%20Shot%202013-11-07%20at%20%E4%B8%8B%E5%8D%881.09.47.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2013/11/07/finite-state-machine/"/>
+
+
+
+
+
+  <title> 有限狀態機 | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2013/11/07/finite-state-machine/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                有限狀態機
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-11-07T06:07:00+08:00">
+                2013-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/finite-state-machine/" itemprop="url" rel="index">
+                    <span itemprop="name">finite-state-machine</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/finite-state-machine/design-pattern/" itemprop="url" rel="index">
+                    <span itemprop="name">design pattern</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2013/11/07/finite-state-machine/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2013/11/07/finite-state-machine/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>javascript 是 Event Based 的語言，因此可以很輕易的實作事件綁定來處理非同步的動作，為了將表現層與資料層分離，就會用「值」的改變來 trigger 事件。例如在 Backbone Model 裡頭可以做 change:value 的事件處理。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">book.on(<span class="string">"change:title change:author"</span>, ...);</div></pre></td></tr></table></figure></p>
+<p>但是隨著應用程式越來越複雜，value 的 change 可以拿來當作事件的觸發，但流程並不會因此簡化，在設計程式時如果沒有一個更清晰的流程將會在 Event 裡頭的流程迷失方向，或寫出難以維護的程式碼。</p>
+<h1 id="Event-pubsup"><a href="#Event-pubsup" class="headerlink" title="Event pubsup"></a>Event pubsup</h1><p><a href="http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern" target="_blank" rel="external">Event Pubsub</a>，利用事件 publish/subscribe 的方式來做流程處理。但 pubsup只是針對事件的「綁定」與「觸發」，缺少了「狀態的轉換」。</p>
+<h1 id="有限狀態機-Finite-State-Machine"><a href="#有限狀態機-Finite-State-Machine" class="headerlink" title="有限狀態機(Finite State Machine)"></a>有限狀態機(Finite State Machine)</h1><p>「<a href="http://zh.wikipedia.org/zh-hant/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" target="_blank" rel="external">有限狀態機</a>」是描述一種狀態的轉移，它強調過去狀態與當前狀態所引發的事件，因此可以將流程簡化到事件的處理之中。而且將流程簡化出來也能夠幫助自己在分析時更清楚地掌握流程處理。所以有限狀態機的重點是要將現有的流程簡化成一個可循環的狀態，利用狀態的轉移來觸發事件，相反地也可以觸發事件來轉移狀態。</p>
+<h1 id="javascript-state-machine"><a href="#javascript-state-machine" class="headerlink" title="javascript-state-machine"></a>javascript-state-machine</h1><p><a href="https://github.com/jakesgordon/javascript-state-machine" target="_blank" rel="external">javascript-state-machine</a> 是我覺得很好用的一套小 library ，程式碼也沒有很長，有興趣可以研究看看。裡頭有一個小 <a href="http://codeincomplete.com/posts/2011/8/19/javascript_state_machine_v2/example/" target="_blank" rel="external">Demo</a>，簡單解釋一下。</p>
+<p>see demo: <a href="http://codeincomplete.com/posts/2011/8/19/javascript_state_machine_v2/example/" target="_blank" rel="external">http://codeincomplete.com/posts/2011/8/19/javascript_state_machine_v2/example/</a></p>
+<h4 id="條件如下："><a href="#條件如下：" class="headerlink" title="條件如下："></a>條件如下：</h4><ol>
+<li>初始化事件：green</li>
+<li>warn: green -&gt; yellow</li>
+<li>panic: green/yellow -&gt; red</li>
+<li>當 red 時，calm 事件觸發時要等待三秒才會恢復到 yellow</li>
+<li>當 red 時，clear 事件觸發時要等待三秒才會恢復到 green </li>
+<li>當 yellow 時，clear 事件觸發會恢復到 green</li>
+</ol>
+<h3 id="流程圖"><a href="#流程圖" class="headerlink" title="流程圖"></a>流程圖</h3><p>看敘述有點難理解，可以直接看流程圖<br><img src="http://user-image.logdown.io/user/96/blog/96/post/74188/0kO2w4TVCcNxFUaUbugq_Screen%20Shot%202013-11-07%20at%20%E4%B8%8B%E5%8D%881.09.47.png" alt="Screen Shot 2013-11-07 at 下午1.09.47.png"></p>
+<h4 id="事件："><a href="#事件：" class="headerlink" title="事件："></a>事件：</h4><ul>
+<li>start</li>
+<li>warn</li>
+<li>panic</li>
+<li>calm</li>
+<li>clear</li>
+</ul>
+<h4 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h4><ul>
+<li>reen</li>
+<li>yellow</li>
+<li>red</li>
+</ul>
+<p>如果只看事件的話，只能依靠事件的觸發來控制流程，但是加上「狀態」之後，看起來就好理解多了，而且整個是一個可以循環的流程。把事件用箭頭連起來，就可以知道何時可以觸發哪一個事件。</p>
+<p>流程圖中的箭頭代表「事件」轉換，框框代表「狀態」的轉移，所以當「狀態」改變，就會觸發「事件」，反之「事件」被觸發，就會改變「狀態」。例如「Warn事件」發生的時候，狀態就會從 green 轉移至 yellow；而「Panic事件」發生時，狀態就會改變成 red。</p>
+<p>而設定的方式也很直覺，在 event 的地方設定好事件觸發時狀態如何改變。而 callbacks 可以在事件被觸發前/後 執行 callback unction。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">events: [</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'start'</span>, <span class="attr">from</span>: <span class="string">'none'</span>,   <span class="attr">to</span>: <span class="string">'green'</span>  &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'warn'</span>,  <span class="attr">from</span>: <span class="string">'green'</span>,  <span class="attr">to</span>: <span class="string">'yellow'</span> &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'panic'</span>, <span class="attr">from</span>: <span class="string">'green'</span>,  <span class="attr">to</span>: <span class="string">'red'</span>    &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'panic'</span>, <span class="attr">from</span>: <span class="string">'yellow'</span>, <span class="attr">to</span>: <span class="string">'red'</span>    &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'calm'</span>,  <span class="attr">from</span>: <span class="string">'red'</span>,    <span class="attr">to</span>: <span class="string">'yellow'</span> &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'clear'</span>, <span class="attr">from</span>: <span class="string">'red'</span>,    <span class="attr">to</span>: <span class="string">'green'</span>  &#125;,</div><div class="line">      &#123; <span class="attr">name</span>: <span class="string">'clear'</span>, <span class="attr">from</span>: <span class="string">'yellow'</span>, <span class="attr">to</span>: <span class="string">'green'</span>  &#125;,</div><div class="line">    ],</div><div class="line"></div><div class="line">    <span class="attr">callbacks</span>: &#123;</div><div class="line">      <span class="attr">onbeforestart</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"STARTING UP"</span>); &#125;,</div><div class="line">      <span class="attr">onstart</span>:       <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"READY"</span>);       &#125;,</div><div class="line"></div><div class="line">      <span class="attr">onbeforewarn</span>:  <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"START   EVENT: warn!"</span>,  <span class="literal">true</span>);  &#125;,</div><div class="line">      <span class="attr">onbeforepanic</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"START   EVENT: panic!"</span>, <span class="literal">true</span>);  &#125;,</div><div class="line">      <span class="attr">onbeforecalm</span>:  <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"START   EVENT: calm!"</span>,  <span class="literal">true</span>);  &#125;,</div><div class="line">      <span class="attr">onbeforeclear</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"START   EVENT: clear!"</span>, <span class="literal">true</span>);  &#125;,</div><div class="line"></div><div class="line">      <span class="attr">onwarn</span>:        <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"FINISH  EVENT: warn!"</span>);         &#125;,</div><div class="line">      <span class="attr">onpanic</span>:       <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"FINISH  EVENT: panic!"</span>);        &#125;,</div><div class="line">      <span class="attr">oncalm</span>:        <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"FINISH  EVENT: calm!"</span>);         &#125;,</div><div class="line">      <span class="attr">onclear</span>:       <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"FINISH  EVENT: clear!"</span>);        &#125;,</div><div class="line"></div><div class="line">      <span class="attr">onleavegreen</span>:  <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"LEAVE   STATE: green"</span>);  &#125;,</div><div class="line">      <span class="attr">onleaveyellow</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"LEAVE   STATE: yellow"</span>); &#125;,</div><div class="line">      <span class="attr">onleavered</span>:    <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"LEAVE   STATE: red"</span>);    <span class="keyword">async</span>(to); <span class="keyword">return</span> <span class="literal">false</span>; &#125;,</div><div class="line"></div><div class="line">      <span class="attr">ongreen</span>:       <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"ENTER   STATE: green"</span>);  &#125;,</div><div class="line">      <span class="attr">onyellow</span>:      <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"ENTER   STATE: yellow"</span>); &#125;,</div><div class="line">      <span class="attr">onred</span>:         <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"ENTER   STATE: red"</span>);    &#125;,</div><div class="line"></div><div class="line">      <span class="attr">onchangestate</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event, from, to</span>) </span>&#123; log(<span class="string">"CHANGED STATE: "</span> + <span class="keyword">from</span> + <span class="string">" to "</span> + to); &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>不過實際上，有限狀態機可以做什麼用？待續…</p>
+<p>#延伸閱讀：</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2013/09/finite-state_machine_for_javascript.html" target="_blank" rel="external">阮一峰的网络日志 - JavaScript与有限状态机</a></li>
+<li><a href="http://codeincomplete.com/posts/2013/1/26/javascript_state_machine_v2_2_0/" target="_blank" rel="external">Javascript State Machine v2.2</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2013/06/18/hello-world/" rel="next" title="Hello Logdown">
+                <i class="fa fa-chevron-left"></i> Hello Logdown
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2013/11/11/fire-and-forget-design-pattern/" rel="prev" title="射後不理設計模式">
+                射後不理設計模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Event-pubsup"><span class="nav-number">1.</span> <span class="nav-text">Event pubsup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有限狀態機-Finite-State-Machine"><span class="nav-number">2.</span> <span class="nav-text">有限狀態機(Finite State Machine)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javascript-state-machine"><span class="nav-number">3.</span> <span class="nav-text">javascript-state-machine</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#條件如下："><span class="nav-number">3.0.0.1.</span> <span class="nav-text">條件如下：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程圖"><span class="nav-number">3.0.1.</span> <span class="nav-text">流程圖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件："><span class="nav-number">3.0.1.1.</span> <span class="nav-text">事件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程："><span class="nav-number">3.0.1.2.</span> <span class="nav-text">流程：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2013/11/07/finite-state-machine/';
+
+      var disqus_title = "有限狀態機";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;nbsp;今年情人節突發奇想的搞了個APP遊戲給我家女王玩，順便熟悉一下jQuery Mobile。先講一下這個遊戲的流程。
+地點這次的地點我選在離家近的中和環球購物中心，因為對我來說場勘也比較容易。哈哈。進去之後，營造出你已經踏入遊戲世界，請拿出你的通話裝置，遊戲即將開始。
+掃描QR Code下載遊戲程式，請事先檢查有沒有安裝掃QR code軟體。以及環境網路暢通。
+
+安裝APK記得要是先將">
+<meta property="og:type" content="article">
+<meta property="og:title" content="情人節APP">
+<meta property="og:url" content="http://blog.blackbing.net/post/2011/08/08/valentine-app/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="&amp;nbsp;今年情人節突發奇想的搞了個APP遊戲給我家女王玩，順便熟悉一下jQuery Mobile。先講一下這個遊戲的流程。
+地點這次的地點我選在離家近的中和環球購物中心，因為對我來說場勘也比較容易。哈哈。進去之後，營造出你已經踏入遊戲世界，請拿出你的通話裝置，遊戲即將開始。
+掃描QR Code下載遊戲程式，請事先檢查有沒有安裝掃QR code軟體。以及環境網路暢通。
+
+安裝APK記得要是先將">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/qrcode.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/android/appicon.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot1.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot2.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot3.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot4.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot5.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot6.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot7.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot8.png">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot9.png">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="情人節APP">
+<meta name="twitter:description" content="&amp;nbsp;今年情人節突發奇想的搞了個APP遊戲給我家女王玩，順便熟悉一下jQuery Mobile。先講一下這個遊戲的流程。
+地點這次的地點我選在離家近的中和環球購物中心，因為對我來說場勘也比較容易。哈哈。進去之後，營造出你已經踏入遊戲世界，請拿出你的通話裝置，遊戲即將開始。
+掃描QR Code下載遊戲程式，請事先檢查有沒有安裝掃QR code軟體。以及環境網路暢通。
+
+安裝APK記得要是先將">
+<meta name="twitter:image" content="http://dl.dropbox.com/u/751847/Ti2011Valentine/qrcode.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2011/08/08/valentine-app/"/>
+
+
+
+
+
+  <title> 情人節APP | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/08/08/valentine-app/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                情人節APP
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-08-08T16:41:00+08:00">
+                2011-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><div>　&nbsp;</div><br>今年情人節突發奇想的搞了個APP遊戲給我家女王玩，順便熟悉一下<a href="http://jquerymobile.com/" target="_blank">jQuery Mobile</a>。先講一下這個遊戲的流程。</p>
+<p></p><h2>地點</h2><br>這次的地點我選在離家近的中和環球購物中心，因為對我來說場勘也比較容易。哈哈。進去之後，營造出你已經踏入遊戲世界，請拿出你的通話裝置，遊戲即將開始。<p></p>
+<p></p><h2>掃描QR Code</h2><br>下載遊戲程式，請事先檢查有沒有安裝掃QR code軟體。以及環境網路暢通。<p></p>
+<p><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/qrcode.png" alt="2011 valentine qr" width="180" height="180"></p>
+<p></p><h2>安裝APK</h2><br>記得要是先將女王的Android手機的設定改成「允許接受未知的來源」，不然安裝時還要改來改去就糗大了。<p></p>
+<p><img class="alignnone" style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/android/appicon.png" alt="2011 mode app icon" width="128" height="128"></p>
+<p></p><h2>遊戲開始</h2><br>大方的讓她知道這是一個遊戲，讓她有期待玩遊戲的感覺就好了，我則在旁充當技術指導員，以及故障排除XD，畢竟沒有人能保證寫出來的東西沒有bug 。<p></p>
+<p></p><h2><a id="more"></a>照片猜謎</h2><br>找出一張我們共同去過的地方的照片，利用透明圓圈製造出限定可視範圍的感覺。<p></p>
+<p><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/quiz1.html" target="_blank"><img src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot.png" alt="" width="294" height="194"></a><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/quiz2.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot1.png" alt="" width="293" height="194"></a></p>
+<p></p><h2>選擇餐廳</h2><br>選擇餐廳，就到這一整棟挑覺得不錯的餐廳，都給它訂位下去，不用擔心這樣很賤，因為當天一定是爆滿的狀態，訂了沒去它也不會理。這時候加入一些搞笑的選項，例如漢堡王、路邊攤小吃。。<p></p>
+<p></p><h2><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/meal.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot2.png" alt="" width="404" height="627"></a><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/Burgerking.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot3.png" alt="" width="406" height="565"></a><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/Burgerking_error.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot4.png" alt="" width="405" height="191"></a></h2><p></p>
+<p></p><h2>用餐時間拼圖遊戲</h2><br>用餐的時間比較充裕，也可以坐著慢慢完，準備一張我們的合照，開始玩拼圖遊戲。<p></p>
+<p><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/puzzle.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot5.png" alt="" width="328" height="537"></a></p>
+<p></p><h2>猜猜用餐金額</h2><br>這裡比較刺激的是，你不會事先知道用餐金額，因此在你得知用餐金額時，必須要找時間修改金額，好用的Dropbox就派上用場了。<p></p>
+<p><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/price.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot6.png" alt="" width="314" height="598"></a></p>
+<p></p><h2>心理測驗（鋪梗）</h2><br>這裡的重點在要讓女王知道這個測驗只能選擇一次，每一個選項有一個代表的物品，這個物品是接下來遊戲的線索，不同的選項會有不同的線索，但請依照自己的直覺去選擇，如果我跟你都有相同的答案，代表我們心有靈犀一點通～耶！<p></p>
+<p><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/quiz3.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot7.png" alt="" width="404" height="477"></a><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/quiz3.html#undefined&amp;ui-state=dialog" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot8.png" alt="" width="343" height="570"></a></p>
+<p></p><h2>尋寶遊戲</h2><br>接下來就是要送給女王的東西啦，由於成功的營造出遊戲氣氛（也是因為它很愛玩），雖然給了幾個提示，但它一個也不想用掉就想到是哪一家了，不過果然還是有點難度，最後在技術指導員的帶領之下終於找到最後的禮物。<p></p>
+<p><a href="http://dl.dropbox.com/u/751847/Ti2011Valentine/Resources/jcode.html" target="_blank"><img style="display: block;" src="http://dl.dropbox.com/u/751847/Ti2011Valentine/Screenshot9.png" alt="" width="345" height="730"></a></p>
+<p></p><h2>後記</h2><br>稍微運用一點巧思，就可以讓生活增添一些趣味，當然這也是要花時間做的啦，如果覺得這個Idea不錯，想要如法泡製，但又不太會寫的人，可以寄信跟我聯絡，我來幫你客製化，ㄎㄎ～雖然是做給女王的東西，我還是有從中得到一些經驗的。以下就來談談幾個經驗分享。<p></p>
+<ol><br>    <li><strong>資源快取或預存</strong>：其實原本我只想做成手機網頁，但實際測試之後發現3G網路連線不夠快，做為互動式遊戲網頁明顯會delay很久，因此我將才將所有的程式包進APP裡頭，執行的速度差蠻多的，雖然作成網頁版有線上即時更新的好處，但是除非你開發的APP應用環境在WIFI裡頭，否則盡可能的將resource做快取或預存。</li><br>    <li><strong>詳讀jquery Mobile API再GO</strong>：真的可以節省很多開發時間，不過就目前為止，拿它開發靜態網頁非常順，但若要在裡頭嵌入一些額外的js，他的ajax content執行就會有問題。例如在換頁效果中，他是用ajax取得下一頁的內容，而下一頁裡頭有document.ready的執行事件就不會被執行，因此遇到這種情況我必須要加入rel=”external”的設定，讓連結不透過ajax來loading content。這可能要再看一下doc有沒有什麼更好的方式來執行。</li><br>    <li><strong>創意創意創意</strong>：身為網頁工程師，技術只是工具，創意才是最重要的，上述的技術不難，但加上一些創意與巧思，就可以將冰冷的科技與生活中做互動，進一步讓女王開心，真是一舉兩得。</li><br></ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2011/07/21/css3-font/" rel="next" title="CSS3 font">
+                <i class="fa fa-chevron-left"></i> CSS3 font
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2011/08/12/auto-play-in-facebook-theater-mode/" rel="prev" title="Auto play in Facebook Theater Mode">
+                Auto play in Facebook Theater Mode <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">地點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">掃描QR Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">安裝APK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">遊戲開始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">照片猜謎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">選擇餐廳</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">用餐時間拼圖遊戲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">猜猜用餐金額</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">10.</span> <span class="nav-text">心理測驗（鋪梗）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">11.</span> <span class="nav-text">尋寶遊戲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">12.</span> <span class="nav-text">後記</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2011/08/08/valentine-app/';
+
+      var disqus_title = "情人節APP";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

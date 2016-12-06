@@ -1,0 +1,651 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="https://chrome.google.com/extensions/detail/blbmhonenddnnmbailokbccgmikhkpni
+My girl friend want to download her friend’s whole photos on her facebook, so I write a tool for her.
+Usage:
+
+Link to the a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Download Facebook album's photos">
+<meta property="og:url" content="http://blog.blackbing.net/post/2011/03/29/download-facebook-albums-photos/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="https://chrome.google.com/extensions/detail/blbmhonenddnnmbailokbccgmikhkpni
+My girl friend want to download her friend’s whole photos on her facebook, so I write a tool for her.
+Usage:
+
+Link to the a">
+<meta property="og:updated_time" content="2016-12-05T10:44:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Download Facebook album's photos">
+<meta name="twitter:description" content="https://chrome.google.com/extensions/detail/blbmhonenddnnmbailokbccgmikhkpni
+My girl friend want to download her friend’s whole photos on her facebook, so I write a tool for her.
+Usage:
+
+Link to the a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2011/03/29/download-facebook-albums-photos/"/>
+
+
+
+
+
+  <title> Download Facebook album's photos | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2011/03/29/download-facebook-albums-photos/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Download Facebook album's photos
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2011-03-29T23:47:00+08:00">
+                2011-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p></p><p><a href="https://chrome.google.com/extensions/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank" rel="external">https://chrome.google.com/extensions/detail/blbmhonenddnnmbailokbccgmikhkpni</a></p><p></p>
+<p></p><p>My girl friend want to download her friend’s whole photos on her facebook, so I write a tool for her.</p><p></p>
+<p></p><p><br>Usage:<br></p>
+<ol>
+<li>Link to the album on your facebook page.<br></li>
+<li>Click the “Download FB phtos” Icon.<br></li>
+<li>You will see all photos on a new tab.<br></li>
+<li>Press “Ctrl+S” and select “Save whole pages”.<br></li>
+<li>Great! You will see a folder including all the photos in this album.<br><br>Cheers!<br><br><p></p><br><p><br>聊聊這個小工具的開發心得，首先，我不想花太多時間做這個工具，之前有<a href="http://soft.ccn.tw/" target="_blank">CCN</a>大大開發了一個抓無名相簿的工具<a href="http://soft.ccn.tw/blog/60" target="_blank">WretchXD</a>，開發的非常好，但一般這種抓圖程式都會遇到被host來源封鎖、擋掉、當成惡意攻擊等奇怪的事情，我不想為了做這種事情，去挑戰臉書的server。其次，我不想做成應用程式，還需要登入、使用<a href="http://developers.facebook.com/docs/reference/api/" target="_blank" rel="external">graphAPI</a>，為了抓一個相簿，還要挑來挑去，那我乾脆開發一個fb相簿瀏覽器了XD。<br></p><br><p><br>總歸一句就是懶，於是我把腦筋動到google chrome身上，只要我可以parse出縮圖與大圖的規則，就可以拿到一串URL了，稍微測試了一下果然可以。<br></p><br><p><br>縮圖URL:<a href="http://photos-c.ak.fbcdn.net/hphotos-ak-ash2/62450_1517231263867_1627073717_1243192_8144805_a.jpg" target="_blank" rel="external">http://photos-c.ak.fbcdn.net/hphotos-ak-ash2/62450_1517231263867_1627073717_1243192_8144805_a.jpg</a><br></p></li>
+</ol>
+<p>原始URL:<a href="http://photos-c.ak.fbcdn.net/hphotos-ak-ash2/62450_1517231263867_1627073717_1243192_8144805_n.jpg" target="_blank" rel="external">http://photos-c.ak.fbcdn.net/hphotos-ak-ash2/62450_1517231263867_1627073717_1243192_8144805_n.jpg</a><br></p><p></p>
+<p></p><p><br>相當簡單，只差了一個字元而已，於是我開始思考一下這個工具的操作流程：瀏覽FB縮圖，按下按鈕，取得所有連結…..取得所有連結之後咧？使用wget來下載所有連結？windows上還要安裝wget！？而且因為下載的動作已經與瀏覽器的動作分開了，也有可能因為權限問題被擋掉？就在這個moment，我想到了<a href="http://code.google.com/chrome/extensions/tabs.html#method-create" target="_blank">chrome.tabs.create</a>，將所有圖檔load到新分頁裡頭，我就可以利用瀏覽器的「另存新檔」功能來存放所有圖片，非常好，流程不難，「萬事具備，只欠Coding」，最困難的部份在於如何將資料傳入new tab，看起來是安全性的問題不能任意存取tab物件，不過最後我還是繞道解決了，以後再查查看有沒有正規一點的作法來改進。<br></p><p></p>
+<p></p><p><br>那麼，使用有什麼bug歡迎回報</p><p></p>
+<p></p><p><br><a href="https://chrome.google.com/webstore/detail/blbmhonenddnnmbailokbccgmikhkpni" target="_blank">Download Facebook album’s photos</a><br></p><p></p>
+<p><hr></p>
+<p></p><p><br>2011/04/12 更新日誌：<br>由於之前懶得查chrome extension API, 在與new tab溝通時，我是用暴力方式將資料塞入window 裡頭，原以為這樣可以正常運作，但發佈出去才發現有眾多的問題存在，因此決定好好survey API, 原來在做message passing時有更好的方式來呼叫，請參考「<a href="http://code.google.com/chrome/extensions/messaging.html" target="_blank">Message Passing</a>」利用<a href="http://code.google.com/chrome/extensions/tabs.html#method-sendRequest" target="_blank">chrome.tabs.sendRequest</a>也可以指定要將參數傳入特定的tab，再該tab裡頭榜入相對應的事件。部份範例code如下：<br></p><br>[sourcecode language=”javascript”]<br>//=============in click action =====================================<br>chrome.tabs.create({ url:chrome.extension.getURL(‘./fbphotos.html’), index:(currentTab.index), selected:true }, function(tab){<br>    //指定tab id, 並傳入req<br>    chrome.tabs.sendRequest(tab.id, req);<br>});<p></p>
+<p>//=============in new tab page====================================<br>//榜定事件接收資料。<br>chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {<br>    loadData(request);<br>  });<br>[/sourcecode]<br><br></p>
+<p></p><p>2011/7/5 update, 感謝網友更詳細的介紹，相形之下我好懶XD</p><p></p>
+<p><ul><br>    <li><a href="http://briian.com/?p=7552" target="_blank" rel="external">重灌狂人-按一下，批次下載 Facebook 相簿中的全部照片</a></li><br>    <li><a href="http://blog.digfun.net/2011/05/google-chrome-facebook.html" target="_blank" rel="external">以 Google Chrome 下載 Facebook 相簿</a></li><br>    <li><a href="http://sofree.cc/download-fb-album-photo/" target="_blank" rel="external">香腸烤魷魚-超簡單！一鍵下載Facebook整本相簿照片</a></li></ul></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2011/03/04/javascript-fanonymous-function/" rel="next" title="匿名函式(Anonymous Function)">
+                <i class="fa fa-chevron-left"></i> 匿名函式(Anonymous Function)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2011/04/15/chrome-extension-wysiwyg-backend-tool/" rel="prev" title="利用Chrome Extension創造所見即所得的管理工具">
+                利用Chrome Extension創造所見即所得的管理工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2011/03/29/download-facebook-albums-photos/';
+
+      var disqus_title = "Download Facebook album\'s photos";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

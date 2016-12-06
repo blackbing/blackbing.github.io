@@ -1,0 +1,733 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="react-numeral-input
+之前寫了一個 react-numeral-input，主要是可以所見即所得的處理數字的格式，例如 100000 直接顯示為 100,000。原本的想法是將所有的輸入都轉成數字，然後將輸入的數字加上數字的格式。
+不過這樣的作法會造成一個問題，就是當使用者在開啟輸入法時，打的任何值都會被吃掉（看起來像是鍵盤沒用的樣子）。網路上找到的解法大部分都是去做字串取代，但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[react] react-numeral-input">
+<meta property="og:url" content="http://blog.blackbing.net/post/2015/08/19/react-react-numeral-input/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="react-numeral-input
+之前寫了一個 react-numeral-input，主要是可以所見即所得的處理數字的格式，例如 100000 直接顯示為 100,000。原本的想法是將所有的輸入都轉成數字，然後將輸入的數字加上數字的格式。
+不過這樣的作法會造成一個問題，就是當使用者在開啟輸入法時，打的任何值都會被吃掉（看起來像是鍵盤沒用的樣子）。網路上找到的解法大部分都是去做字串取代，但">
+<meta property="og:image" content="http://bingo.d.pr/yWSq.gif">
+<meta property="og:image" content="http://bingo.d.pr/tQBa.png">
+<meta property="og:image" content="http://bingo.d.pr/xURl.png">
+<meta property="og:updated_time" content="2016-12-06T05:13:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[react] react-numeral-input">
+<meta name="twitter:description" content="react-numeral-input
+之前寫了一個 react-numeral-input，主要是可以所見即所得的處理數字的格式，例如 100000 直接顯示為 100,000。原本的想法是將所有的輸入都轉成數字，然後將輸入的數字加上數字的格式。
+不過這樣的作法會造成一個問題，就是當使用者在開啟輸入法時，打的任何值都會被吃掉（看起來像是鍵盤沒用的樣子）。網路上找到的解法大部分都是去做字串取代，但">
+<meta name="twitter:image" content="http://bingo.d.pr/yWSq.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2015/08/19/react-react-numeral-input/"/>
+
+
+
+
+
+  <title> [react] react-numeral-input | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2015/08/19/react-react-numeral-input/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [react] react-numeral-input
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-19T08:25:00+08:00">
+                2015-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/input/" itemprop="url" rel="index">
+                    <span itemprop="name">input</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/input/numeral-input/" itemprop="url" rel="index">
+                    <span itemprop="name">numeral-input</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2015/08/19/react-react-numeral-input/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2015/08/19/react-react-numeral-input/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="react-numeral-input"><a href="#react-numeral-input" class="headerlink" title="react-numeral-input"></a>react-numeral-input</h1><p><img src="http://bingo.d.pr/yWSq.gif" alt=""></p>
+<p>之前寫了一個 <a href="http://blackbing.github.io/react-numeral-input/" target="_blank" rel="external">react-numeral-input</a>，主要是可以所見即所得的處理數字的格式，例如 100000 直接顯示為 100,000。原本的想法是將所有的輸入都轉成數字，然後將輸入的數字加上數字的格式。</p>
+<p>不過這樣的作法會造成一個問題，就是當使用者在開啟輸入法時，打的任何值都會被吃掉（看起來像是鍵盤沒用的樣子）。網路上找到的解法大部分都是去做字串取代，但這樣無法解決問題。</p>
+<h1 id="input-type-”number”"><a href="#input-type-”number”" class="headerlink" title="input type=”number”"></a>input type=”number”</h1><p>html 的 <code>&lt;input type=&quot;number&quot; &gt;</code> 無法顯示非數字，因此在做這個 component 時就知道不能用這個 type 了。</p>
+<h1 id="ime-mode-disabled"><a href="#ime-mode-disabled" class="headerlink" title="ime-mode: disabled"></a>ime-mode: disabled</h1><p>於是查了一下發現看起來最簡單的方法就是 disable <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/ime-mode" title="ime-mode" target="_blank" rel="external">ime-mode</a>，但 ime-mode 只有在 firefox 和 IE 上能動。沒辦法跨瀏覽器。</p>
+<h1 id="keycode-229"><a href="#keycode-229" class="headerlink" title="keycode 229"></a>keycode 229</h1><p>接著發現當使用者用輸入法輸入時，收到的 keyCode 都是 229，也就是說是可以檢查使用者目前是開啟輸入法的，也可以提醒使用者關閉輸入法已確保正確的輸入。但麻煩的是還要額外提醒使用者的 UI 或者 notice。<br><img src="http://bingo.d.pr/tQBa.png" alt="React-numeral-input_by_blackbing.jpg"></p>
+<h1 id="User-Feedback"><a href="#User-Feedback" class="headerlink" title="User Feedback"></a>User Feedback</h1><p>轉個念一想，其實問題是在使用者輸入時，沒有對應的 user feedback 給他，才會造成誤解欄位無法輸入的情況，因此保留不正確的格式好像也不是一個問題？<br><img src="http://bingo.d.pr/xURl.png" alt="螢幕快照_2015-08-19_下午4_42_28（2）.jpg"></p>
+<p>這樣就不需要去考慮輸入法什麼問題，類似這種所見即所得的工具，可以改變使用者的輸入，但要避免讓使用者誤解「輸入 -&gt; 輸出沒反應。」</p>
+<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><p>如此要解決的問題就顯得容易的多，當你在輸入時開啟輸入法，還是可以輸入，但程式不會將你輸入錯的值吃掉，而是返回給試用者，至於是否要顯示 error message，則交給系統自己決定即可。看似簡單的問題，卻繞了一大圈回來才想到解法。</p>
+<h1 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h1><p>有興趣的人可以玩玩看　<a href="http://blackbing.github.io/react-numeral-input/" target="_blank" rel="external">react-numeral-input</a>，或是直接安裝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react-numeral-input --save-dev</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2015/07/06/javascript-use-the-deferred-processing-dynamic-order-of-tasks/" rel="next" title="[javascript] 利用 Deferred 處理動態的順序性任務">
+                <i class="fa fa-chevron-left"></i> [javascript] 利用 Deferred 處理動態的順序性任務
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2016/07/24/we-developed-cnyes-app-with-react-native/" rel="prev" title="我們用 react-native 開發鉅亨網 app">
+                我們用 react-native 開發鉅亨網 app <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#react-numeral-input"><span class="nav-number">1.</span> <span class="nav-text">react-numeral-input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#input-type-”number”"><span class="nav-number">2.</span> <span class="nav-text">input type=”number”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ime-mode-disabled"><span class="nav-number">3.</span> <span class="nav-text">ime-mode: disabled</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#keycode-229"><span class="nav-number">4.</span> <span class="nav-text">keycode 229</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#User-Feedback"><span class="nav-number">5.</span> <span class="nav-text">User Feedback</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#結論"><span class="nav-number">6.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DEMO"><span class="nav-number">7.</span> <span class="nav-text">DEMO</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2015/08/19/react-react-numeral-input/';
+
+      var disqus_title = "[react] react-numeral-input";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

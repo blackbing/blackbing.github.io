@@ -1,0 +1,647 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="很多人搞不懂Javascript的「this」這個關鍵字，或者是覺得懂，但是有些地方的this又覺得怪怪的。看過一些this的教學，我覺得都講得太複雜了，其實「this」只有一個重點而已。
+this永遠指向「被執行時的作用域」
+蝦毁？？被執行？作用域？？沒關係，試著把自己當作是編譯器，只要你不會在自己所撰寫的程式中迷路，其實this一點都不難區分。讓我們來看幾個例子：
+12345 var t =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What is "this" in Javascript（上）">
+<meta property="og:url" content="http://blog.blackbing.net/post/2009/08/02/what-is-this-in-javascript/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="很多人搞不懂Javascript的「this」這個關鍵字，或者是覺得懂，但是有些地方的this又覺得怪怪的。看過一些this的教學，我覺得都講得太複雜了，其實「this」只有一個重點而已。
+this永遠指向「被執行時的作用域」
+蝦毁？？被執行？作用域？？沒關係，試著把自己當作是編譯器，只要你不會在自己所撰寫的程式中迷路，其實this一點都不難區分。讓我們來看幾個例子：
+12345 var t =">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What is "this" in Javascript（上）">
+<meta name="twitter:description" content="很多人搞不懂Javascript的「this」這個關鍵字，或者是覺得懂，但是有些地方的this又覺得怪怪的。看過一些this的教學，我覺得都講得太複雜了，其實「this」只有一個重點而已。
+this永遠指向「被執行時的作用域」
+蝦毁？？被執行？作用域？？沒關係，試著把自己當作是編譯器，只要你不會在自己所撰寫的程式中迷路，其實this一點都不難區分。讓我們來看幾個例子：
+12345 var t =">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2009/08/02/what-is-this-in-javascript/"/>
+
+
+
+
+
+  <title> What is "this" in Javascript（上） | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2009/08/02/what-is-this-in-javascript/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                What is "this" in Javascript（上）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2009-08-02T21:15:00+08:00">
+                2009-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>很多人搞不懂Javascript的「this」這個關鍵字，或者是覺得懂，但是有些地方的this又覺得怪怪的。看過一些this的教學，我覺得都講得太複雜了，其實「this」只有一個重點而已。</p>
+<p>this永遠指向「<strong>被執行時的作用域</strong>」</p>
+<p>蝦毁？？被執行？作用域？？沒關係，試著把自己當作是編譯器，只要你不會在自己所撰寫的程式中迷路，其實this一點都不難區分。讓我們來看幾個例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> t = <span class="keyword">this</span>;<span class="built_in">console</span>.log(t); <span class="comment">//window</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">whatIsThis</span>(<span class="params"></span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span>); </div><div class="line">&#125;</div><div class="line">whatIsThis(); <span class="comment">//window</span></div></pre></td></tr></table></figure>
+<p>變數t指向this，作用域在window底下，因此this指向window，這沒有問題，function whatIsThis裡頭印出的this指向誰？別會錯意囉，this永遠指向被「誰」呼叫，這個function是在window的作用域下被呼叫的，因此指向window，同理，我們來看下個例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">wrapper</span>(<span class="params"></span>)</span>&#123;</div><div class="line">     whatIsThis();</div><div class="line"> &#125;</div><div class="line">wrapper(); <span class="comment">//window</span></div></pre></td></tr></table></figure>
+<p>什麼？我是透過wrapper這個function來呼叫whatIsThis的，為什麼還是window？請想想wrapper的作用域是誰？是 window，window呼叫wrapper，this還是指向window，作用域並沒有改變，這時呼叫whatIsThis當然作用域還是沒有改變，依然指向window。</p>
+<p>接下來結合其他的型態：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="keyword">this</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>)&#125;];</div><div class="line"><span class="built_in">console</span>.log(arr[<span class="number">0</span>]); <span class="comment">//window</span></div><div class="line">arr[<span class="number">3</span>](); <span class="comment">//arr</span></div></pre></td></tr></table></figure>
+<p>arr[0]指向window，原因是arr這個陣列被宣告時作用域是在window底下的，因此arr[0]是指向this。而arr[3]呢？當他被執行時，this被closure的方式被保存在function裡頭，因此呼叫arr[3]時，this指向他當時的作用域，也就是arr，看起來有點複雜，不過只要把自己想程式編譯器，問自己this何時被執行就好了。 Object跟Array一樣，其實大部分應該會更常在Object裡頭來使用this，我們來看一個比較實用的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = &#123;</div><div class="line">    <span class="attr">length</span>:<span class="number">100</span>,</div><div class="line">    <span class="attr">width</span>: <span class="number">300</span>,</div><div class="line">    <span class="attr">area</span>: <span class="keyword">this</span>.length* <span class="keyword">this</span>.width</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(box.area);</div></pre></td></tr></table></figure>
+<p>看起來蠻合邏輯的一段程式，猜猜看，box.area是什麼？答案是NaN。Why?因為this根本就不是指向box，哪來的 this.length、this.width。剛說過this永遠指向「被執行的作用域」，box物件在宣告時，屬性volumn被指派時，this當然是指向window，所以這個邏輯是錯的。那怎辦？很多人遇到這個問題時，「那就不要使用this吧！」所以程式變成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = &#123;</div><div class="line">    <span class="attr">length</span>:<span class="number">100</span>,</div><div class="line">    <span class="attr">width</span>: <span class="number">300</span>,</div><div class="line">    <span class="attr">area</span>: box.length* box.width</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(box.area);</div></pre></td></tr></table></figure>
+<p>OK！box.area很正確的被計算出來了，但是這是個好辦法嗎？假如今天程式變成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> box = &#123;</div><div class="line">     <span class="attr">length</span>:<span class="number">100</span>,</div><div class="line">     <span class="attr">width</span>: <span class="number">300</span>,</div><div class="line">     <span class="attr">area</span>: box.length* box.width,</div><div class="line">     <span class="attr">volumn</span>: box.length* box.width * box.height,</div><div class="line">     <span class="attr">height</span>:<span class="number">50</span></div><div class="line">&#125;;</div><div class="line"> <span class="built_in">console</span>.log(<span class="string">'box.volumn='</span>+box.volumn);</div></pre></td></tr></table></figure>
+<p>再猜猜看，box.volumn的值是什麼？答案是…..NaN，因為box在被宣告時，volumn屬性決定前尚未宣告height，導致 box.height變成undefined。「那就把height提前宣告就好啦？」等等，這樣真是不求甚解。這樣的需求用this的特性來取得是很直覺的事情，應該要想辦法搞定的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = &#123;</div><div class="line">    <span class="attr">length</span>:<span class="number">100</span>,</div><div class="line">    <span class="attr">width</span>: <span class="number">300</span>,</div><div class="line">    <span class="attr">getArea</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.length* <span class="keyword">this</span>.width&#125;,</div><div class="line">    <span class="attr">getVolumn</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.length* <span class="keyword">this</span>.width*<span class="keyword">this</span>.height&#125;,</div><div class="line">    <span class="attr">height</span>:<span class="number">50</span></div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'box.volumn='</span>+box.getVolumn());</div></pre></td></tr></table></figure>
+<p>如上，用getArea的function來動態取得box的長寬高，box.getVolumn function裡頭的this便是指向box這個物件，因為getVolumn被呼叫時，作用域就在box，所以this指向box。 this跟幾個重要型態的關係大概就是這樣，萬變不離其宗，在任何型態裡頭使用this都是照這個思維去走即可。下一篇會再介紹new Object之後的this以及與window事件交互作用之後的this。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2009/08/01/ie6-memory-leak-solution/" rel="next" title="ie6 Memory Leak的解決方式">
+                <i class="fa fa-chevron-left"></i> ie6 Memory Leak的解決方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2009/09/01/javascript-debug/" rel="prev" title="Javascript Debug">
+                Javascript Debug <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2009/08/02/what-is-this-in-javascript/';
+
+      var disqus_title = "What is \"this\" in Javascript（上）";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

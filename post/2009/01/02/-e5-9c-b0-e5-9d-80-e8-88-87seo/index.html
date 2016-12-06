@@ -1,0 +1,634 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在google搜尋地址時，會判斷你想要搜尋地址，並且出現google map的地圖，說實在這真的是一個很方便的搜尋方式，更方便的是透過他強大的搜尋引擎，可以很快的撈出在這個地址的食記、商家、等等的文章，這讓我想到我們有很多的地標資料，但是都沒有好好的利用搜尋引擎的特性。
+例如在google搜尋地址「台北市八德路二段300巷80號」:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="地址與SEO">
+<meta property="og:url" content="http://blog.blackbing.net/post/2009/01/02/-e5-9c-b0-e5-9d-80-e8-88-87seo/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="在google搜尋地址時，會判斷你想要搜尋地址，並且出現google map的地圖，說實在這真的是一個很方便的搜尋方式，更方便的是透過他強大的搜尋引擎，可以很快的撈出在這個地址的食記、商家、等等的文章，這讓我想到我們有很多的地標資料，但是都沒有好好的利用搜尋引擎的特性。
+例如在google搜尋地址「台北市八德路二段300巷80號」:">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="地址與SEO">
+<meta name="twitter:description" content="在google搜尋地址時，會判斷你想要搜尋地址，並且出現google map的地圖，說實在這真的是一個很方便的搜尋方式，更方便的是透過他強大的搜尋引擎，可以很快的撈出在這個地址的食記、商家、等等的文章，這讓我想到我們有很多的地標資料，但是都沒有好好的利用搜尋引擎的特性。
+例如在google搜尋地址「台北市八德路二段300巷80號」:">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2009/01/02/-e5-9c-b0-e5-9d-80-e8-88-87seo/"/>
+
+
+
+
+
+  <title> 地址與SEO | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2009/01/02/-e5-9c-b0-e5-9d-80-e8-88-87seo/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                地址與SEO
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2009-01-02T12:15:00+08:00">
+                2009-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在google搜尋地址時，會判斷你想要搜尋地址，並且出現google map的地圖，說實在這真的是一個很方便的搜尋方式，更方便的是透過他強大的搜尋引擎，可以很快的撈出在這個地址的食記、商家、等等的文章，這讓我想到我們有很多的地標資料，但是都沒有好好的利用搜尋引擎的特性。</p>
+<p>例如<a href="http://www.google.com.tw/search?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%85%AB%E5%BE%B7%E8%B7%AF%E4%BA%8C%E6%AE%B5300%E5%B7%B780%E8%99%9F&amp;sourceid=navclient-ff&amp;ie=UTF-8&amp;rlz=1B3GGGL_zh-TWTW283TW283" target="_blank">在google搜尋地址「台北市八德路二段300巷80號」</a>:</p>
+<p style="padding-left: 30px;"><a id="more"></a>第一個搜尋結果就是<a href="http://maps.google.com.tw/maps?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%85%AB%E5%BE%B7%E8%B7%AF%E4%BA%8C%E6%AE%B5300%E5%B7%B780%E8%99%9F&amp;sourceid=navclient-ff&amp;ie=UTF-8&amp;rlz=1B3GGGL_zh-TWTW283TW283&amp;um=1&amp;sa=X&amp;oi=geocode_result&amp;resnum=1&amp;ct=image" target="_blank">google map的地圖定址到台北市八德路二段300巷80號</a></p><br><p style="padding-left: 30px; ">第二個結果是<a href="http://www.ipeen.com.tw" target="_blank">ipeen </a>的<a href="http://www.google.com.tw/url?sa=t&amp;source=web&amp;ct=res&amp;cd=2&amp;url=http%3A%2F%2Fwww.ipeen.com.tw%2Fshop%2Fshop.php%3Fid%3D42450%26type%3Dbookmark&amp;ei=EAVeSZzOC5im6wO2lemMBg&amp;usg=AFQjCNFREkNp-feqx2QNmUSP005kGz5p6w&amp;sig2=Swf1-aq4Hh13PIgAQu94kA" target="_blank">鱘鱻生猛活海鮮食記blog文章</a></p>
+
+<p>OK，goole搜尋整合定址搜尋，那我們不就完蛋，但是若透過SEO的最佳化，或許還是可以透過google將使用者吸引到我們網站上做其他整合操作，定址是我們一個很有信心的service，如果content準備好，這個是一個非常眾要的know how。</p>
+<p>接著我看了ipeen那一頁的原始碼：果然需要動點手腳。</p>
+<p>[sourcecode=”xhtml”]</p>
+<p><meta name="description" content="今天的食運倒是大好~每一道菜都點得好好吃喔!!原來上次是因為帶賽點到一堆不好吃的東西嗎??還好沒有在堂哥面前丟臉~這可是我們台灣特有的熱炒..."></p>
+<p><meta name="keywords" content="百元美食,熱炒,小吃,中式料理,熱炒、快炒,鱘鱻生猛活海鮮,台北市中山區八德路二段300巷80號"></p>
+<p><title>鱘鱻生猛活海鮮 - iPeen 愛評網-愛吃鬼的美食天堂-餐廳情報集散地 - 台北市中山區八德路二段300巷80號</title><br>[/sourcecode]</p>
+<p>另外藉著地圖API的使用，是否能夠策略性的將使用者再倒到本站來，這也是一種作法，當然前提還是要有content，不然根本不可能吸引使用者來。當然SEO沒那麼簡單，起碼ipeen在這方面做的很好，至少這是一個可以努力的方向，不然光有資料沒有content讓search bot來爬也沒有用。嗯～加油吧！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2009/01/02/code-conventions-for-the-javascript-programming-language/" rel="next" title="撰寫javascript的規範 (Code Conventions for the JavaScript Programming Language)">
+                <i class="fa fa-chevron-left"></i> 撰寫javascript的規範 (Code Conventions for the JavaScript Programming Language)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2009/01/09/ie8-preview/" rel="prev" title="IE8 features preview">
+                IE8 features preview <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2009/01/02/-e5-9c-b0-e5-9d-80-e8-88-87seo/';
+
+      var disqus_title = "地址與SEO";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

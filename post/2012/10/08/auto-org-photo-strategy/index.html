@@ -1,0 +1,699 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="##懶惰是進步的原動力現在相機越來越強，照片也越來越大，每次要整理照片真是有點累，除了要忍受硬碟空間的不足之外，還要忍受檔案輸入輸出的速度，然後有時也不可能天天都在整理照片，因此每次都會堆個幾天（月）？再一次整理照片，但累積越久要整理就越痛苦，光是要把照片分日期行程命名就是一個很令人暈眩的事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自動整理照片策略">
+<meta property="og:url" content="http://blog.blackbing.net/post/2012/10/08/auto-org-photo-strategy/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="##懶惰是進步的原動力現在相機越來越強，照片也越來越大，每次要整理照片真是有點累，除了要忍受硬碟空間的不足之外，還要忍受檔案輸入輸出的速度，然後有時也不可能天天都在整理照片，因此每次都會堆個幾天（月）？再一次整理照片，但累積越久要整理就越痛苦，光是要把照片分日期行程命名就是一個很令人暈眩的事情。">
+<meta property="og:image" content="http://dl.dropbox.com/u/751847/blog/uploads/2012/box.png">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自動整理照片策略">
+<meta name="twitter:description" content="##懶惰是進步的原動力現在相機越來越強，照片也越來越大，每次要整理照片真是有點累，除了要忍受硬碟空間的不足之外，還要忍受檔案輸入輸出的速度，然後有時也不可能天天都在整理照片，因此每次都會堆個幾天（月）？再一次整理照片，但累積越久要整理就越痛苦，光是要把照片分日期行程命名就是一個很令人暈眩的事情。">
+<meta name="twitter:image" content="http://dl.dropbox.com/u/751847/blog/uploads/2012/box.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2012/10/08/auto-org-photo-strategy/"/>
+
+
+
+
+
+  <title> 自動整理照片策略 | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/10/08/auto-org-photo-strategy/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                自動整理照片策略
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-10-08T15:52:00+08:00">
+                2012-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2012/10/08/auto-org-photo-strategy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2012/10/08/auto-org-photo-strategy/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://dl.dropbox.com/u/751847/blog/uploads/2012/box.png" alt="auto-org-photo-strategy"></p>
+<p>##懶惰是進步的原動力<br>現在相機越來越強，照片也越來越大，每次要整理照片真是有點累，除了要忍受硬碟空間的不足之外，還要忍受檔案輸入輸出的速度，然後有時也不可能天天都在整理照片，因此每次都會堆個幾天（月）？再一次整理照片，但累積越久要整理就越痛苦，光是要把照片分日期行程命名就是一個很令人暈眩的事情。</p>
+<a id="more"></a>
+<p>###自動建立日期資料夾<a id="auto_create"></a><br>但事實上，大部份的旅遊照片幾乎是會依照日期來作區別，比方說2012年5月1日去故宮，2011年7月3日去被浪衝之類，我希望能夠parse照片日期然後就把sd卡裡頭的照片放在各個資料夾裡頭，聽起來很簡單，Go~</p>
+<p>#####1. <a href="http://owl.phy.queensu.ca/~phil/exiftool/" target="_blank" rel="external">安裝ExifTool</a></p>
+<p>#####2. 在你的照片資料夾底下執行</p>
+<pre><code>exiftool -d &quot;./%Y-%m-%d&quot; &quot;-directory&lt;createdate&quot; *.{JPG,jpg,JPEG,jpeg}
+</code></pre><p>#####3. 接著你就會看到照片在每個不同的資料夾了<br>    tree</p>
+<pre><code>├── 2010-10-30
+│   └── R0016604.JPG
+├── 2010-11-13
+│   ├── R0017297.JPG
+│   └── R0017424.JPG
+</code></pre><p>#####4. 接下來就再命名一下資料夾即可<br>    tree</p>
+<pre><code>├── 2010-10-30 樂高積木展
+│   └── R0016604.JPG
+├── 2010-11-13 瘋狂暴走墾丁遊
+│   ├── R0017297.JPG
+│   └── R0017424.JPG
+</code></pre><p>###自動合併大家的照片<a id="auto_merge"></a></p>
+<p>大家出去玩也會可能會收到其他人的照片，有時候蠻麻煩的是要分誰誰誰的照片，例如：<br>    tree</p>
+<pre><code>├── 2010-10-30 樂高積木展
+│   ├── 蓁蓁
+│   │   ├── R0017297.JPG
+│   │   └── R0017424.JPG
+│   ├── 黑人
+│   │   ├── R0017289.JPG
+│   │   └── R0017422.JPG
+│   ├── 阿布
+│   │   ├── R0017299.JPG
+│   │   └── R0017478.JPG
+</code></pre><p>我希望能將所有照片丟在同一個資料夾裡頭，然後重新依照日期來命名，不然每台相機都有自己的命名編排方式，全都丟在一起很難排序也很難看。</p>
+<p>####1. <a href="http://owl.phy.queensu.ca/~phil/exiftool/" target="_blank" rel="external">安裝ExifTool</a></p>
+<p>####2. 把所有照片全都丟在同一個資料夾裡頭<br>    tree<br>    ├── IMG_4907.JPG<br>    ├── IMG_4908.JPG<br>    ├── IMG_4911.JPG<br>    ├── IMG_4916.JPG<br>    ├── IMG_4917.JPG<br>    ├── R0023213.JPG<br>    ├── R0023214.JPG<br>    ├── R0023215.JPG<br>    ├── 004.jpg<br>    ├── 005.jpg<br>    └── 006.jpg</p>
+<p>####2. 在你的照片資料夾底下執行</p>
+<pre><code>exiftool &apos;-FileName&lt;${DateTimeOriginal}_$Model.%e&apos; -d %Y-%m-%d_%H-%M-%S%%-.c ./ 
+</code></pre><p>####3. 接下來就會看到照片檔案依照日期重新命名<br>    tree<br>    ├── 2011-05-21_08-37-42-0_Canon\ EOS\ Kiss\ X4.JPG<br>    ├── 2011-05-21_08-37-50-0_Canon\ EOS\ Kiss\ X4.JPG<br>    ├── 2011-05-21_10-42-31-0_Canon\ EOS\ Kiss\ X4.JPG<br>    ├── 2011-05-21_10-43-50-0_Canon\ EOS\ Kiss\ X4.JPG<br>    ├── 2011-05-21_10-46-43-0_Canon\ EOS\ Kiss\ X4.JPG<br>    ├── 2011-05-21_10-48-12-0_GR\ DIGITAL\ 3.JPG<br>    ├── 2011-05-21_10-48-27-0_GR\ DIGITAL\ 3.JPG<br>    ├── 2011-05-21_10-49-05-0_GR\ DIGITAL\ 3.JPG<br>    ├── 2011-05-22_09-36-40-0_Canon\ PowerShot\ S95.jpg<br>    ├── 2011-05-22_09-36-55-0_Canon\ PowerShot\ S95.jpg<br>    └── 2011-05-22_09-39-27-0_Canon\ PowerShot\ S95.jpg</p>
+<p>###小結</p>
+<p>當然，這兩個指令可以依照自己的需求搭配完成，就看怎麼去應用了。</p>
+<ol>
+<li><a href="#auto_create">自動建立日期資料夾</a></li>
+<li><a href="#auto_merge">自動合併大家的照片</a></li>
+</ol>
+<p>另外，這比較適合熟悉指令操作的使用者，更適合被女王許願(希望)整理好照片任務的你。</p>
+<p>也可以把這兩個指令寫成bash放在bin裡頭，搭配指令操作會讓你更節省時間～</p>
+<hr>
+
+<p>###Windows使用者服用(2012-10-10 update)</p>
+<p><strong>不用害怕，你只需要click而已</strong>。</p>
+<p><a href="http://blog.blackbing.net/post/2012/10/11/auto-org-photo-strategy-windows">自動整理照片策略(windows版本)</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2012/08/14/my-first-sale/" rel="next" title="My First Sale">
+                <i class="fa fa-chevron-left"></i> My First Sale
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2012/10/11/auto-org-photo-strategy-windows/" rel="prev" title="自動整理照片策略(windows版本)">
+                自動整理照片策略(windows版本) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2012/10/08/auto-org-photo-strategy/';
+
+      var disqus_title = "自動整理照片策略";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

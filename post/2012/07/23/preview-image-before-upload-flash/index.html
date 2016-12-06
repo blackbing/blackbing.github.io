@@ -1,0 +1,681 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="##這是老掉牙的問題吧？其實這個題目很常見，但我覺得一路走來的心路歷程也算是有些經驗，而瀏覽器進步的快速，也讓網路上充斥着各種不同的解法，初學者很容易就掉進這個深淵。回頭看看這幾年走過的路，也可以由這個問題看出開發者不斷地在跟瀏覽器的能耐做角力，然後隨著技術的進步，終於讓我有比較理想的解法。決定記錄下來。
+如果只是要找解法的話可以直接看「preview image before upload(ht">
+<meta property="og:type" content="article">
+<meta property="og:title" content="preview image before upload(Flash篇)">
+<meta property="og:url" content="http://blog.blackbing.net/post/2012/07/23/preview-image-before-upload-flash/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="##這是老掉牙的問題吧？其實這個題目很常見，但我覺得一路走來的心路歷程也算是有些經驗，而瀏覽器進步的快速，也讓網路上充斥着各種不同的解法，初學者很容易就掉進這個深淵。回頭看看這幾年走過的路，也可以由這個問題看出開發者不斷地在跟瀏覽器的能耐做角力，然後隨著技術的進步，終於讓我有比較理想的解法。決定記錄下來。
+如果只是要找解法的話可以直接看「preview image before upload(ht">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="preview image before upload(Flash篇)">
+<meta name="twitter:description" content="##這是老掉牙的問題吧？其實這個題目很常見，但我覺得一路走來的心路歷程也算是有些經驗，而瀏覽器進步的快速，也讓網路上充斥着各種不同的解法，初學者很容易就掉進這個深淵。回頭看看這幾年走過的路，也可以由這個問題看出開發者不斷地在跟瀏覽器的能耐做角力，然後隨著技術的進步，終於讓我有比較理想的解法。決定記錄下來。
+如果只是要找解法的話可以直接看「preview image before upload(ht">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2012/07/23/preview-image-before-upload-flash/"/>
+
+
+
+
+
+  <title> preview image before upload(Flash篇) | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/07/23/preview-image-before-upload-flash/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                preview image before upload(Flash篇)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-07-23T13:12:00+08:00">
+                2012-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2012/07/23/preview-image-before-upload-flash/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2012/07/23/preview-image-before-upload-flash/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##這是老掉牙的問題吧？<br>其實這個題目很常見，但我覺得一路走來的心路歷程也算是有些經驗，<br>而瀏覽器進步的快速，也讓網路上充斥着各種不同的解法，<br>初學者很容易就掉進這個深淵。回頭看看這幾年走過的路，<br>也可以由這個問題看出開發者不斷地在跟瀏覽器的能耐做角力，<br>然後隨著技術的進步，終於讓我有比較理想的解法。<br>決定記錄下來。</p>
+<p>如果只是要找解法的話可以直接看「preview image before upload(html5篇)」。<br><a id="more"></a></p>
+<p>##Server side solution<br>還記得n多年前，我剛碰網頁程式設計時，為了做上傳圖片的功能，<br>我很天真的問了我的前輩：「我可以在上傳之前預覽我選了哪張圖片嗎？」<br>他想了一下說：「可以啊，就post出去再顯示這張圖片的路徑就好。」<br>於是我就傻傻的就post出去再回來顯示（現在來看很傻），<br>想說，恩，也ok啦，也算是有做出我想要的功能。<br>但很快就發現，如果每次選擇照片都上傳，Server很快就會被塞爆了，<br>而且反應速度根本就很差，所以最後還是把這個功能給拿掉。<br>但也從此種下我一直想做出這理想的功能。</p>
+<p>##img src=”c://Documents/Pictures/aaa.jpg”<br>初生之犢不畏虎，或許你對某些技術很熟悉了，很直覺得就會認為「某某功能辦不到，因為這技術blabla沒辦法blabla」<br>但初學者哪管這麼多，拼命找拼命try，在當時javascript還不紅，瀏覽器只有IE6的年代，<br>我看到這種方式可以讀入image src，覺得終於有達到我要的需求了，很開心的用這個方式實現這個功能。</p>
+<p>##安全性問題<br>好景不常，當我開始意識到「疑？原來世界上不只有IE6瀏覽器，原來瀏覽器不叫做explorer」時，我發現原來的程式<br>在Firefox上不能用，我心裡想Firefox不是更標準，更好開發嗎？為什麼這樣的方式不行？查了半天才知道<br>原來是因為安全性問題(但當時傻乎乎的開發，誰管什麼安全性問題啊，氣死我，難不成又要回到server端解法？)</p>
+<p>  延伸閱讀：</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/4851595/how-to-resolve-the-c-fakepath" target="_blank" rel="external">how to resolve the C:\fakepath?</a></li>
+</ul>
+<p>##Flash solution<br>雖然我還是不死心，不過Firefox還只是在研究階段，IE能Work就先擋着吧（還真是不求甚解），<br>然而又過了不久，IE7 出現了，結果連IE7也不能work了，我才比較正視安全性的問題，那好吧，<br>這功能還是挺有用的，可是怎麼解呢？於是網路上找到有人用flash的方式來解決，不過參考連結我已不復記憶，<br>只是對當時的我來說，flash好像才是壓箱的武器，網頁的限制，就由它來終結。</p>
+<p>接著AJAX紅透半邊天，除了預覽之外，連上傳都要用AJAX的方式來處理，於是就有<br><a href="http://demo.swfupload.org/v220/index.htm" target="_blank" rel="external">swfupload</a>，<a href="http://developer.yahoo.com/yui/uploader/" target="_blank" rel="external">YUI uploader</a><br>之類元件的出現，他們都是用flash的solution然後提供javascript的接口，開發者不用碰到<br>flash端就可以做複雜的處理，可以做到動態上傳，進度顯示等等很炫(?)的功能。</p>
+<p>####不過你知道為什麼可以用flash處理嗎？</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">其實是蓋了一層透明的flash在原本的元件上面，當使用者點擊時觸發flash的選擇檔案控制器，然後再作相對應的處理。很麻煩吧～繞了一大圈。</div></pre></td></tr></table></figure>
+<p>「疑～flash很強大咩！那我可以在上傳之前就先把圖片resize嗎？」<br>有做過傳統網頁程式的人一定對resize picture很熟悉，而且為了加快瀏覽速度，<br>一張圖片還會resize成好幾種不同尺寸，多麻煩阿～<br>所以前端做久了就會想在前端解決，於是我也找到<br>一個小套件：<a href="http://www.shift8creative.com/projects/agile-uploader/index.html" target="_blank" rel="external">AgileUploader</a>，<br>它可以在上傳之前先resize圖片，這可以加快上傳速度減少頻寬量，何樂而不為？</p>
+<p>##小結<br>若考慮相容於舊式瀏覽器（其實就是IE6 7 8），Flash會是最快速的解法，<br>不用管瀏覽器相容性，因為flash本身就是跨瀏覽器的解法了。</p>
+<ul>
+<li>AJAX上傳圖片：<a href="http://demo.swfupload.org/v220/index.htm" target="_blank" rel="external">swfupload</a>，<a href="http://developer.yahoo.com/yui/uploader/" target="_blank" rel="external">YUI uploader</a></li>
+<li>resize Pictures: <a href="http://www.shift8creative.com/projects/agile-uploader/index.html" target="_blank" rel="external">AgileUploader</a></li>
+</ul>
+<p>以上在flash還可以hold住的年代都陪伴著我們經過一段苦力的歲月，隨著瀏覽器的進步，<br>html5的崛起，前端開發者慢慢捨棄flash改用html5的標準來做事情，但是使用者的需求並不會改變，<br>而且只會更多，跟上傳圖片有關的需求列舉如下：</p>
+<ul>
+<li>預覽</li>
+<li>resize</li>
+<li>裁切</li>
+<li>旋轉</li>
+<li><p>濾鏡</p>
+<p>等等，怎麼又冒出這麼多需求？預覽與縮放還沒有太多跟使用者的互動UI，然後crop, rotate, filter等就會有比較複雜的控制UI，<br>所以說阿，開發者總是不斷的在挑戰瀏覽器的極限，<br>雖然技術有了革命性的變動，需求卻只會更多不會更少，我們需要的是更快速的做到我們要做的功能。<br>漸漸地突然發現要Flash做到這麼複雜的功能，又牽扯到很多UI的互動，<br>這已經不單單是可以靠flash的「部分介入」來完成的事情了。</p>
+</li>
+</ul>
+<p>因此，類似的事情好像又重新上演了。html5的出現揪竟會帶來什麼樣的沖擊呢？<br>讓我們繼續看下去。</p>
+<p>下集：「preview image before upload(html5篇)」。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2012/06/14/my-working-environment/" rel="next" title="我的日常工作環境">
+                <i class="fa fa-chevron-left"></i> 我的日常工作環境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2012/08/14/my-first-sale/" rel="prev" title="My First Sale">
+                My First Sale <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2012/07/23/preview-image-before-upload-flash/';
+
+      var disqus_title = "preview image before upload(Flash篇)";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

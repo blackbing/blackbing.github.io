@@ -1,0 +1,730 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Jenkins最近把 jenkins 架起來，筆記一下遇到的問題。
+Install and Upgrade安裝方式請參考http://pkg.jenkins-ci.org/debian/，可能我在多年前有安裝過，因此安裝時出現這樣的error：123456Preparing to replace jenkins 1.480.3+dfsg-1~exp2 (using .../archives/jen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins Notes">
+<meta property="og:url" content="http://blog.blackbing.net/post/2014/03/07/jenkins-notes/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="Jenkins最近把 jenkins 架起來，筆記一下遇到的問題。
+Install and Upgrade安裝方式請參考http://pkg.jenkins-ci.org/debian/，可能我在多年前有安裝過，因此安裝時出現這樣的error：123456Preparing to replace jenkins 1.480.3+dfsg-1~exp2 (using .../archives/jen">
+<meta property="og:image" content="http://user-image.logdown.io/user/96/blog/96/post/184028/QtfLaZaSKpdomyFWUXcQ_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-03-07%20%E4%B8%8B%E5%8D%881.18.46.png">
+<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins Notes">
+<meta name="twitter:description" content="Jenkins最近把 jenkins 架起來，筆記一下遇到的問題。
+Install and Upgrade安裝方式請參考http://pkg.jenkins-ci.org/debian/，可能我在多年前有安裝過，因此安裝時出現這樣的error：123456Preparing to replace jenkins 1.480.3+dfsg-1~exp2 (using .../archives/jen">
+<meta name="twitter:image" content="http://user-image.logdown.io/user/96/blog/96/post/184028/QtfLaZaSKpdomyFWUXcQ_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-03-07%20%E4%B8%8B%E5%8D%881.18.46.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2014/03/07/jenkins-notes/"/>
+
+
+
+
+
+  <title> Jenkins Notes | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/03/07/jenkins-notes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Jenkins Notes
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-03-07T04:02:00+08:00">
+                2014-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jenkins/" itemprop="url" rel="index">
+                    <span itemprop="name">jenkins</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jenkins/Bitbucket/" itemprop="url" rel="index">
+                    <span itemprop="name">Bitbucket</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/03/07/jenkins-notes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/03/07/jenkins-notes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><p>最近把 <a href="http://jenkins-ci.org/" title="jenkins" target="_blank" rel="external">jenkins</a> 架起來，筆記一下遇到的問題。</p>
+<h2 id="Install-and-Upgrade"><a href="#Install-and-Upgrade" class="headerlink" title="Install and Upgrade"></a>Install and Upgrade</h2><p>安裝方式請參考<a href="http://pkg.jenkins-ci.org/debian/" target="_blank" rel="external">http://pkg.jenkins-ci.org/debian/</a>，可能我在多年前有安裝過，因此安裝時出現這樣的error：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Preparing to replace jenkins 1.480.3+dfsg-1~exp2 (using .../archives/jenkins_1.535_all.deb) ...</div><div class="line">Unpacking replacement jenkins ...</div><div class="line">dpkg: error processing /var/cache/apt/archives/jenkins_1.535_all.deb (--unpack):</div><div class="line"> trying to overwrite &apos;/usr/share/jenkins/jenkins.war&apos;, which is also in package jenkins-common 1.480.3+dfsg-1~exp2</div><div class="line">dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)</div><div class="line">jenkins stop/waiting</div></pre></td></tr></table></figure></p>
+<p>要移除掉重新安裝：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get purge jenkins</div><div class="line">sudo apt-get update jenkins</div></pre></td></tr></table></figure></p>
+<p>Reference:<br><a href="http://stackoverflow.com/questions/19457867/problems-installing-latest-version-of-jenkins" target="_blank" rel="external">problems installing latest version of jenkins</a></p>
+<h2 id="Nginx-Jenkins"><a href="#Nginx-Jenkins" class="headerlink" title="Nginx + Jenkins"></a>Nginx + Jenkins</h2><p>jenkins 預設跑在8080 port，因此直接連到 http://<figure class="highlight plain"><figcaption><span>就可以連到。不過我不太喜歡打 port，所以想要把它藏在 nginx 後面。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 1. Nginx config</div><div class="line"></div><div class="line">nginx 設定檔可以參考 [Running Jenkins behind Nginx](https://wiki.jenkins-ci.org/display/JENKINS/Running+Jenkins+behind+Nginx)</div><div class="line"></div><div class="line">### 2. Disable external 8080 port</div><div class="line">另外還是要將對外的8080 port鎖起來，請在 ```/etc/default/jenkins```最底下的```JENKINS_ARGS```之前加入這幾行</div><div class="line"></div><div class="line">```shell</div><div class="line">JENKINS_LOCAL_ONLY=&quot;yes&quot;</div><div class="line">if [ &quot;$JENKINS_LOCAL_ONLY&quot; = &quot;yes&quot; ]; then</div><div class="line">PARAMS=&quot;$PARAMS --httpListenAddress=127.0.0.1&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>Reference:<br><a href="https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins" target="_blank" rel="external">Starting and Accessing Jenkins</a></p>
+<h3 id="3-Enable-Jenkins-log"><a href="#3-Enable-Jenkins-log" class="headerlink" title="3. Enable Jenkins log"></a>3. Enable Jenkins log</h3><p>若要看 jenkins 的log，還要加上 log 的參數設定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">JENKINS_ENABLE_ACCESS_LOG=&quot;yes&quot;</div><div class="line">if [ &quot;$JENKINS_ENABLE_ACCESS_LOG&quot; = &quot;yes&quot; ]; then</div><div class="line">  PARAMS=&quot;$PARAMS --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger --simpleAccessLogger.format=combined --simpleAccessLogger.file=/var/log/jenkins/access&quot;</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>Reference:<br><a href="https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins" target="_blank" rel="external">Starting and Accessing Jenkins</a></p>
+<h3 id="4-No-valid-crumb-was-included-in-the-request"><a href="#4-No-valid-crumb-was-included-in-the-request" class="headerlink" title="4. No valid crumb was included in the request"></a>4. No valid crumb was included in the request</h3><p>設定完之後基本上就可以用了，不過打開瀏覽器的 console 一直會出現  <figure class="highlight plain"><figcaption><span>valid crumb was included in the request```，後來我將</span><a href="http://```[JENKINS_SERVER]```/configureSecurity/" target="_blank" rel="external">最底下的 ```Prevent Cross Site Request Forgery exploits``` 的打勾取消掉，就沒事了。（PS.我也不知道有什麼影響)</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 設定你的應用程式執行環境變數</div><div class="line"></div><div class="line">因為我對系統不太熟，比較麻煩的是要確認你在執行的環境變數，像是你安裝 rvm 之後 ruby 的執行位置等等，我主要是拿來跑 grunt 的 test 與 build，可以參考這篇的 PATH 設定：[jenkins configuration yeoman based angularjs web application](http://www.portlandwebworks.com/blog/jenkins-configuration-yeoman-based-angularjs-web-application)</div><div class="line"></div><div class="line">### 5. set TimeZone </div><div class="line"></div><div class="line">add this on ```/etc/default/jenkins</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">JAVA_ARGS=&quot;-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Taipei&quot;</div></pre></td></tr></table></figure>
+<p>Reference:<br><a href="https://wiki.jenkins-ci.org/display/JENKINS/Change+time+zone" target="_blank" rel="external">https://wiki.jenkins-ci.org/display/JENKINS/Change+time+zone</a></p>
+<h2 id="Bitbucket-hook-Jenkins"><a href="#Bitbucket-hook-Jenkins" class="headerlink" title="Bitbucket hook Jenkins"></a>Bitbucket hook Jenkins</h2><p>最後最重要的就是要把你的專案 hook 到 Jenkins 啦，我測試的 project 放在 Bitbucket，所以就用 Bitbucket 來舉例。</p>
+<ol>
+<li>安裝 jenkins plugin：<br> 到 manage plugin/available 安裝 Build Authorization Token Root Plugin。</li>
+<li>到你的 job 設定裏頭打開 Build Triggers/ Trigger builds remotely，設定 Authentication Token，填入自己設定的一組 Token（例如 <code>build1234567</code>)</li>
+<li>測試 <a href="http://jenkins-server/buildByToken/build?job=myjob&amp;token=build1234567" target="_blank" rel="external">http://jenkins-server/buildByToken/build?job=myjob&amp;token=build1234567</a> 是否有觸發 job 的執行。</li>
+<li>到 bitbucket 你自己的 repository -&gt; setting -&gt; hooks -&gt; select a hook -&gt; Jenkins -&gt; Add hook</li>
+</ol>
+<p>參考資料 <a href="https://confluence.atlassian.com/display/BITBUCKET/Jenkins+hook+management" target="_blank" rel="external">Jenkins hook management</a>。</p>
+<h4 id="接下來很重要！！"><a href="#接下來很重要！！" class="headerlink" title="接下來很重要！！"></a>接下來很重要！！</h4><p>馬的我追 log 追半天一直 hook 不成功，總之是因為 jenkins 的 hook 格式跟 bitbucket 送出的資料對不起來（我不曉得是哪邊的 bug），bitbucket POST 出去的 data，Jenkins 不吃。</p>
+<p><img src="http://user-image.logdown.io/user/96/blog/96/post/184028/QtfLaZaSKpdomyFWUXcQ_%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202014-03-07%20%E4%B8%8B%E5%8D%881.18.46.png" alt="螢幕快照 2014-03-07 下午1.18.46.png"></p>
+<p>請在 Endpoint 裏頭填入第三點的 url 並且加上一個 <code>&amp;</code>，讓他忽略之後的變數，例如：<br><a href="http://```jenkins-server```/buildByToken/build?job=```myjob```&amp;token=```build1234567```&amp;" target="_blank" rel="external">http://```jenkins-server```/buildByToken/build?job=```myjob```&amp;token=```build1234567```&amp;</a></p>
+<p>剩下都留空白。就好了。</p>
+<h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><p>push 之後看到 jenkins 開始聽話的工作了，喝杯咖啡犒賞一下自己。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2014/02/10/vim-ternjs-youcompleteme/" rel="next" title="[VIM] ternjs, YouCompleteMe">
+                <i class="fa fa-chevron-left"></i> [VIM] ternjs, YouCompleteMe
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2014/03/10/javascript-crossbrowser-attribute-judgement/" rel="prev" title="[javascript] 跨瀏覽器的屬性判斷 ">
+                [javascript] 跨瀏覽器的屬性判斷  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-and-Upgrade"><span class="nav-number">1.1.</span> <span class="nav-text">Install and Upgrade</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-Jenkins"><span class="nav-number">1.2.</span> <span class="nav-text">Nginx + Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Enable-Jenkins-log"><span class="nav-number">1.2.1.</span> <span class="nav-text">3. Enable Jenkins log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-No-valid-crumb-was-included-in-the-request"><span class="nav-number">1.2.2.</span> <span class="nav-text">4. No valid crumb was included in the request</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitbucket-hook-Jenkins"><span class="nav-number">1.3.</span> <span class="nav-text">Bitbucket hook Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接下來很重要！！"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">接下來很重要！！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大功告成"><span class="nav-number">1.4.</span> <span class="nav-text">大功告成</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2014/03/07/jenkins-notes/';
+
+      var disqus_title = "Jenkins Notes";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

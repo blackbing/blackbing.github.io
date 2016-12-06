@@ -1,0 +1,716 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="http://feeds.feedburner.com/blackbing" title="Blackbing Playground" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="最近完成了終身大事，也終於有點時間記錄一下了，身為一個宅宅工程師，我堅持自己的婚禮也要充斥一點宅味，當然也要感謝我的老婆容忍我的任性(疑~)。
+其實很久以前就想過婚禮時可以做哪些系統了，有鑑於大家都說到時候不會有時間做這些事情，於是我提早開始準備我要做的系統。
+互動式婚紗照片我一直覺得婚紗本又重又難收藏，所以我很早就想把婚紗照直接用螢幕輸出，但只做播放太無聊了，所以我想要加入一些互動的元素，很直覺">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wedding Party Hackday">
+<meta property="og:url" content="http://blog.blackbing.net/post/2014/12/25/wedding-party-hackday/index.html">
+<meta property="og:site_name" content="Blackbing Playground">
+<meta property="og:description" content="最近完成了終身大事，也終於有點時間記錄一下了，身為一個宅宅工程師，我堅持自己的婚禮也要充斥一點宅味，當然也要感謝我的老婆容忍我的任性(疑~)。
+其實很久以前就想過婚禮時可以做哪些系統了，有鑑於大家都說到時候不會有時間做這些事情，於是我提早開始準備我要做的系統。
+互動式婚紗照片我一直覺得婚紗本又重又難收藏，所以我很早就想把婚紗照直接用螢幕輸出，但只做播放太無聊了，所以我想要加入一些互動的元素，很直覺">
+<meta property="og:image" content="http://bingo.d.pr/OwTR.jpg">
+<meta property="og:image" content="http://bingo.d.pr/KpyI.jpg">
+<meta property="og:image" content="http://bingo.d.pr/z1jq.png">
+<meta property="og:image" content="http://bingo.d.pr/iLb3.jpg">
+<meta property="og:image" content="http://bingo.d.pr/1EAh.png">
+<meta property="og:image" content="http://bingo.d.pr/K3At.jpg">
+<meta property="og:image" content="http://bingo.d.pr/Ms3h.png">
+<meta property="og:image" content="http://bingo.d.pr/U0Yv.jpg">
+<meta property="og:image" content="http://bingo.d.pr/Itqz.jpg">
+<meta property="og:image" content="http://bingo.d.pr/9Yir.jpg">
+<meta property="og:updated_time" content="2016-12-06T05:25:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wedding Party Hackday">
+<meta name="twitter:description" content="最近完成了終身大事，也終於有點時間記錄一下了，身為一個宅宅工程師，我堅持自己的婚禮也要充斥一點宅味，當然也要感謝我的老婆容忍我的任性(疑~)。
+其實很久以前就想過婚禮時可以做哪些系統了，有鑑於大家都說到時候不會有時間做這些事情，於是我提早開始準備我要做的系統。
+互動式婚紗照片我一直覺得婚紗本又重又難收藏，所以我很早就想把婚紗照直接用螢幕輸出，但只做播放太無聊了，所以我想要加入一些互動的元素，很直覺">
+<meta name="twitter:image" content="http://bingo.d.pr/OwTR.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.blackbing.net/post/2014/12/25/wedding-party-hackday/"/>
+
+
+
+
+
+  <title> Wedding Party Hackday | Blackbing Playground </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42623489-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255"
+             alt="Blackbing Playground"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Blackbing Playground</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/12/25/wedding-party-hackday/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Wedding Party Hackday
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-25T04:38:00+08:00">
+                2014-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/12/25/wedding-party-hackday/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/12/25/wedding-party-hackday/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://bingo.d.pr/OwTR.jpg" alt="16.jpg"><br>最近完成了終身大事，也終於有點時間記錄一下了，身為一個宅宅工程師，我堅持自己的婚禮也要充斥一點宅味，當然也要感謝我的老婆容忍我的任性(疑~)。</p>
+<p>其實很久以前就想過婚禮時可以做哪些系統了，有鑑於大家都說到時候不會有時間做這些事情，於是我提早開始準備我要做的系統。</p>
+<h1 id="互動式婚紗照片"><a href="#互動式婚紗照片" class="headerlink" title="互動式婚紗照片"></a>互動式婚紗照片</h1><p>我一直覺得婚紗本又重又難收藏，所以我很早就想把婚紗照直接用螢幕輸出，但只做播放太無聊了，所以我想要加入一些互動的元素，很直覺就想到用「motion detect」來做翻頁。</p>
+<h2 id="gest-js"><a href="#gest-js" class="headerlink" title="gest.js"></a>gest.js</h2><p><a href="https://github.com/hadimichael/gest.js" target="_blank" rel="external">gest.js</a>這套 Library 可以用 camera 來辨識揮手的動作，辨識上下左右。試了一下辨識度還不錯。</p>
+<h2 id="jssor-slider"><a href="#jssor-slider" class="headerlink" title="jssor slider"></a>jssor slider</h2><p>要找適合的 slider library 反而找比較久，因為我希望可以支援上下左右的滑動效果，自動播放時也有一些客製化的特效，但大部分的 slide show 都只有左右滑動，最後找到這個客製化程度蠻高的 library <a href="http://www.jssor.com/" target="_blank" rel="external">jssor slider</a> ，實際使用時其實他也沒辦法直接用上下滑動，所以我有修改了他的原始碼，讓他可以支援動態改變左右滑動與上下滑動。</p>
+<p>最後就生出來這個版本了：<a href="http://blackbing.github.io/wedding-slides/" target="_blank" rel="external">DEMO</a>，有興趣玩的人只要把 /image/photos/ 底下的照片換掉即可。有空我再寫 README。</p>
+<p><img src="http://bingo.d.pr/KpyI.jpg" alt="10850072_10152841915926539_3126894732238031620_n.jpg"></p>
+<p>現場是用 iMac 顯示，然後在桌上弄點布置這樣，真是頗具巧思（自己說）。不過事實證明，沒有人介紹的話其實鮮少有人會發現可以用手控制，然後應該是小孩比較有興趣而已XD。</p>
+<h1 id="婚禮留言板"><a href="#婚禮留言板" class="headerlink" title="婚禮留言板"></a>婚禮留言板</h1><p>這個是我一直想做的東西，每次參加婚禮在開場前賓客都會不知道要幹嘛，早到的朋友會有點無聊，為了增加一點互動性，應該安排一些小活動給大家玩，類似的東西就是實體的留言箱，大家發一張小卡，然後上面些一些祝福的話，最後新人抽獎出來之類，不過因為沒有辦法看到大家的留言，少了一點即時的參與感。於是我又打算 web 化（沒辦法，我只會這個XD），讓賓客用手機留言，然後即時顯示在投影布幕上。</p>
+<h2 id="桌卡"><a href="#桌卡" class="headerlink" title="桌卡"></a>桌卡</h2><p>桌卡的範本來自於 <a href="http://www.mybigday.com.tw/" target="_blank" rel="external">mybigday</a> (個人覺得不好用)，不過我用了他的桌卡範本改成我要的格式，放了 QR code 和連結上去。<br><img src="http://bingo.d.pr/z1jq.png" alt="桌卡"></p>
+<h2 id="手機留言"><a href="#手機留言" class="headerlink" title="手機留言"></a>手機留言</h2><p><img src="http://bingo.d.pr/iLb3.jpg" alt="c21c5f114d9bbcba443f0d334b36f5ed (1).jpg"></p>
+<h2 id="留言板"><a href="#留言板" class="headerlink" title="留言板"></a>留言板</h2><p><img src="http://bingo.d.pr/1EAh.png" alt="螢幕快照 2014-12-25 13.20.21.png"></p>
+<h1 id="抽獎活動"><a href="#抽獎活動" class="headerlink" title="抽獎活動"></a>抽獎活動</h1><p>留言當然要用點誘因來讓大家留言囉，於是我做了一個透過手機抽獎，可以讓主持人邀請重要嘉賓抽獎的部分。<br><img src="http://bingo.d.pr/K3At.jpg" alt="c21c5f114d9bbcba443f0d334b36f5ed.jpg"></p>
+<p>最後的重頭戲就是抽獎了，由於前陣子很愛玩 ranger ，而且他的抽獎動畫實在是太可愛了，所以我就把裡面的動畫擷取出來做抽獎，效果不錯（自己說）。<br><img src="http://bingo.d.pr/Ms3h.png" alt="螢幕快照 2014-12-25 13.19.11.png"></p>
+<h1 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h1><p>千古不變的定律， live demo 一定會出狀況，當天果然也是，原因是我以為 facebookid 都會拿到一串數字，結果我自己白痴塞了一些預設的 string id 進去，本來是拿數字 id 來取 mod 所以就出狀況了。好在我有堅強的 HTC FE 團隊協助我當場的 debug（hug)。<br><img src="http://bingo.d.pr/U0Yv.jpg" alt="1619141_10201994217896298_4293646646054564328_n.jpg"></p>
+<p><img src="http://bingo.d.pr/Itqz.jpg" alt="10806202_10201994262017401_6262181042209528548_n.jpg"></p>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><ol>
+<li>QR code 很不普及。</li>
+<li>桌卡做的太假掰，有人以為是餐廳的根本不想理。</li>
+<li>非常非常需要 promote，下次有機會（疑？）應該要請工作人員一桌一桌介紹或施加壓力(?)留言，要讓大家更有參與感一點，最後的抽獎才會 high。</li>
+<li>其實只是搞死自己而已，其實我程式早在兩個月前就準備好了，不過婚禮前幾個禮拜測試發現 firebase 的 auth 部分改版了，結果為了要測 auth 的部分又花了一些時間修改程式。中間一度想要放棄這個活動。下次有機會（疑？）就乖乖的走完流成就好了。</li>
+<li>我老婆好票釀。</li>
+<li>謝謝大家的參與，大家下次見（疑？）</li>
+<li>我愛我老婆。</li>
+</ol>
+<p><img src="http://bingo.d.pr/9Yir.jpg" alt="62.jpg"></p>
+<p>最後順便打個廣告，如果有人對這個留言系統和抽獎程式有興趣的話請來信聯絡，保證以友情價情義相挺。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2014/08/08/reactjs-jsx-tips-with-coffeescript/" rel="next" title="[ReactJS] tips of Writting JSX with CoffeeScript">
+                <i class="fa fa-chevron-left"></i> [ReactJS] tips of Writting JSX with CoffeeScript
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2015/01/19/secrets-on-npm-packagejson/" rel="prev" title="Secrets in npm package.json">
+                Secrets in npm package.json <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Bingo Yang" />
+          <p class="site-author-name" itemprop="name">Bingo Yang</p>
+          <p class="site-description motion-element" itemprop="description">記錄一些生活與工作的雜事，偶爾會寫一些前端網頁開發的心得</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://feeds.feedburner.com/blackbing" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#互動式婚紗照片"><span class="nav-number">1.</span> <span class="nav-text">互動式婚紗照片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gest-js"><span class="nav-number">1.1.</span> <span class="nav-text">gest.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jssor-slider"><span class="nav-number">1.2.</span> <span class="nav-text">jssor slider</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#婚禮留言板"><span class="nav-number">2.</span> <span class="nav-text">婚禮留言板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#桌卡"><span class="nav-number">2.1.</span> <span class="nav-text">桌卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手機留言"><span class="nav-number">2.2.</span> <span class="nav-text">手機留言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#留言板"><span class="nav-number">2.3.</span> <span class="nav-text">留言板</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽獎活動"><span class="nav-number">3.</span> <span class="nav-text">抽獎活動</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小插曲"><span class="nav-number">4.</span> <span class="nav-text">小插曲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#總結"><span class="nav-number">5.</span> <span class="nav-text">總結</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bingo Yang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'blackbing';
+      var disqus_identifier = '/post/2014/12/25/wedding-party-hackday/';
+
+      var disqus_title = "Wedding Party Hackday";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
