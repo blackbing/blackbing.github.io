@@ -270,6 +270,286 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2016/12/12/react-taggable-input/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2016/12/12/react-taggable-input/" itemprop="url">
+                  react-taggable-input
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T23:50:00+08:00">
+                2016-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-js/" itemprop="url" rel="index">
+                    <span itemprop="name">react.js</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-js/TaggableInput/" itemprop="url" rel="index">
+                    <span itemprop="name">TaggableInput</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-js/TaggableInput/react-mention/" itemprop="url" rel="index">
+                    <span itemprop="name">react-mention</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-js/TaggableInput/react-mention/contenteditable/" itemprop="url" rel="index">
+                    <span itemprop="name">contenteditable</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-js/TaggableInput/react-mention/contenteditable/react-taggableinput/" itemprop="url" rel="index">
+                    <span itemprop="name">react-taggableinput</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/react-js/TaggableInput/react-mention/contenteditable/react-taggableinput/react-taggable-input/" itemprop="url" rel="index">
+                    <span itemprop="name">react-taggable-input</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2016/12/12/react-taggable-input/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2016/12/12/react-taggable-input/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近碰到一個有趣的 UI，不曉得該怎麼命名，類似像 facebook 的 @ 或是 twitter 可以在文中 tag 標籤。我就稱它為 <code>TaggableInput</code>。</p>
+<p>文長，若您想直接看結論請 <a href="#react-taggable-input">電梯往下</a></p>
+<p><img src="http://bingo.d.pr/yma0.gif" alt=""></p>
+<p>因為平常在 facebook, twitter 用的很習慣，看起來跟一般的 input 行為也沒有什麼不同，介面也很好學習。不過前端工程師一看到就知道案情不單純。首先 <code>input</code>，<code>textarea</code> element 都只能接受純文字，如果用這兩個 element 要做到這個功能一定是不可能。以下是幾個類似的 library。</p>
+<h1 id="react-tagsinput"><a href="#react-tagsinput" class="headerlink" title="react-tagsinput"></a><a href="https://github.com/olahol/react-tagsinput" target="_blank" rel="external">react-tagsinput</a></h1><p><img src="http://bingo.d.pr/QoC3.png" alt=""><br>inspect 看一下就可以知道他的實作方式是在後面多一個 input element，輸入完就 append tag。但這只適合處理 tag，無法結合文字輸入，而且他的 trigger 目的其實是要將文字斷開，所以 trigger 點會事像 <code>Space</code>, <code>,</code> 這樣的字元。</p>
+<h1 id="react-mention"><a href="#react-mention" class="headerlink" title="react-mention"></a><a href="https://github.com/effektif/react-mentions" target="_blank" rel="external">react-mention</a></h1><p><img src="http://bingo.d.pr/gy4Z.png" alt=""></p>
+<p><a href="https://github.com/effektif/react-mentions" target="_blank" rel="external">react-mention</a> 剛看到時覺得有點訝異，這套竟然能在 <code>input</code> 和 <code>textarea</code> 裡頭呈現不同的樣式，於是我很好奇的偷看他怎麼做的。</p>
+<p><img src="http://bingo.d.pr/BFxt.png" alt=""></p>
+<p>沒想到他竟然隨著編輯 <code>textarea</code> 動態產生一個 div，並且隨著不同的 tag 可以 apply 不同的樣式，稍微 trace 他的 source 發現他是利用 <a href="https://github.com/formidablelabs/radium" target="_blank" rel="external">radium</a> 這套 lib 動態算出樣式然後把 textarea 疊在一起。像是這樣。<br><img src="http://bingo.d.pr/xr5v.png" alt=""></p>
+<p>這真是讓我太驚訝了，前端工程師真是創意無極限誒。原本我想要很快速地用這一個套件來實作這個 UI 功能，但這套的缺點是他跟 recommand list 的 UI 綁的太緊（我們有自己的 recommand list 與邏輯），而且這種功能通常都需要透過 ajax 來 query list 的部分，要客製化不太容易，而且用了一下覺得 style 的部分還是沒有很輕鬆。</p>
+<h1 id="draft-js-mention"><a href="#draft-js-mention" class="headerlink" title="draft-js mention"></a><a href="https://www.draft-js-plugins.com/plugin/mention" target="_blank" rel="external">draft-js mention</a></h1><p><img src="http://bingo.d.pr/Wwf.png" alt=""></p>
+<p>這套是 facebook 出品的，UI 做的很細膩，很多細節都處理完了，但我覺得不需要為了這個功能把 <a href="https://facebook.github.io/draft-js/" target="_blank" rel="external">draft-js</a> 整包拉進來用，所以先擱著。</p>
+<h1 id="contenteditable"><a href="#contenteditable" class="headerlink" title="contenteditable"></a>contenteditable</h1><p><img src="http://bingo.d.pr/Seix.png" alt=""></p>
+<p>最後我偷看了一下 facebook 怎麼做的（早就應該偷看了），結果我發現一絲曙光，<code>contenteditable</code>。這樣一切都 make sense 了。既可以 input，又可以 apply style。</p>
+<h1 id="can-I-use"><a href="#can-I-use" class="headerlink" title="can I use?"></a>can I use?</h1><p><a href="http://caniuse.com/#search=contenteditable" target="_blank" rel="external"><img src="http://bingo.d.pr/C7f3.png" alt=""></a></p>
+<p>IE 11 以上都支援，那就開始實作吧。</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>整理一下這個 input 所需要的功能：</p>
+<ol>
+<li><code>placeholder</code>：placeholder。</li>
+<li><code>maxLength</code>：字串長度。</li>
+<li><code>trigger</code>: 按下某個符號會 trigger recommand list。 </li>
+<li><code>Esc</code>, <code>Space</code>: 要可以取消 trigger recommand list。</li>
+<li><code>onSubmit</code>: 送出輸入資料。</li>
+<li>要可以從 recommand list callback 回 <code>input</code> 並取代使用者輸入的字串。</li>
+</ol>
+<p>總之，一般 <code>&lt;input /&gt;</code> element 的功能都要有，並且要可以 trigger 字元。</p>
+<h1 id="jsx"><a href="#jsx" class="headerlink" title="jsx"></a>jsx</h1><p>接下來定義一下 jsx 的介面：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;TaggableInput</div><div class="line">  className=<span class="string">"input"</span></div><div class="line">  placeHolder=<span class="string">"請輸入文字"</span></div><div class="line">  trigger=<span class="string">"#"</span></div><div class="line">  maxLength=&#123; <span class="number">100</span> &#125;</div><div class="line">  onKeyDown=&#123; <span class="keyword">this</span>.props.onKeyDown &#125;</div><div class="line">  handleSubmit=&#123; <span class="keyword">this</span>.handleSubmit &#125;</div><div class="line">  onTrigger=&#123; <span class="keyword">this</span>.handleTrigger &#125;</div><div class="line">  onChange=&#123; <span class="keyword">this</span>.handleChange &#125;</div><div class="line">  onSubmit=&#123; <span class="keyword">this</span>.handleSubmit &#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<h1 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h1><p>原本以為 trigger 某一個字元應該不難，沒想到實作之後才發現問題一拖拉庫，這篇的心得其實重點在記錄遇到的問題們。</p>
+<h2 id="Key-Event"><a href="#Key-Event" class="headerlink" title="Key Event"></a>Key Event</h2><p>首先 DOM Level 3 有一個 <a href="https://developer.mozilla.org/en-US/docs/Web/Events/input" target="_blank" rel="external">Input Event</a> 可以處理當值改變的時候會觸發這個事件，而且查了一下 <a href="http://caniuse.com/#feat=input-event" target="_blank" rel="external">can i use input event</a> 看起來也都沒問題。</p>
+<p>那麼這跟 <code>KeyPress</code>, <code>KeyUp</code> 等 event 有什麼不同呢？ 主要是 <code>Keyboard</code> 相關的 event 都是處理跟鍵盤有關的事件，但內容物的修改不只從 <code>Keyboard</code> 來，還有滑鼠，觸控，等等。<code>Input</code> Event 的優點就是可以處理任何 input value 的改變。看起來很美好，於是我就一路寫下去感覺沒什麼太大的問題，沒想到開始測試 IE 之後才發現問題大條了，IE 系列竟然不支援 contenteditable 的 <code>Input</code> Event。查了一下還蠻多災情的：</p>
+<ul>
+<li><a href="https://github.com/facebook/react/issues/278" target="_blank" rel="external">Make onChange work for contenteditable</a></li>
+<li><a href="https://github.com/yabwe/medium-editor/issues/394" target="_blank" rel="external">input event not firing in IE10 or IE11?</a></li>
+<li><a href="https://connect.microsoft.com/IE/feedback/details/794285/ie10-11-input-event-does-not-fire-on-div-with-contenteditable-set" target="_blank" rel="external">input event does not fire on div with contenteditable set</a></li>
+<li><a href="http://qiita.com/hrdaya/items/29576a5e1a303c074249" target="_blank" rel="external">IE系でinputイベントが発火しないのをなんとかしてみる（ついでにIME入力中は発火しないイベントも追加）</a></li>
+</ul>
+<p>回頭重新看 MDN <a href="https://developer.mozilla.org/en-US/docs/Web/Events/input" target="_blank" rel="external">Input Event</a> 才發現他真的有提到 IE 不支援 contenteditable 的 <code>input</code> Event。</p>
+<h3 id="DOMCharacterDataModified"><a href="#DOMCharacterDataModified" class="headerlink" title="DOMCharacterDataModified"></a>DOMCharacterDataModified</h3><p>胡亂查資料的時候看到 <code>DOMCharacterDataModified</code> ，覺得好像有一絲曙光，仔細一查才知道他屬於 <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Mutation_events" target="_blank" rel="external">Mutation Event</a>，但已經 Deprecated，取而代之的是 <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver" target="_blank" rel="external">Mutation Observer</a>。但 <code>Mutation Observer</code> 依然不支援 IE10(含以下)，相關討論可以參考 Stack overflow 的討論 <a href="http://stackoverflow.com/questions/1391278/contenteditable-change-events/14043919#14043919" target="_blank" rel="external">contenteditable change events</a>。</p>
+<p>以下節錄討論的內容：</p>
+<blockquote><p>Consider using MutationObserver. These observers are designed to react to changes in the DOM, and as a performant replacement to Mutation Events.</p>
+<p>Pros:</p>
+<p>Fires when any change occurs, which is difficult to achieve by listening to key events as suggested by other answers. For example, all of these work well: drag &amp; drop, italicizing, copy/cut/paste through context menu.<br>Designed with performance in mind.<br>Simple, straightforward code. It’s a lot easier to understand and debug code that listens to one event rather than code that listens to 10 events.<br>Google has an excellent mutation summary library which makes using MutationObservers very easy.<br>Cons:</p>
+<p>Requires a very recent version of Firefox (14.0+), Chrome (18+), or IE (11+).<br>New API to understand<br>Not a lot of information available yet on best practices or case studies</p>
+<footer><strong>contenteditable change events</strong><cite><a href="http://stackoverflow.com/questions/1391278/contenteditable-change-events/14043919#14043919" target="_blank" rel="external">Consider using MutationObserver</a></cite></footer></blockquote>
+<p>總之 <code>MutationObserver</code> 是未來的曙光，想要解決所有可能的 Input 問題，包含拖拉，複製貼上，滑鼠操作，觸控，右鍵選單等等等等。但這位成員有點太新了，API 也有很大部分的改變，IE 的 support 也不完整，部分瀏覽器還需要 prefix，blablabla….。</p>
+<h3 id="Keydown-KeyUp-KeyPress"><a href="#Keydown-KeyUp-KeyPress" class="headerlink" title="Keydown/KeyUp/KeyPress"></a>Keydown/KeyUp/KeyPress</h3><p>那麼我用老方法總可以吧？<code>KeyDown</code>/<code>Keyup</code> event 可以拿到 KeyCode，感覺土法煉鋼還是有可能辦得到的？於是我就土法煉鋼也是刻出了一個版本，寫完之後又發現，在 windows 上開啟中文輸入法之後會拿到 <code>KeyCode 229</code>，查了一下也是災情慘重：</p>
+<ul>
+<li><a href="http://blog.darkthread.net/post-2011-04-26-keypress-event-under-ime.aspx" target="_blank" rel="external">黑大的 jQuery - 中文輸入法與KeyDown/KeyPress事件</a></li>
+<li><a href="http://stackoverflow.com/questions/25043934/is-it-ok-to-ignore-keydown-events-with-keycode-229" target="_blank" rel="external">Is it OK to ignore keydown events with keyCode = 229?</a></li>
+</ul>
+<p>在 window 打開<a href="http://unixpapa.com/js/testkey.html" target="_blank" rel="external">測試 keycode 的網頁</a>，切換英數輸入法之後輸入 #，會印出</p>
+<blockquote><p>keydown  keyCode=16        which=16        charCode=0<br>keydown  keyCode=51  (3)   which=51  (3)   charCode=0<br>keypress keyCode=35  (#)   which=35  (#)   charCode=35  (#)<br>keyup    keyCode=51  (3)   which=51  (3)   charCode=0  </p>
+</blockquote>
+<p>開啟注音輸入法之後輸入 #，會印出</p>
+<blockquote><p>keydown  keyCode=16        which=16        charCode=0        </p>
+<p>#keydown  keyCode=229       which=229       charCode=0<br>textInput data=#<br>keyup    keyCode=16        which=16        charCode=0       </p>
+</blockquote>
+<p>主要原因是因為在 windows 上用輸入中英文的習慣是按下 <code>shift</code>+按鍵，按照 <a href="https://lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html" target="_blank" rel="external">spec</a> 來說，輸入法開啟狀態時，回應 229 其實是沒錯的。</p>
+<h1 id="react-taggable-input"><a href="#react-taggable-input" class="headerlink" title=" react-taggable-input"></a><a name="react-taggable-input"></a> react-taggable-input</h1><p>最後終於推出 <a href="https://github.com/blackbing/react-taggable-input" target="_blank" rel="external">react-taggable-input</a>，如此一來我們就能在 input 時塞任何的 html 了。</p>
+<p>那麼最後怎麼處理 trigger 的問題？</p>
+<h2 id="value-change"><a href="#value-change" class="headerlink" title="value change"></a>value change</h2><p>主要概念就是在 <code>keyup</code> 之後從目前游標往前找最近的 <code>trigger</code> 字元，而不是想辦法在 <code>keydown</code> <code>keyup</code> 時檢查是否是有 <code>trigger</code> 字元。</p>
+<p>嗯，概念看起來很簡單，但我可是拐了好多彎才想到啊。</p>
+<p>有興趣的人請直接看 <a href="https://github.com/blackbing/react-taggable-input" target="_blank" rel="external">source code</a> 吧，</p>
+<h1 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h1><p><a href="http://blog.blackbing.net/react-taggable-input/"><img src="http://bingo.d.pr/TVX9.png" alt=""></a><br><a href="http://blog.blackbing.net/react-taggable-input/">http://blog.blackbing.net/react-taggable-input/</a></p>
+<h1 id="工商服務時間"><a href="#工商服務時間" class="headerlink" title="工商服務時間"></a>工商服務時間</h1><p>鉅亨網推出 <a href="https://stock.cnyes.com" target="_blank" rel="external">股市 Talk</a> 可以設定自己常用的自選股，讓你可以邊看股票邊討論股票，還有新聞，影音等，還有超強大的線圖，堪稱是目前網頁版最強的看盤軟體。看看我們一個小功能都可以執著成這樣你就知道我們有多細膩了。</p>
+<p><img src="https://i.imgur.com/Kf4cjbA.png" alt=""></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="http://stackoverflow.com/questions/38502560/diffrence-between-keyup-keydown-keypress-and-input-events" target="_blank" rel="external">Diffrence between keyup keydown keypress and input events</a></li>
+<li><a href="https://connect.microsoft.com/IE/feedback/details/794285/ie10-11-input-event-does-not-fire-on-div-with-contenteditable-set" target="_blank" rel="external">input event does not fire on div with contenteditable set</a></li>
+<li><a href="http://stackoverflow.com/questions/1391278/contenteditable-change-events/14043919#14043919" target="_blank" rel="external">contenteditable change events</a></li>
+<li><a href="https://lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html" target="_blank" rel="external">keyCode property of key events</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2016/12/06/bye-bye-logdown/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1832,197 +2112,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/07/28/express-api-proxy-config/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Bingo Yang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Blackbing Playground">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/2014/07/28/express-api-proxy-config/" itemprop="url">
-                  [expressjs] request proxy
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-28T17:07:00+08:00">
-                2014-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/expressjs/" itemprop="url" rel="index">
-                    <span itemprop="name">expressjs</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/expressjs/express/" itemprop="url" rel="index">
-                    <span itemprop="name">express</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/expressjs/express/request/" itemprop="url" rel="index">
-                    <span itemprop="name">request</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/expressjs/express/request/proxy/" itemprop="url" rel="index">
-                    <span itemprop="name">proxy</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/expressjs/express/request/proxy/redirect/" itemprop="url" rel="index">
-                    <span itemprop="name">redirect</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/post/2014/07/28/express-api-proxy-config/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/07/28/express-api-proxy-config/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="api-proxy"><a href="#api-proxy" class="headerlink" title="api proxy"></a>api proxy</h1><p>最近使用 expressjs 要將 api proxy 到另外一個 domain 的 api server 上。查了一下最簡單的做法是用 <a href="https://github.com/mikeal/request" target="_blank" rel="external">request</a> 來處理。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> API_HOST = <span class="string">'xxx.com'</span>;</div><div class="line">app.use(<span class="string">'/proxy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> request_params, url;</div><div class="line">  url = <span class="string">'http://'</span> + API_HOST + req.url;</div><div class="line">  request_params = &#123;</div><div class="line">    <span class="attr">followAllRedirects</span>: <span class="literal">true</span>,  <span class="comment">//redirect if 301~400</span></div><div class="line">    body: <span class="built_in">JSON</span>.stringify(req.body) <span class="comment">//POST/PUT/DELETE data </span></div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">return</span> req.pipe(request(url, request_params)).pipe(res);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>看起來很簡單不過為了要解決 api server 會做 301/302 redirect 的動作，追了<a href="https://github.com/mikeal/request/blob/master/request.js#L799" target="_blank" rel="external">sourcecode</a>才知道有這個 <code>followAllRedirects</code> 的設定，特此記錄一下。</p>
-<h3 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h3><ul>
-<li><a href="http://stackoverflow.com/a/20539239/797411" target="_blank" rel="external">http://stackoverflow.com/a/20539239/797411</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2068,7 +2157,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-count">109</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

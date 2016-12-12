@@ -270,6 +270,176 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2014/01/03/angular-grunt-usemin/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Bingo Yang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Blackbing Playground">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/post/2014/01/03/angular-grunt-usemin/" itemprop="url">
+                  [Angular] grunt-usemin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-03T08:26:00+08:00">
+                2014-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/" itemprop="url" rel="index">
+                    <span itemprop="name">angular</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/grunt/" itemprop="url" rel="index">
+                    <span itemprop="name">grunt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/post/2014/01/03/angular-grunt-usemin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2014/01/03/angular-grunt-usemin/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用 Angular generator 建立 project 相當的方便，<figure class="highlight plain"><figcaption><span>angular [app-name]```就可以裝完大部份所需要的東西，執行```grunt build```就會做好 uglify, minimize, packing, 等等的功能。其中一個對於線上環境很重要的功能就是 [usemin](https://github.com/yeoman/grunt-usemin)。功能很強大，設定有點多，因此我順便筆記一些一開始撞牆的地方。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#Blocks 打包某區塊裡頭的檔案(js/css)</div><div class="line"></div><div class="line">例如你可以在 index.html 裡頭看到</div><div class="line">``` html</div><div class="line">&lt;!-- build:js js/app.js --&gt;</div><div class="line">&lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/controllers/thing-controller.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/models/thing-model.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;js/views/thing-view.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;!-- endbuild --&gt;</div></pre></td></tr></table></figure></p>
+<p>這裡的設定是說在執行 usemin 時會將這幾隻 script 打包起來 output 成 js/app.js。因此如果你有額外新增加的程式需要一起打包的必須放在 block 裡頭，不然不會被打包進去。</p>
+<p>不過在 build 完之後會發現有些檔案並沒有被打包進去，問題在於需要 compile 的程式（例如sass, coffee）會先被 compile 到 .tmp/ 的 folder 底下，因此預設的 search path 是搜尋不到這個檔案的。根據文件的說明：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:&lt;type&gt;(alternate search path) &lt;path&gt; --&gt;</span></div></pre></td></tr></table></figure>
+<p>用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">例如：</div><div class="line"></div><div class="line">```html</div><div class="line">&lt;!-- build:css(&#123;app,.tmp&#125;) styles/main.css --&gt;</div></pre></td></tr></table></figure></p>
+<p>(ㄜ…….這啥鬼格式？)</p>
+<p>#revmap<br>rev 這個 task 會將 js/css/image/fonts 等做重新 rename 的動作，讓程式可以做到快取的優化，例如 <figure class="highlight plain"><figcaption><span>會變成 ```foo.1234.png``` 這樣，而 usemin 的工作就是將 html 裡頭包含該檔案的路徑做取代。例如 </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```html </div><div class="line">&lt;img src=&quot;/images/toolset.png&quot; alt=&quot;Yo, Grunt, Bower&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>會變成<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/images/75bab8-toolset.png"</span> <span class="attr">alt</span>=<span class="string">"Yo, Grunt, Bower"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>不過由於在做 SPA(Single Page Application) 時會將很多 template view 拆開，所以我將一些其他的 view 分開像是這樣：</p>
+<p>├── index.html<br>└── views<br>    ├── home.html<br>    ├── navbar.html<br>    ├── foo.html<br>    └── bar.html</p>
+<p>由於 這些 view 底下的 html 其實是要給 index.html 來使用的，因此他的路徑其實是從 root 開始算的，在開發階段其實都不會有問題，然而在 build 完之後就會發現圖片會找不到的情況。追了一下 log 才發現 usemin 雖然有 parse 這些 html 但並不會將 image tag 替換掉。其實想想也合理，因為根目錄的路徑不同啊！但這樣一來 template 享受不到 usemin 的好處，相當令人沮喪。</p>
+<p>網路上好像找不到太到相關的問題，因此我就試著來解決，以下是我解決的步驟：</p>
+<p>#####1. 在<figure class="highlight plain"><figcaption><span>"grunt-contrib-symlink": "~0.2.0"</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#####2. 在```Gruntfile.js```加入以下的設定：</div></pre></td></tr></table></figure></p>
+<p>   symlink: {<br>      views:{<br>        expand: true,<br>        cwd: ‘&lt;%= yeoman.dist %&gt;/views/‘,<br>        src: [‘*’],<br>        dest: ‘&lt;%= yeoman.dist %&gt;/‘<br>      }<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#####3. 在```Gruntfile.js```加入以下的 task：</div></pre></td></tr></table></figure></p>
+<p> grunt.registerTask(‘clean-link’, function(target){<br>    var yeoman = grunt.config.get(‘yeoman’);<br>    var htmls = grunt.file.expand( {<br>    }, yeoman.dist+’/*.html’).forEach( function(path){<br>      if( grunt.file.isLink(path) )<br>        grunt.file.delete(path);<br>    });<br>  });<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#####4. 在 build task 裡頭的 ```&apos;usemin&apos;``` 改成</div></pre></td></tr></table></figure></p>
+<p>‘symlink:views’, //create symlink<br>‘usemin’,<br>‘clean-link’ //clear symlink<br>```</p>
+<p>解決的方式是將 views/ 底下的 html 都建立 soft link 到根目錄，然後讓 usemin 去 parse，並且寫回 views/*.html ，最後將這些 symlink 清掉。</p>
+<p>大概是這樣，grunt 真是很難懂。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2013/11/11/fire-and-forget-design-pattern/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1629,135 +1799,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.blackbing.net/post/2012/07/23/preview-image-before-upload-flash/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Bingo Yang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Blackbing Playground">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Blackbing Playground" src="https://www.gravatar.com/avatar/60a71672b538fb50cc1d15c41c971255">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/2012/07/23/preview-image-before-upload-flash/" itemprop="url">
-                  preview image before upload(Flash篇)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-07-23T13:12:00+08:00">
-                2012-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/post/2012/07/23/preview-image-before-upload-flash/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/post/2012/07/23/preview-image-before-upload-flash/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>##這是老掉牙的問題吧？<br>其實這個題目很常見，但我覺得一路走來的心路歷程也算是有些經驗，<br>而瀏覽器進步的快速，也讓網路上充斥着各種不同的解法，<br>初學者很容易就掉進這個深淵。回頭看看這幾年走過的路，<br>也可以由這個問題看出開發者不斷地在跟瀏覽器的能耐做角力，<br>然後隨著技術的進步，終於讓我有比較理想的解法。<br>決定記錄下來。</p>
-<p>如果只是要找解法的話可以直接看「preview image before upload(html5篇)」。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/post/2012/07/23/preview-image-before-upload-flash/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1803,7 +1844,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-count">109</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
