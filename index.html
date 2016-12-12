@@ -499,7 +499,7 @@
 <li><a href="http://blog.darkthread.net/post-2011-04-26-keypress-event-under-ime.aspx" target="_blank" rel="external">黑大的 jQuery - 中文輸入法與KeyDown/KeyPress事件</a></li>
 <li><a href="http://stackoverflow.com/questions/25043934/is-it-ok-to-ignore-keydown-events-with-keycode-229" target="_blank" rel="external">Is it OK to ignore keydown events with keyCode = 229?</a></li>
 </ul>
-<p>有興趣的話可以在 windows 打開<a href="http://unixpapa.com/js/testkey.html" target="_blank" rel="external">測試 keycode 的網頁</a>，切換英數輸入法之後輸入 #，會印出</p>
+<p>有興趣的話可以在 windows 打開<a href="http://unixpapa.com/js/testkey.html" target="_blank" rel="external">測試 keycode 的網頁</a>，切換英數輸入法之後輸入 <code>#</code>，會印出</p>
 <blockquote><p>keydown  keyCode=16        which=16        charCode=0<br>keydown  keyCode=51  (3)   which=51  (3)   charCode=0<br>keypress keyCode=35  (#)   which=35  (#)   charCode=35  (#)<br>keyup    keyCode=51  (3)   which=51  (3)   charCode=0  </p>
 </blockquote>
 <p>開啟注音輸入法之後輸入 <code>#</code>，會印出</p>
@@ -517,6 +517,7 @@
 <li>利用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection" target="_blank" rel="external">Selection Api</a> 偵測和操作使用者選取範圍的內容修改。</li>
 <li>取得 <code>contenteditable</code> 的游標位置。</li>
 <li>Mac 可以直接按下全形的 <code>#</code> 來輸入，不用切換輸入法。</li>
+<li>由於在 <code>KeyUp</code> 處理，因此理論上支援 IE 系列瀏覽器。</li>
 </ul>
 <p>其他細節有興趣的人請直接看 <a href="https://github.com/blackbing/react-taggable-input" target="_blank" rel="external">source code</a> 吧，</p>
 <h1 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h1><p><a href="http://blog.blackbing.net/react-taggable-input/"><img src="http://bingo.d.pr/TVX9.png" alt=""></a><br><a href="http://blog.blackbing.net/react-taggable-input/">http://blog.blackbing.net/react-taggable-input/</a></p>
