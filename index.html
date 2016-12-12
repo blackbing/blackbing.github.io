@@ -443,7 +443,7 @@
 <p>文長，若您想直接看結論請 <a href="#react-taggable-input">電梯往下</a></p>
 <p><img src="http://bingo.d.pr/yma0.gif" alt=""></p>
 <p>因為平常在 facebook, twitter 用的很習慣，看起來跟一般的 input 行為也沒有什麼不同，介面也很好學習。不過前端工程師一看到就知道案情不單純。首先 <code>input</code>，<code>textarea</code> element 都只能接受純文字，如果用這兩個 element 要做到這個功能一定是不可能。以下是幾個類似的 library。</p>
-<h1 id="react-tagsinput"><a href="#react-tagsinput" class="headerlink" title="react-tagsinput"></a><a href="https://github.com/olahol/react-tagsinput" target="_blank" rel="external">react-tagsinput</a></h1><p><img src="http://bingo.d.pr/QoC3.png" alt=""><br>inspect 看一下就可以知道他的實作方式是在後面多一個 input element，輸入完就 append tag。但這只適合處理 tag，無法結合文字輸入，而且他的 trigger 目的其實是要將文字斷開，所以 trigger 點會事像 <code>Space</code>, <code>,</code> 這樣的字元。</p>
+<h1 id="react-tagsinput"><a href="#react-tagsinput" class="headerlink" title="react-tagsinput"></a><a href="https://github.com/olahol/react-tagsinput" target="_blank" rel="external">react-tagsinput</a></h1><p><img src="http://bingo.d.pr/QoC3.png" alt=""><br>inspect 看一下就可以知道他的實作方式是在後面多一個 input element，輸入完就 append tag。但這只適合處理 tag，無法結合文字輸入，而且他的 trigger 目的其實是要將文字斷開，所以 trigger 點會是像 <code>Space</code>, <code>,</code> 這樣的字元。</p>
 <h1 id="react-mention"><a href="#react-mention" class="headerlink" title="react-mention"></a><a href="https://github.com/effektif/react-mentions" target="_blank" rel="external">react-mention</a></h1><p><img src="http://bingo.d.pr/gy4Z.png" alt=""></p>
 <p><a href="https://github.com/effektif/react-mentions" target="_blank" rel="external">react-mention</a> 剛看到時覺得有點訝異，這套竟然能在 <code>input</code> 和 <code>textarea</code> 裡頭呈現不同的樣式，於是我很好奇的偷看他怎麼做的。</p>
 <p><img src="http://bingo.d.pr/BFxt.png" alt=""></p>
@@ -454,8 +454,8 @@
 <h1 id="contenteditable"><a href="#contenteditable" class="headerlink" title="contenteditable"></a>contenteditable</h1><p><img src="http://bingo.d.pr/Seix.png" alt=""></p>
 <p>最後我偷看了一下 facebook 怎麼做的（早就應該偷看了），結果我發現一絲曙光，<code>contenteditable</code>。這樣一切都 make sense 了。既可以 input，又可以 apply style。</p>
 <h1 id="can-I-use"><a href="#can-I-use" class="headerlink" title="can I use?"></a>can I use?</h1><p><a href="http://caniuse.com/#search=contenteditable" target="_blank" rel="external"><img src="http://bingo.d.pr/C7f3.png" alt=""></a></p>
-<p>IE 11 以上都支援，那就開始實作吧。</p>
-<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>整理一下這個 input 所需要的功能：</p>
+<p>IE 11 以下都支援，那就開始實作吧。</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>整理一下這個 <code>input</code> 所需要的功能：</p>
 <ol>
 <li><code>placeholder</code>：placeholder。</li>
 <li><code>maxLength</code>：字串長度。</li>
@@ -469,7 +469,8 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;TaggableInput</div><div class="line">  className=<span class="string">"input"</span></div><div class="line">  placeHolder=<span class="string">"請輸入文字"</span></div><div class="line">  trigger=<span class="string">"#"</span></div><div class="line">  maxLength=&#123; <span class="number">100</span> &#125;</div><div class="line">  onKeyDown=&#123; <span class="keyword">this</span>.props.onKeyDown &#125;</div><div class="line">  handleSubmit=&#123; <span class="keyword">this</span>.handleSubmit &#125;</div><div class="line">  onTrigger=&#123; <span class="keyword">this</span>.handleTrigger &#125;</div><div class="line">  onChange=&#123; <span class="keyword">this</span>.handleChange &#125;</div><div class="line">  onSubmit=&#123; <span class="keyword">this</span>.handleSubmit &#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
 <h1 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h1><p>原本以為 trigger 某一個字元應該不難，沒想到實作之後才發現問題一拖拉庫，這篇的心得其實重點在記錄遇到的問題們。</p>
 <h2 id="Key-Event"><a href="#Key-Event" class="headerlink" title="Key Event"></a>Key Event</h2><p>首先 DOM Level 3 有一個 <a href="https://developer.mozilla.org/en-US/docs/Web/Events/input" target="_blank" rel="external">Input Event</a> 可以處理當值改變的時候會觸發這個事件，而且查了一下 <a href="http://caniuse.com/#feat=input-event" target="_blank" rel="external">can i use input event</a> 看起來也都沒問題。</p>
-<p>那麼這跟 <code>KeyPress</code>, <code>KeyUp</code> 等 event 有什麼不同呢？ 主要是 <code>Keyboard</code> 相關的 event 都是處理跟鍵盤有關的事件，但內容物的修改不只從 <code>Keyboard</code> 來，還有滑鼠，觸控，等等。<code>Input</code> Event 的優點就是可以處理任何 input value 的改變。看起來很美好，於是我就一路寫下去感覺沒什麼太大的問題，沒想到開始測試 IE 之後才發現問題大條了，IE 系列竟然不支援 contenteditable 的 <code>Input</code> Event。查了一下還蠻多災情的：</p>
+<p>那麼這跟 <code>KeyPress</code>, <code>KeyUp</code> 等 event 有什麼不同呢？ 主要是 <code>Keyboard</code> 相關的 event 都是處理跟鍵盤有關的事件，但內容物的修改不只從 <code>Keyboard</code> 來，還有滑鼠，觸控，等等。<code>Input</code> Event 的優點就是可以處理任何 input value 的改變。</p>
+<p>看起來很美好，於是我就一路寫下去感覺沒什麼太大的問題，沒想到開始測試 IE 之後才發現問題大條了，IE 系列竟然不支援 contenteditable 的 <code>Input</code> Event。查了一下還蠻多災情的：</p>
 <ul>
 <li><a href="https://github.com/facebook/react/issues/278" target="_blank" rel="external">Make onChange work for contenteditable</a></li>
 <li><a href="https://github.com/yabwe/medium-editor/issues/394" target="_blank" rel="external">input event not firing in IE10 or IE11?</a></li>
@@ -484,27 +485,43 @@
 <p>Fires when any change occurs, which is difficult to achieve by listening to key events as suggested by other answers. For example, all of these work well: drag &amp; drop, italicizing, copy/cut/paste through context menu.<br>Designed with performance in mind.<br>Simple, straightforward code. It’s a lot easier to understand and debug code that listens to one event rather than code that listens to 10 events.<br>Google has an excellent mutation summary library which makes using MutationObservers very easy.<br>Cons:</p>
 <p>Requires a very recent version of Firefox (14.0+), Chrome (18+), or IE (11+).<br>New API to understand<br>Not a lot of information available yet on best practices or case studies</p>
 <footer><strong>contenteditable change events</strong><cite><a href="http://stackoverflow.com/questions/1391278/contenteditable-change-events/14043919#14043919" target="_blank" rel="external">Consider using MutationObserver</a></cite></footer></blockquote>
-<p>總之 <code>MutationObserver</code> 是未來的曙光，想要解決所有可能的 Input 問題，包含拖拉，複製貼上，滑鼠操作，觸控，右鍵選單等等等等。但這位成員有點太新了，API 也有很大部分的改變，IE 的 support 也不完整，部分瀏覽器還需要 prefix，blablabla….。</p>
-<h3 id="Keydown-KeyUp-KeyPress"><a href="#Keydown-KeyUp-KeyPress" class="headerlink" title="Keydown/KeyUp/KeyPress"></a>Keydown/KeyUp/KeyPress</h3><p>那麼我用老方法總可以吧？<code>KeyDown</code>/<code>Keyup</code> event 可以拿到 KeyCode，感覺土法煉鋼還是有可能辦得到的？於是我就土法煉鋼也是刻出了一個版本，寫完之後又發現，在 windows 上開啟中文輸入法之後會拿到 <code>KeyCode 229</code>，查了一下也是災情慘重：</p>
+<p>總之 <code>MutationObserver</code> 是未來的曙光，想要解決所有可能的 Input 問題，包含拖拉，複製貼上，滑鼠操作，觸控，右鍵選單等等等等。但這位成員有點太新了，API 也有很大部分的改變，IE 的 support 也不完整，部分瀏覽器還需要 prefix，blablabla….所以先擱著備用。</p>
+<h3 id="Keydown-KeyUp-KeyPress"><a href="#Keydown-KeyUp-KeyPress" class="headerlink" title="Keydown/KeyUp/KeyPress"></a>Keydown/KeyUp/KeyPress</h3><p>那麼我用老方法總可以吧？<code>KeyDown</code>/<code>Keyup</code> event 可以拿到 KeyCode，感覺土法煉鋼還是有可能辦得到的？於是我就土法煉鋼也是刻出了一個版本。結果問題又來了…</p>
+<h4 id="KeyDown"><a href="#KeyDown" class="headerlink" title="KeyDown"></a>KeyDown</h4><p>首先 <code>KeyDown</code> 會在按下任何按鍵時觸發，但 <code>KeyDown</code> 時還不會拿到 change 之後的結果，因此 <code>KeyDown</code> 的處理時機無法達到目的。</p>
+<h4 id="KeyUp"><a href="#KeyUp" class="headerlink" title="KeyUp"></a>KeyUp</h4><p><code>KeyUp</code> 的問題在於每個按鍵都會被觸發，包括 <code>Meta</code>，<code>Ctrl</code>，<code>Shift</code>，但當使用者按下 <code>Shift</code>+<code>#</code> 之後的行為有兩種可能：</p>
+<ol>
+<li>KeyUp <code>#</code> -&gt; <code>key</code> 拿到 <code>3</code></li>
+<li>Keyup <code>Shift</code> -&gt; <code>key</code> 拿到 <code>Shift</code></li>
+</ol>
+<p>這在實作上就會遇到很大的問題，因為 <code>KeyUp</code> 的順序會造成取到的 <code>key</code> 值不同。</p>
+<h4 id="KeyCode-229"><a href="#KeyCode-229" class="headerlink" title="KeyCode 229"></a>KeyCode 229</h4><p>另外在 windows 上開啟中文輸入法之後按下 <code>#</code> 會拿到 <code>KeyCode 229</code>，查了一下也是災情慘重：</p>
 <ul>
 <li><a href="http://blog.darkthread.net/post-2011-04-26-keypress-event-under-ime.aspx" target="_blank" rel="external">黑大的 jQuery - 中文輸入法與KeyDown/KeyPress事件</a></li>
 <li><a href="http://stackoverflow.com/questions/25043934/is-it-ok-to-ignore-keydown-events-with-keycode-229" target="_blank" rel="external">Is it OK to ignore keydown events with keyCode = 229?</a></li>
 </ul>
-<p>在 window 打開<a href="http://unixpapa.com/js/testkey.html" target="_blank" rel="external">測試 keycode 的網頁</a>，切換英數輸入法之後輸入 #，會印出</p>
+<p>有興趣的話可以在 windows 打開<a href="http://unixpapa.com/js/testkey.html" target="_blank" rel="external">測試 keycode 的網頁</a>，切換英數輸入法之後輸入 #，會印出</p>
 <blockquote><p>keydown  keyCode=16        which=16        charCode=0<br>keydown  keyCode=51  (3)   which=51  (3)   charCode=0<br>keypress keyCode=35  (#)   which=35  (#)   charCode=35  (#)<br>keyup    keyCode=51  (3)   which=51  (3)   charCode=0  </p>
 </blockquote>
-<p>開啟注音輸入法之後輸入 #，會印出</p>
+<p>開啟注音輸入法之後輸入 <code>#</code>，會印出</p>
 <blockquote><p>keydown  keyCode=16        which=16        charCode=0        </p>
 <p>#keydown  keyCode=229       which=229       charCode=0<br>textInput data=#<br>keyup    keyCode=16        which=16        charCode=0       </p>
 </blockquote>
-<p>主要原因是因為在 windows 上用輸入中英文的習慣是按下 <code>shift</code>+按鍵，按照 <a href="https://lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html" target="_blank" rel="external">spec</a> 來說，輸入法開啟狀態時，回應 229 其實是沒錯的。</p>
-<h1 id="react-taggable-input"><a href="#react-taggable-input" class="headerlink" title=" react-taggable-input"></a><a name="react-taggable-input"></a> react-taggable-input</h1><p>最後終於推出 <a href="https://github.com/blackbing/react-taggable-input" target="_blank" rel="external">react-taggable-input</a>，如此一來我們就能在 input 時塞任何的 html 了。</p>
+<p>主要原因是因為在 windows 上用輸入中英文的習慣是按下 <code>shift</code>+按鍵，按照 <a href="https://lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html" target="_blank" rel="external">spec</a> 來說，輸入法開啟狀態時，回應 229 其實是沒錯的。在 Mac 反而沒這個問題，因為你必須切換輸入法才能按下半形的 <code>#</code>。</p>
+<h1 id="react-taggable-input"><a href="#react-taggable-input" class="headerlink" title=" react-taggable-input"></a><a name="react-taggable-input"></a> react-taggable-input</h1><p>最後終於推出 <a href="https://github.com/blackbing/react-taggable-input" target="_blank" rel="external">react-taggable-input</a>，如此一來我們就能在 input 時塞任何的 html 了（劇情急轉直下）。</p>
 <p>那麼最後怎麼處理 trigger 的問題？</p>
-<h2 id="value-change"><a href="#value-change" class="headerlink" title="value change"></a>value change</h2><p>主要概念就是在 <code>keyup</code> 之後從目前游標往前找最近的 <code>trigger</code> 字元，而不是想辦法在 <code>keydown</code> <code>keyup</code> 時檢查是否是有 <code>trigger</code> 字元。</p>
+<h2 id="value-change"><a href="#value-change" class="headerlink" title="value change"></a>value change</h2><p>主要概念就是「在 <code>keyup</code> 之後從目前游標往前找最近的 <code>trigger</code> 字元」，而不是想辦法在 <code>keydown</code> <code>keyup</code> 時檢查是否是有 <code>trigger</code> 字元。</p>
 <p>嗯，概念看起來很簡單，但我可是拐了好多彎才想到啊。</p>
-<p>有興趣的人請直接看 <a href="https://github.com/blackbing/react-taggable-input" target="_blank" rel="external">source code</a> 吧，</p>
+<p>當然其中還有一些比較特別的處理：</p>
+<ul>
+<li>利用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent" target="_blank" rel="external">CompositionEvent API</a>來偵測使用者正在開啟輸入法模式。</li>
+<li>利用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection" target="_blank" rel="external">Selection Api</a> 偵測和操作使用者選取範圍的內容修改。</li>
+<li>取得 <code>contenteditable</code> 的游標位置。</li>
+<li>Mac 可以直接按下全形的 <code>#</code> 來輸入，不用切換輸入法。</li>
+</ul>
+<p>其他細節有興趣的人請直接看 <a href="https://github.com/blackbing/react-taggable-input" target="_blank" rel="external">source code</a> 吧，</p>
 <h1 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h1><p><a href="http://blog.blackbing.net/react-taggable-input/"><img src="http://bingo.d.pr/TVX9.png" alt=""></a><br><a href="http://blog.blackbing.net/react-taggable-input/">http://blog.blackbing.net/react-taggable-input/</a></p>
-<h1 id="工商服務時間"><a href="#工商服務時間" class="headerlink" title="工商服務時間"></a>工商服務時間</h1><p>鉅亨網推出 <a href="https://stock.cnyes.com" target="_blank" rel="external">股市 Talk</a> 可以設定自己常用的自選股，讓你可以邊看股票邊討論股票，還有新聞，影音等，還有超強大的線圖，堪稱是目前網頁版最強的看盤軟體。看看我們一個小功能都可以執著成這樣你就知道我們有多細膩了。</p>
+<h1 id="工商服務時間"><a href="#工商服務時間" class="headerlink" title="工商服務時間"></a>工商服務時間</h1><p>鉅亨網推出 <a href="https://stock.cnyes.com" target="_blank" rel="external">股市 Talk</a> 可以設定自己常用的自選股，讓你可以邊看股票邊討論股票，還有新聞，影音等，還有超強大的線圖，堪稱是目前網頁版最強的看盤軟體。</p>
+<p>看看我們一個小功能都可以執著成這樣你就知道我們有多細膩了。</p>
 <p><img src="https://i.imgur.com/Kf4cjbA.png" alt=""></p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li><a href="http://stackoverflow.com/questions/38502560/diffrence-between-keyup-keydown-keypress-and-input-events" target="_blank" rel="external">Diffrence between keyup keydown keypress and input events</a></li>
