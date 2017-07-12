@@ -783,15 +783,15 @@
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  <span class="attr">height</span>: (Platform.OS === <span class="string">'ios'</span>) ? <span class="number">200</span> : <span class="number">100</span>,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>不過很方便的地方在於因為 react 本身就是個 view 的 engine，因此要將 component 拆開是輕而易舉的事情，而 react-native 可以讓你很輕鬆的將程式分開。</p>
-<p>例如原本我們有一隻 <code>NewsDetailPagger.js</code> 的 component，但由於在實作上 Android 和 ios 上面的行為遇到不同的問題。後來就將這個 component 拆成</p>
+<p>例如原本我們有一隻 <code>NewsDetailPager.js</code> 的 component，但由於在實作上 Android 和 ios 上面的行為遇到不同的問題。後來就將這個 component 拆成</p>
 <ul>
-<li><code>NewsDetailPagger.android.js</code></li>
-<li><code>NewsDetailPagger.ios.js</code></li>
+<li><code>NewsDetailPgger.android.js</code></li>
+<li><code>NewsDetailPager.ios.js</code></li>
 </ul>
 <p>就可以讓兩種平台在 compile 時就只 build 相對應的程式，也許之後也會有</p>
 <ul>
-<li><code>NewsDetailPagger.ms.js</code></li>
-<li><code>NewsDetailPagger.tizen.js</code></li>
+<li><code>NewsDetailPager.ms.js</code></li>
+<li><code>NewsDetailPager.tizen.js</code></li>
 </ul>
 <p>註：<a href="https://techcrunch.com/2016/04/13/facebooks-react-native-open-source-project-gets-backing-from-microsoft-and-samsung/" target="_blank" rel="external">Facebook’s React Native gets backing from Microsoft and Samsung</a></p>
 <p>總之，用 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 開發也是得考慮不同 platform 的問題，雖然 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 官方已經解決大多數的繁瑣的部分，但你仍須思考不同平台是否適合同一套 UI/邏輯。</p>
@@ -808,7 +808,7 @@
 <h2 id="掰咖的-style"><a href="#掰咖的-style" class="headerlink" title="掰咖的 style"></a>掰咖的 style</h2><p><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 用 javascript 來實現 css 的設計(<a href="https://facebook.github.io/react-native/docs/style.html" target="_blank" rel="external">style</a>)，但並不是支援所有的屬性，例如 <code>z-index</code> (<a href="https://github.com/facebook/react-native/commit/d64368b9e239b574039f4a6508bf2aeb0806121b" target="_blank" rel="external">0.29 之後支援 ios</a>)。</p>
 <p>沒有 <code>image-background</code>，沒有 <code>background-repeat</code> 等等。不過雖然少了這些東西，大部分的需求還是可以想辦法實現的，也可以藉由 <a href="https://github.com/magicismight/react-native-svg" target="_blank" rel="external">react-native-svg</a> 做到很多漂亮的 UI。</p>
 <h2 id="各種踩坑"><a href="#各種踩坑" class="headerlink" title="各種踩坑"></a>各種踩坑</h2><p>一開始在用 navigator 時用了 <a href="https://facebook.github.io/react-native/releases/0.30/docs/navigation.html#navigationexperimental" target="_blank" rel="external">NavigationExperimental</a>，但由於是 experimental，每次 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 更新都有 api change，因此每次都要隨著更新。</p>
-<p>像是這個新聞內頁左右翻動的功能，看似很簡單，但因為資料是動態的，所以嘗試了好幾種 pagger 的實作，最後是用 <a href="https://github.com/race604/react-native-viewpager" target="_blank" rel="external">react-native-viewpager</a><br><img src="https://lh3.googleusercontent.com/nrxIQQQCuICKGRm87HQRZQCbvtiiSDm64W8FyWGRaxtqXuWQVKAoYt0YNp-6MulGF_w=h900-rw" alt=""></p>
+<p>像是這個新聞內頁左右翻動的功能，看似很簡單，但因為資料是動態的，所以嘗試了好幾種 pager 的實作，最後是用 <a href="https://github.com/race604/react-native-viewpager" target="_blank" rel="external">react-native-viewpager</a><br><img src="https://lh3.googleusercontent.com/nrxIQQQCuICKGRm87HQRZQCbvtiiSDm64W8FyWGRaxtqXuWQVKAoYt0YNp-6MulGF_w=h900-rw" alt=""></p>
 <h2 id="升級總是很痛苦"><a href="#升級總是很痛苦" class="headerlink" title="升級總是很痛苦"></a>升級總是很痛苦</h2><p><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 每兩週就會 realease 一個版本，這使得我們在開發到第一次上架成功之間就升級了無數次，第一個版本是 <code>0.21</code>，到目前為止已經是 <code>0.30</code>，中間有幾次升級是非常重大的更新，很多相依的 package 也要跟著更新才能順利更新上去。</p>
 <h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p><a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 讓前端工程師可以站在巨人的肩膀上更快速的開發，雖然到目前為止在實作中還是有許多地雷，但相信在 open source 的基礎下會更加的健壯，若您在開發的 app 功能都沒有跳脫 <a href="https://github.com/facebook/react-native/tree/master/Examples/UIExplorer" target="_blank" rel="external">UI Explorer</a> 的範例，相信要用 <a href="https://facebook.github.io/react-native/" target="_blank" rel="external">react-native</a> 來開發可以相對的降低開發的時間與成本。</p>
 <h1 id="鉅亨網-App"><a href="#鉅亨網-App" class="headerlink" title="鉅亨網 App"></a>鉅亨網 App</h1><ul>
@@ -2232,7 +2232,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

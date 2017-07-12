@@ -104,7 +104,7 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
 Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript 可以獨立在背景執行而不會影響到原來的HTML頁面，Web Worker 可以更有效率的執行前端程式。
 聽起來很厲害，總是在跟效能搏鬥的前端工程師就會傻傻的想跳進這個坑（如我），但是由於沒有整體性的瞭解這個東西，只參考API想要改善任何效能">
 <meta property="og:image" content="http://blog.blackbing.net/cover.jpg">
-<meta property="og:updated_time" content="2016-12-05T02:28:14.000Z">
+<meta property="og:updated_time" content="2016-12-12T23:18:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web Worker 經驗分享(一)">
 <meta name="twitter:description" content="本文章同步刊載於IT邦幫忙
@@ -372,22 +372,17 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
 <p>「唉～算了啦～這麼不好用，等他成熟一點再說吧！」。</p>
 <p>因此想跟大家分享一下我在使用 Web Worker上的一點點心得，以及在服用 Worker 之前應該要有的觀念。本文章希望從實作的角度來讓大家了解 Web Worker 到底可以做什麼，而不僅止於 API 的介紹。</p>
 <a id="more"></a>
-<p>##前端效能瓶頸</p>
-<p>隨著 Web Application 的演化，以往需要在 server 端處理的事情都慢慢搬到前端來處理，但 javascript 的問題是他是單執行緒，可以想像他就是瀑布式的執行每一個動作，雖然可以利用 event callback 來完成”非同步”的工作，但終究是在同一個瀑布上面流動。</p>
+<h2 id="前端效能瓶頸"><a href="#前端效能瓶頸" class="headerlink" title="前端效能瓶頸"></a>前端效能瓶頸</h2><p>隨著 Web Application 的演化，以往需要在 server 端處理的事情都慢慢搬到前端來處理，但 javascript 的問題是他是單執行緒，可以想像他就是瀑布式的執行每一個動作，雖然可以利用 event callback 來完成”非同步”的工作，但終究是在同一個瀑布上面流動。</p>
 <p>例如報表資料，從 server 端取回資料之後，在前端進行排序，然後 render DOM，瀏覽器雖然越來越強，然而你的專案也越來越複雜，需求又千變萬化，如果你有遇過在處理資料時，操作 DOM 元素看起來像畫面當掉了一樣，那恭喜，你得到他了。除了你的邏輯有問題之外，單執行緒的問題就在此。</p>
 <p>以往處理這種效能瓶頸時的解決方式，就是將你的動作拆開，利用 queue 以及 event callback 的概念，把動作拆成一步一步的執行，來避免 UI thread 負擔過重。但其實這就是在效能上做某種程度的妥協，而不是真正優化你的應用程式。</p>
 <p>其實從前在設計桌面應用程式的時候，早就有多執行緒的概念了，為了避免在進行複雜運算時 UI blocking 的問題，就會開 multi thread 來避免影響UI的呈現。既然 web 已經 Application 化了，就免不了會開始遇到類似的問題。</p>
-<p>##我真的需要它嗎？</p>
-<p><img src="https://dl.dropbox.com/u/751847/blog/uploads/2013/web-worker/1_154I62458.jpg" alt="風遁‧螺旋手裏劍"><br>[圖片引用來源]<a href="http://naruto.17dm.com/200912/23508_3.html" target="_blank" rel="external">http://naruto.17dm.com/200912/23508_3.html</a></p>
+<h2 id="我真的需要它嗎？"><a href="#我真的需要它嗎？" class="headerlink" title="我真的需要它嗎？"></a>我真的需要它嗎？</h2><p><img src="https://dl.dropbox.com/u/751847/blog/uploads/2013/web-worker/1_154I62458.jpg" alt="風遁‧螺旋手裏劍"><br>[圖片引用來源]<a href="http://naruto.17dm.com/200912/23508_3.html" target="_blank" rel="external">http://naruto.17dm.com/200912/23508_3.html</a></p>
 <p>看看「漩渦鳴人」吧，只要學會了多重影分身術，可以利用影分身縮短修行時間，再難的招式開個多執行緒來幫忙就可以練得出來（<del>關 Web Worker 屁事XD</del>）。即使你沒聽過 Web Worker ，或是你沒遇過類似問題的，也可以藉著這個機會了解前端可以做到更多有趣的事情。才疏學淺的我在第一次接觸到 Web Worker 的時候，遇到一個很大的問題就是，網路上找到的資料，幾乎都是跟你說有這個 API，接著有個小範例，告訴你如何傳遞訊息，如何傳遞回來，接下來就是API的Spec。但實作上的時候卻遇到一堆問題，難道我只會要他傳遞文字資料嗎？（╯‵□′）╯╧╧</p>
 <p>因此在實作之前，我希望可以掌握到 Web Worker 到底能做到什麼？不能做到什麼，再從而瞭解遇到什麼情況適合交給 Web Worker來做。若一知半解在實作上就會遇到一堆問題。那麼，就讓我們一起來好好深入地研究吧！(握拳！)</p>
-<p>##CAN I USE?</p>
-<p>Web Worker 其實不算新了，早在 2009 年 Firefox3.5 就已經出現 Worker 的實作了，只是各家瀏覽器的支援程度不一致，而且 IE 在兩三年前還在地球上稱王，因此相關的應用並不算太多。<a href="http://caniuse.com/#search=worker" target="_blank" rel="external">Can I use Web Worker?</a> 到目前為止，如果你的應用程式可以拋棄 IE8, IE9 的包袱的話，那就大膽的用吧！Firefox, Chrome, Safari, Opera, IE10 甚至 iOS Safari，Android Chrome 都支援。</p>
+<h2 id="CAN-I-USE"><a href="#CAN-I-USE" class="headerlink" title="CAN I USE?"></a>CAN I USE?</h2><p>Web Worker 其實不算新了，早在 2009 年 Firefox3.5 就已經出現 Worker 的實作了，只是各家瀏覽器的支援程度不一致，而且 IE 在兩三年前還在地球上稱王，因此相關的應用並不算太多。<a href="http://caniuse.com/#search=worker" target="_blank" rel="external">Can I use Web Worker?</a> 到目前為止，如果你的應用程式可以拋棄 IE8, IE9 的包袱的話，那就大膽的用吧！Firefox, Chrome, Safari, Opera, IE10 甚至 iOS Safari，Android Chrome 都支援。</p>
 <p><img src="https://dl.dropbox.com/u/751847/blog/uploads/2013/web-worker/can-i-use-web-worker.png" alt="can i use web worker?"><br>[圖片引用來源]：<a href="http://caniuse.com/#search=worker" target="_blank" rel="external">http://caniuse.com/#search=worker</a></p>
-<p>##讓我們開始吧</p>
-<p>要起始一個 Worker 很簡單，只要呼叫 new 一個 Worker 即可，剩下的工作就交給你要執行的 script 了。</p>
-<p>###起始Worker</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string">'worker.js'</span>);</div></pre></td></tr></table></figure>
+<h2 id="讓我們開始吧"><a href="#讓我們開始吧" class="headerlink" title="讓我們開始吧"></a>讓我們開始吧</h2><p>要起始一個 Worker 很簡單，只要呼叫 new 一個 Worker 即可，剩下的工作就交給你要執行的 script 了。</p>
+<h3 id="起始Worker"><a href="#起始Worker" class="headerlink" title="起始Worker"></a>起始Worker</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string">'worker.js'</span>);</div></pre></td></tr></table></figure>
 <p>Worker 接的字串參數就是 script 的路徑，當你 new 了一個 Worker 之後，就會根據這個路徑，非同步的下載這一隻 script ，接著你就可以開始跟他溝通了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">worker.postMessage(something);</div><div class="line">worker.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Worker said: '</span>, e.data);</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
 <ol>
@@ -395,12 +390,11 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
 <li>接著定義當收到 worker 傳回來的資料時的動作，這裡就是直接印到 console 出來看。</li>
 <li>e.data 指的就是postMessage傳遞的資料。</li>
 </ol>
-<p>###Worker script裡頭要做的事情<br>而在 worker.js 裡頭，就要定義好收到資料時的 function 。來作相對應的處理。</p>
+<h3 id="Worker-script裡頭要做的事情"><a href="#Worker-script裡頭要做的事情" class="headerlink" title="Worker script裡頭要做的事情"></a>Worker script裡頭要做的事情</h3><p>而在 worker.js 裡頭，就要定義好收到資料時的 function 。來作相對應的處理。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//worker.js</span></div><div class="line">self.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  self.postMessage(e.data);</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
 <p>在 Worker script 裡頭，在 worker.js 裡頭 self 就代表 Worker 本身(在html裡頭是指向 window Object)，上面的例子是定義接收到資料時就直接將資料用 postMessage 回傳回去。</p>
 <p>OK，這就是一個很基本的流程。</p>
-<p>##Web Worker的限制</p>
-<p>看起來不難，是吧？不過要小心，Worker 可沒這麼好使喚，有些東西你要丟給他他可是會吐掉的！我們先來理解 Web Worker 的限制吧！</p>
+<h2 id="Web-Worker的限制"><a href="#Web-Worker的限制" class="headerlink" title="Web Worker的限制"></a>Web Worker的限制</h2><p>看起來不難，是吧？不過要小心，Worker 可沒這麼好使喚，有些東西你要丟給他他可是會吐掉的！我們先來理解 Web Worker 的限制吧！</p>
 <p>由於安全性的考量，Web Worker 無法存取下列資源。</p>
 <ol>
 <li>window</li>
@@ -415,8 +409,7 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
 <p>也因此，你也不能在 Worker 裡頭做任何有關 DOM 元素的操作，比方說 createElement(‘canvas’) 之類的事情。</p>
 <p><img src="https://dl.dropbox.com/u/751847/blog/uploads/2013/web-worker/snippet2.png" alt="What the hell do I use web worker?"><br>[圖片引用來源]：<a href="http://ajaxian.com/archives/an-implausibly-illustrated-introduction-to-html5-web-workers" target="_blank" rel="external">http://ajaxian.com/archives/an-implausibly-illustrated-introduction-to-html5-web-workers</a></p>
 <p>ㄜ，什麼都不能用那 Web Worker 到底可以做啥？</p>
-<p>##Web Worker可以使用</p>
-<p>好吧，換個方式問好了，那麼 Web Worker 可以「用」什麼？</p>
+<h2 id="Web-Worker可以使用"><a href="#Web-Worker可以使用" class="headerlink" title="Web Worker可以使用"></a>Web Worker可以使用</h2><p>好吧，換個方式問好了，那麼 Web Worker 可以「用」什麼？</p>
 <ol>
 <li>navigator</li>
 <li>location(read-only)</li>
@@ -427,13 +420,10 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
 <p><img src="https://dl.dropbox.com/u/751847/blog/uploads/2013/web-worker/01_WebWorkersinIE10BackgroundJavaScriptMakesWebAppsFaster_2.png" alt="Image comparing the execution environment of a web page to that of a web worker with the worker environment does not include window, the document, elements, or attributes"><br>[圖片引用來源]：<a href="http://blogs.msdn.com/b/ie/archive/2011/07/01/web-workers-in-ie10-background-javascript-makes-web-apps-faster.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/ie/archive/2011/07/01/web-workers-in-ie10-background-javascript-makes-web-apps-faster.aspx</a></p>
 <p>上面的示意圖很清楚的列出Web Worker可以存取的資源的差異，簡單地說，Worker就只能運行基本的javascript，以及XMLHttpRequest，所以如果你的Application需要大量的跟server端發request的話，那將request的部分移到Worker做就會是個最基礎的應用。</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/DOM/Worker/Functions_available_to_workers" target="_blank" rel="external">Functions avavilable to Workers</a> 有詳細列出在Worker裡頭可以使用的function，很有用。</p>
-<p>##複雜的計算?</p>
-<p>例如費伯納西數列 (Fibonacci)，質數 (prime number)等複雜的計算，大量陣列的排序，就會非常吃運算效能。</p>
-<p>##使用情境</p>
-<p>「但是實際應用上，我們不會算費伯納西數列 (Fibonacci) ，我們不會算最大的質數是多少，你可以說點人話嗎？」</p>
+<h2 id="複雜的計算"><a href="#複雜的計算" class="headerlink" title="複雜的計算?"></a>複雜的計算?</h2><p>例如費伯納西數列 (Fibonacci)，質數 (prime number)等複雜的計算，大量陣列的排序，就會非常吃運算效能。</p>
+<h2 id="使用情境"><a href="#使用情境" class="headerlink" title="使用情境"></a>使用情境</h2><p>「但是實際應用上，我們不會算費伯納西數列 (Fibonacci) ，我們不會算最大的質數是多少，你可以說點人話嗎？」</p>
 <p>嗯，的確，Front-end 要處理的問題幾乎都是頁面的 render ，一時之間可能很難想到有什麼情境可以用到。在想使用情境之前，對我來說，最簡單的解釋就是把 Worker 當成是「Client-server」的概念，我們來復習一下 <a href="http://zh.wikipedia.org/wiki/%E4%B8%BB%E5%BE%9E%E5%BC%8F%E6%9E%B6%E6%A7%8B" target="_blank" rel="external">主從式架構(Client-server)</a> 的特色。</p>
-<p>###主從式架構</p>
-<p>定義：主從式架構 (Client–server model) 或客戶端-服務器（Client/Server）結構簡稱 C/S 結構，是一種網絡架構，它把客戶端 (Client) （<strong>通常是一個採用圖形用戶界面的程序</strong>）與服務器 (Server) 區分開來。每一個客戶端軟件的實例都可以向一個服務器或應用程序服務器發出請求。</p>
+<h3 id="主從式架構"><a href="#主從式架構" class="headerlink" title="主從式架構"></a>主從式架構</h3><p>定義：主從式架構 (Client–server model) 或客戶端-服務器（Client/Server）結構簡稱 C/S 結構，是一種網絡架構，它把客戶端 (Client) （<strong>通常是一個採用圖形用戶界面的程序</strong>）與服務器 (Server) 區分開來。每一個客戶端軟件的實例都可以向一個服務器或應用程序服務器發出請求。</p>
 <ul>
 <li>Server Side<ul>
 <li>被動</li>
@@ -452,7 +442,7 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
 <p>(大驚<del>變頻空調</del>!!) Worker 的限制和用法不就跟這一樣？也就是說還可以從前端直接 new Instance 起來，要幾台有幾台!?這樣一來，就把它想成是「前端的後端」，所以 Server 端可以做到的情境，就是 Worker 的使用情境。</p>
 <p>##小結</p>
 <p>若要思考 Web Worker 的使用情境，其實只要將 Web Worker 當作是 Client-Server 的架構來思考。事實上，我們已經在做類似的事情了。思考一下過去的Web Page，後端做複雜的運算，例如資料排序，DB查詢等等，前端很簡單就是做表格畫面的繪製。但隨著Web Application的發展，前端已不只是在渲染畫面，需要進行更多複雜的運算與頁面做交互作用。雖然瀏覽器很盡力的將事情完成，但我們其實可以將頁面的繪製與複雜運算再分開，做更詳細的工作劃分，讓頁面繪製可以更加流暢，藉此提高效能，改善使用者體驗。</p>
-<p><a href="/2013/04/15/web-worker-intro2/">Web Worker 經驗分享(二)</a></p>
+<p><a href="/post/2013/04/15/web-worker-intro2/">Web Worker 經驗分享(二)</a></p>
 
       
     </div>
@@ -545,8 +535,17 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -600,6 +599,22 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端效能瓶頸"><span class="nav-number">1.</span> <span class="nav-text">前端效能瓶頸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我真的需要它嗎？"><span class="nav-number">2.</span> <span class="nav-text">我真的需要它嗎？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CAN-I-USE"><span class="nav-number">3.</span> <span class="nav-text">CAN I USE?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讓我們開始吧"><span class="nav-number">4.</span> <span class="nav-text">讓我們開始吧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#起始Worker"><span class="nav-number">4.1.</span> <span class="nav-text">起始Worker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Worker-script裡頭要做的事情"><span class="nav-number">4.2.</span> <span class="nav-text">Worker script裡頭要做的事情</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Worker的限制"><span class="nav-number">5.</span> <span class="nav-text">Web Worker的限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Worker可以使用"><span class="nav-number">6.</span> <span class="nav-text">Web Worker可以使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#複雜的計算"><span class="nav-number">7.</span> <span class="nav-text">複雜的計算?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用情境"><span class="nav-number">8.</span> <span class="nav-text">使用情境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主從式架構"><span class="nav-number">8.1.</span> <span class="nav-text">主從式架構</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -614,7 +629,7 @@ Web Worker 是由 W3C 以及 WHATWG 共同制定出來的API，讓 javascript �
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
